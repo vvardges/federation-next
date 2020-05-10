@@ -1,0 +1,195 @@
+@import url('https://fonts.googleapis.com/css2?family=PT+Serif&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300;400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700;1,400&display=swap');
+@import url('./icons/icons.css');
+$enable-rounded: false;
+$enable-responsive-font-sizes: true;
+
+$theme-colors: (
+  "secondary": #eaecf2,
+       "info": #D2DBED,
+      "black": #000,
+       "dark": #292929,
+    "primary": #4F91CF,
+       "gray": #757575,
+       "blue": #B8CCE7
+);
+
+$spacer: 1.5rem;
+
+$border-color: #000;
+
+$text-muted: #a2a2a2;
+$gray-900: #292929;
+$gray-400: #414141;
+
+$font-family-base: 'PT Serif', serif;
+$headings-font-family: 'Roboto', sans-serif;
+$font-size-base: 1rem;
+$h1-font-size: $font-size-base * 4;
+$h2-font-size: $font-size-base * 3;
+$h3-font-size: $font-size-base * 2;
+$h5-font-size: $font-size-base * 1.125;
+$headings-font-weight: bold;
+$lead-font-size: $font-size-base * 1.125;
+$lead-font-weight: 400;
+$small-font-size: 14px;
+
+$badge-font-weight: 400;
+$badge-font-size: 14px;
+
+$card-border-width: 0;
+$card-cap-bg: transparent;
+$card-bg: transparent;
+
+$navbar-padding-y: 7px;
+$navbar-toggler-padding-y: 0;
+$navbar-toggler-padding-x: 0;
+$navbar-toggler-font-size: 34px;
+$navbar-toggler-border-radius: 0;
+
+$container-max-widths: (
+        sm: 540px,
+        md: 720px,
+        lg: 960px,
+        xl: 1268px
+);
+
+$list-group-item-padding-x: 0;
+$list-group-border-color: rgba(41, 41, 41, 0.36);
+$list-group-bg: transparent;
+
+$hr-border-color: $gray-900;
+$hr-border-width: 4px;
+
+$link-color: $gray-900;
+
+$pagination-border-width: 0;
+$pagination-active-bg: $gray-900;
+$pagination-disabled-color: $text-muted;
+$pagination-padding-y: 6px;
+$pagination-padding-x: 0;
+
+$modal-md: 630px;
+$modal-content-bg: $gray-900;
+$modal-content-border-width: 0;
+$modal-dialog-margin-y-sm-up: 150px;
+$modal-content-color: white;
+$modal-backdrop-bg: #D0D0D0;
+$modal-backdrop-opacity: .2;
+$modal-inner-padding: 2rem;
+$modal-header-padding-y: 40px;
+$modal-header-padding-x: 1rem !default;
+$modal-header-padding: $modal-header-padding-y $modal-header-padding-x 0 $modal-header-padding-x;
+
+$close-text-shadow: none;
+$close-font-size: 1rem;
+$display-line-height: 0.8;
+
+$input-bg: transparent;
+$input-color: black;
+$input-focus-border-color: black;
+$input-focus-box-shadow: transparent;
+$input-font-size-lg: 24px;
+$input-height-lg: 40px;
+$form-group-margin-bottom: 1.5rem;
+
+$btn-font-size-lg: 24px;
+
+$link-hover-decoration: none;
+
+@import "node_modules/bootstrap/scss/bootstrap";
+
+.font-family-condensed {
+  font-family: 'Roboto Condensed', sans-serif;
+  letter-spacing: 0.05em;
+}
+
+.font-family-roboto {
+  font-family: 'Roboto', sans-serif;
+}
+
+.letter-spacing-xl {
+  letter-spacing: 1em;
+}
+
+.letter-spacing-lg {
+  letter-spacing: 0.25em;
+}
+
+.letter-spacing-md {
+  letter-spacing: 0.1em;
+}
+
+.letter-spacing-sm {
+  letter-spacing: 0.05em;
+}
+
+.letter-spacing-xs {
+  letter-spacing: 0.03em;
+}
+
+.border-md {
+  border-width: 3px !important;
+}
+
+.border-light-gray {
+  border-width: 1px;
+  border-color: #DEE0E3 !important;
+}
+
+.smaller {
+  font-size: 12px;
+}
+
+.smallest {
+  font-size: 10px;
+}
+
+a.rounded-circle{
+  width: 30px;
+  height: 30px;
+}
+
+input {
+  border-left: 0 !important;
+  border-right: 0 !important;
+  border-top: 0 !important;
+}
+
+input.text-white:focus, textarea.text-white:focus {
+  border-color: white;
+}
+
+.modal-header button.close {
+  position: absolute;
+  padding: 0;
+  margin: 0;
+  top: -25px;
+  right: -25px;
+  opacity: 1;
+}
+
+@include media-breakpoint-down(md) {
+  .modal-header button.close {
+    top: 16px;
+    left: 16px;
+    color: white;
+  }
+}
+
+.modal-open > .container {
+  filter: blur(2px);
+}
+
+.btn-super {
+  background: linear-gradient(to right, black 50%, white 50%);
+  background-size: 200% 100%;
+  background-position: right bottom;
+  transition: all .5s ease-out;
+
+  &:hover {
+    color: white;
+    background-position: left bottom;
+  }
+}
