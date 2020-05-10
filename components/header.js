@@ -29,10 +29,14 @@ export default function Header() {
                                     <a className="nav-link text-primary" href="./super-rubric.html">Коронавирус</a>
                                 </li>
                                 <li className="nav-item">
-                                    <a className="nav-link text-dark" href="./rubric.html">Личные деньги</a>
+                                    <Link href="/category/[id]" as="/category/business">
+                                        <a className="nav-link text-dark">Бизнес</a>
+                                    </Link>
                                 </li>
                                 <li className="nav-item">
-                                    <a className="nav-link text-dark" href="./rubric.html">Я предприниматель</a>
+                                    <Link href="/category/[id]" as="/category/technology">
+                                        <a className="nav-link text-dark">Технологии</a>
+                                    </Link>
                                 </li>
                             </ul>
                             <Link href="/">
@@ -42,10 +46,14 @@ export default function Header() {
                             </Link>
                             <ul className="navbar-nav justify-content-between w-100">
                                 <li className="nav-item">
-                                    <a className="nav-link text-dark" href="./rubric.html">Моё здоровье</a>
+                                    <Link href="/category/[id]" as="/category/health">
+                                        <a className="nav-link text-dark">Здорове</a>
+                                    </Link>
                                 </li>
                                 <li className="nav-item">
-                                    <a className="nav-link text-dark" href="./rubric.html">Уровень жизни</a>
+                                    <Link href="/category/[id]" as="/category/sports">
+                                        <a className="nav-link text-dark">Спорт</a>
+                                    </Link>
                                 </li>
                                 <li className="nav-item">
                                     <a className="nav-link text-dark" href="./404.html">Не найден</a>

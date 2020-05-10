@@ -1,11 +1,13 @@
 import React from "react";
 
-const CategoryCard = ({ category, posts }) => (
-    <div className="bg-secondary border-left border-md mb-3">
-        <p className="font-family-condensed letter-spacing-lg lead m-0 p-3">{category.name}</p>
-        <div className="card-group">
+const Small = ({ posts }) => (
+    <div className="bg-secondary border-black border-left border-md mb-3 py-2">
+        <div className="card-group flex-column flex-lg-row">
             {posts.map((post, index) =>
                 <div className="card bg-secondary" key={index}>
+                    <div className="card-header">
+                        <small className="font-family-condensed letter-spacing-lg">{post.source.name}</small>
+                    </div>
                     <div className="card-body py-0">
                         <h5 className="card-title mb-0">{post.title}</h5>
                     </div>
@@ -13,8 +15,8 @@ const CategoryCard = ({ category, posts }) => (
                         <div className="col-auto">
                             <small className="text-muted font-family-condensed">{post.publishedAt}</small>
                         </div>
-                        <div className="col d-md-none">
-                            <hr className="m-2 border-light-gray"/>
+                        <div className="col d-lg-none">
+                            <hr className="m-2 border-light-gray" />
                         </div>
                     </div>
                 </div>
@@ -23,4 +25,4 @@ const CategoryCard = ({ category, posts }) => (
     </div>
 );
 
-export default CategoryCard;
+export default Small;

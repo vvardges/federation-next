@@ -5,8 +5,8 @@ const More = ({ posts }) => (
         <hr className="d-none d-lg-block"/>
         <h3 className="font-family-condensed mb-3 mt-1 text-center text-md-left">Что еще почитать</h3>
         <div className="card-deck">
-            {posts.map(post =>
-                <div className="card">
+            {posts.map((post, index) =>
+                <div className="card" key={index}>
                     <div className="row">
                         <div className="col-4 col-sm-12">
                             <img src={post.urlToImage} className="img-fluid mb-2" alt="..."/>
