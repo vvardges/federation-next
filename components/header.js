@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-export default function Header() {
+export default function Header({ isCategory }) {
     return (
         <div className="sticky-top">
             <nav className="navbar text-white bg-dark smallest font-family-roboto">
@@ -69,6 +69,32 @@ export default function Header() {
                     </div>
                 </div>
             </nav>
+            {isCategory && <nav className="navbar navbar-dark navbar-expand-xl bg-dark">
+                <div className="container">
+                    <h2 className="text-white font-weight-normal mb-0 mx-auto">Личные деньги</h2>
+                    <div className="collapse navbar-collapse ml-3" id="navbarTogglerDemo02">
+                        <ul className="navbar-nav font-family-condensed font-weight-normal letter-spacing-sm h4 w-100 justify-content-between">
+                            <li className="nav-item">
+                                <a className="nav-link" href="./subrubric.html">Кризис 2.0</a>
+                            </li>
+                            <li className="nav-item">
+                                <a className="nav-link" href="./subrubric.html">Пандемия</a>
+                            </li>
+                            <li className="nav-item">
+                                <a className="nav-link" href="./subrubric.html">Реформы</a>
+                            </li>
+                            <li className="nav-item">
+                                <a className="nav-link" href="./subrubric.html">Самоизоляция</a>
+                            </li>
+                            <li className="nav-item">
+                                <a className="nav-link" href="./subrubric.html">Госпомощь</a>
+                            </li>
+                        </ul>
+                        <button className="btn btn-lg btn-link text-white"><i className="icon-chevron-right"></i>
+                        </button>
+                    </div>
+                </div>
+            </nav>}
         </div>
     );
 }

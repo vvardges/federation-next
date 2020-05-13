@@ -1,17 +1,32 @@
 import Layout from '../components/layout';
+import fetch from "node-fetch";
+import Popular from "../components/posts/popular";
 
-export default function Post({ post }) {
+export async function getServerSideProps() {
+    const urlPosts = 'http://newsapi.org/v2/top-headlines?' +
+        'country=ru&' +
+        'apiKey=9253aa616bb04518ba1688a6aae6bdb2';
+    const resPosts = await fetch(urlPosts);
+    const jsonPosts = await resPosts.json();
+
+    return {
+        props: {
+            posts: jsonPosts.articles
+        },
+    }
+}
+
+export default function Post({ posts }) {
     return (
         <Layout article>
             <div className="pl-xl-5">
                 <div className="row">
                     <div className="col-lg-8 col-xl-9">
                         <div className="d-flex flex-column flex-md-row justify-content-md-between">
-                            <h4 className="card-subtitle font-family-condensed letter-spacing-lg font-weight-normal mb-2">Личные
-                                деньги</h4>
-                            <small className="font-family-condensed letter-spacing-lg">12:30 25 марта 2020</small>
+                            <h4 className="card-subtitle font-family-condensed letter-spacing-lg font-weight-normal mb-2">{posts[0].source.name}</h4>
+                            <small className="font-family-condensed letter-spacing-lg">{posts[0].publishedAt}</small>
                         </div>
-                        <h1 className="my-lg-3">Малый бизнес не верит в поддержку государства</h1>
+                        <h1 className="my-lg-3">{posts[0].title}</h1>
 
                         <div className="d-flex justify-content-between align-items-center">
                             <div className="mb-1">
@@ -28,8 +43,8 @@ export default function Post({ post }) {
                 <div className="row">
                     <div className="col-lg-8 col-xl-9 mb-4">
                         <div className="border-top border-black border-md pt-1">
-                            <p className="font-family-condensed letter-spacing-lg small">Виталий Мосеев</p>
-                            <img src="/img/blog.png" className="w-100" alt="..."/>
+                            <p className="font-family-condensed letter-spacing-lg small">{posts[0].author}</p>
+                            <img src={posts[0].urlToImage} className="w-100" alt="..."/>
                                 <p className="my-4 bg-secondary p-3 border-left border-md">Таким образом сложившаяся
                                     структура организации позволяет выполнять важные задания по разработке модели
                                     развития. Значимость этих проблем настолько очевидна, что дальнейшее развитие
@@ -96,11 +111,7 @@ export default function Post({ post }) {
                         </div>
                     </div>
                     <div className="col-lg-4 col-xl-3">
-                        <div className="bg-danger text-center mb-2">
-                            <img src="/img/banner.png" className="img-fluid" alt=""/>
-                        </div>
-                        <div id="popular"/>
-                        <script>jQuery("#popular").load("./components/popular.html");</script>
+                        <Popular posts={posts} />
                     </div>
                 </div>
                 <div className="d-flex flex-column flex-sm-row justify-content-sm-between pt-1 border-top mx-lg-4 mb-3">
@@ -188,7 +199,9 @@ export default function Post({ post }) {
                         </div>
                     </div>
                     <div className="col-lg-4 col-xl-3">
-                        <div id="popular2" className="bg-secondary p-2"/>
+                        <div className="bg-secondary p-2">
+                            <Popular posts={posts.slice(0, 5)} />
+                        </div>
                     </div>
                 </div>
             </div>

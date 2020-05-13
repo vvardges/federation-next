@@ -9,7 +9,7 @@ export default class Layout extends React.Component {
 
         return (
             <React.Fragment>
-                <Header/>
+                <Header isCategory={this.props.category}/>
                 <div className="container py-4">
                     {children}
                 </div>
