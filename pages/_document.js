@@ -6,6 +6,7 @@ export default class MyDocument extends Document {
             <html>
             <Head>
                 <meta name="viewport" content="width=device-width, initial-scale=1"/>
+                <meta name="yandex-verification" content="661f2b6424e2db88" />
             </Head>
             <body>
             <Main/>
