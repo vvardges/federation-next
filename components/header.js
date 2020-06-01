@@ -1,6 +1,21 @@
 import Link from "next/link";
+import {useEffect, useState} from "react";
+import {getAllCategories} from "../lib/categories";
 
 export default function Header({ isCategory }) {
+    const [categories, setCategories] = useState([]);
+
+    useEffect( () => {
+        async function fetchData() {
+            const categories = await getAllCategories();
+            return categories;
+        }
+        fetchData().then(data => setCategories(data));
+    }, []);
+
+    const [isOpen, setIsOpen] = useState(false);
+    const toggle = () => setIsOpen(!isOpen);
+
     return (
         <div className="sticky-top">
             <nav className="navbar text-white bg-dark smallest font-family-roboto">
@@ -16,54 +31,42 @@ export default function Header({ isCategory }) {
             </nav>
             <nav className="navbar navbar-light navbar-expand-xl bg-white border-bottom">
                 <div className="container">
-                    <button className="navbar-toggler text-dark border-0" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+                    <button className="navbar-toggler text-dark border-0" type="button" onClick={toggle}>
                         <i className="icon-navbar-toggler"/>
                     </button>
                     <a className="navbar-brand d-xl-none mx-auto" href="#">
-                        <img src="/img/logo.png" className="align-middle" alt=""/>
+                        <img src="/img/logo.svg" className="align-top" alt=""/>
                     </a>
-                    <div className="collapse navbar-collapse" id="navbarTogglerDemo01">
+                    <div className={`collapse navbar-collapse ${isOpen ? 'show' : ''}`} id="navbarTogglerDemo01">
                         <div className="d-flex flex-column flex-xl-row justify-content-between small font-family-condensed w-100">
                             <ul className="navbar-nav justify-content-between w-100">
                                 <li className="nav-item">
                                     <a className="nav-link text-primary" href="./super-rubric.html">Коронавирус</a>
                                 </li>
-                                <li className="nav-item">
-                                    <Link href="/category/[id]" as="/category/business">
-                                        <a className="nav-link text-dark">Бизнес</a>
-                                    </Link>
-                                </li>
-                                <li className="nav-item">
-                                    <Link href="/category/[id]" as="/category/technology">
-                                        <a className="nav-link text-dark">Технологии</a>
-                                    </Link>
-                                </li>
+                                {categories.slice(0, 2).map(category =>
+                                    <li className="nav-item" key={category.id}>
+                                        <Link href="/category/[id]" as={`/category/${category.slug}`}>
+                                            <a className="nav-link text-dark">{category.title}</a>
+                                        </Link>
+                                    </li>
+                                )}
                             </ul>
                             <Link href="/">
-                                <a className="navbar-brand px-3 d-none d-xl-block">
-                                    <img src="/img/logo.png" className="align-top" alt=""/>
+                                <a className="px-5 d-none d-xl-block">
+                                    <img src="/img/logo.svg" className="align-top" alt=""/>
                                 </a>
                             </Link>
                             <ul className="navbar-nav justify-content-between w-100">
                                 <li className="nav-item">
-                                    <Link href="/category/[id]" as="/category/health">
-                                        <a className="nav-link text-dark">Здорове</a>
-                                    </Link>
+                                    <a className="nav-link text-primary" href="./super-rubric.html">Коронавирус</a>
                                 </li>
-                                <li className="nav-item">
-                                    <Link href="/category/[id]" as="/category/sports">
-                                        <a className="nav-link text-dark">Спорт</a>
-                                    </Link>
-                                </li>
-                                <li className="nav-item">
-                                    <a className="nav-link text-dark" href="./404.html">Не найден</a>
-                                </li>
-                                <li className="nav-item d-xl-none">
-                                    <a className="nav-link text-dark" href="./about.html">О журнале</a>
-                                </li>
-                                <li className="nav-item d-xl-none">
-                                    <a className="nav-link text-dark" data-toggle="modal" data-target="#exampleModal">Написать в редакцию</a>
-                                </li>
+                                {categories.slice(2).map(category =>
+                                    <li className="nav-item" key={category.id}>
+                                        <Link href="/category/[id]" as={`/category/${category.slug}`}>
+                                            <a className="nav-link text-dark">{category.title}</a>
+                                        </Link>
+                                    </li>
+                                )}
                             </ul>
                         </div>
                     </div>
