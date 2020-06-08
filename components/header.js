@@ -29,24 +29,21 @@ export default function Header({ isCategory }) {
                     </div>
                 </div>
             </nav>
-            <nav className="navbar navbar-light navbar-expand-xl bg-white border-bottom">
+            <nav className={`navbar navbar-expand-xl border-bottom align-items-start ${isOpen ? "navbar-dark bg-black vh-100" : "navbar-light bg-white"}`}>
                 <div className="container">
-                    <button className="navbar-toggler text-dark border-0" type="button" onClick={toggle}>
-                        <i className="icon-navbar-toggler"/>
+                    <button className={`navbar-toggler border-0 ${isOpen ? "text-white" : "text-dark"}`} type="button" onClick={toggle}>
+                        <i className={isOpen ? "icon-close" : "icon-navbar-toggler"}/>
                     </button>
                     <a className="navbar-brand d-xl-none mx-auto" href="#">
                         <img src="/img/logo.svg" className="align-top" alt=""/>
                     </a>
-                    <div className={`collapse navbar-collapse ${isOpen ? 'show' : ''}`} id="navbarTogglerDemo01">
+                    <div className={`collapse navbar-collapse ${isOpen ? 'show pl-3' : ''}`}>
                         <div className="d-flex flex-column flex-xl-row justify-content-between small font-family-condensed w-100">
                             <ul className="navbar-nav justify-content-between w-100">
-                                <li className="nav-item">
-                                    <a className="nav-link text-primary" href="./super-rubric.html">Коронавирус</a>
-                                </li>
-                                {categories.slice(0, 2).map(category =>
-                                    <li className="nav-item" key={category.id}>
+                                {categories.slice(0, categories.length / 2).map(category =>
+                                    <li className={`nav-item ${isOpen ? "h4" : ""}`}>
                                         <Link href="/category/[id]" as={`/category/${category.slug}`}>
-                                            <a className="nav-link text-dark">{category.title}</a>
+                                            <a className={`nav-link text-${category.super_header ? "primary" : isOpen ? "white" : "dark"}`}>{category.title}</a>
                                         </Link>
                                     </li>
                                 )}
@@ -57,13 +54,10 @@ export default function Header({ isCategory }) {
                                 </a>
                             </Link>
                             <ul className="navbar-nav justify-content-between w-100">
-                                <li className="nav-item">
-                                    <a className="nav-link text-primary" href="./super-rubric.html">Коронавирус</a>
-                                </li>
-                                {categories.slice(2).map(category =>
-                                    <li className="nav-item" key={category.id}>
+                                {categories.slice(categories.length / 2).map(category =>
+                                    <li className={`nav-item ${isOpen ? "h4" : ""}`} key={category.id}>
                                         <Link href="/category/[id]" as={`/category/${category.slug}`}>
-                                            <a className="nav-link text-dark">{category.title}</a>
+                                            <a className={`nav-link text-${category.super_header ? "primary" : isOpen ? "white" : "dark"}`}>{category.title}</a>
                                         </Link>
                                     </li>
                                 )}
