@@ -7,46 +7,37 @@ import PostCardSmall from "../components/post/postCardSmall";
 import CategoryCard from "../components/category/categoryCard";
 import Popular from "../components/posts/popular";
 import More from "../components/posts/more";
+import {getAllCategories, getPageData} from "../lib/categories";
 
 export async function getServerSideProps() {
-    const urlPosts = 'http://newsapi.org/v2/top-headlines?' +
-        'country=ru&' +
-        'apiKey=9253aa616bb04518ba1688a6aae6bdb2';
-    const resPosts = await fetch(urlPosts);
-    const jsonPosts = await resPosts.json();
-
-    const urlCats = 'http://newsapi.org/v2/sources?' +
-        'country=ru&' +
-        'apiKey=9253aa616bb04518ba1688a6aae6bdb2';
-    const resCats = await fetch(urlCats);
-    const jsonCats = await resCats.json();
+    const data = await getPageData('main');
 
     return {
         props: {
-            posts: jsonPosts.articles,
-            categories: jsonCats.sources
+            data: data
         },
     }
 }
 
-export default function Home({ categories, posts }) {
+export default function Home({ data }) {
+    const {topFirstArticle, topSecondArticle, articlesByCategories, popularArticles, readMoreArticles} = data;
     return (
         <Layout home>
-            <PostCard post={posts[0]} />
-            <PostCardSmall post={posts[1]}/>
+            <PostCard post={topFirstArticle} />
+            <PostCardSmall post={topSecondArticle}/>
 
             <div className="row mt-4">
                 <div className="col-lg-9">
-                    {categories.slice(0, 3).map((category, index) =>
-                        <CategoryCard key={index} category={category} posts={posts.slice(2, 6)}/>
+                    {articlesByCategories.map((category) =>
+                        <CategoryCard key={category.id} category={category}/>
                     )}
                 </div>
                 <div className="col-lg-3">
-                    <Popular posts={posts.slice(7, 12)}/>
+                    <Popular posts={popularArticles}/>
                 </div>
             </div>
 
-            <More posts={posts.slice(13, 17)}/>
+            <More categories={readMoreArticles}/>
         </Layout>
     );
 }
