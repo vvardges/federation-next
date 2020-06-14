@@ -1,32 +1,31 @@
-import Layout from '../components/layout';
-import fetch from "node-fetch";
-import Popular from "../components/posts/popular";
+import Layout from '../../components/layout';
 
-export async function getServerSideProps() {
-    const urlPosts = 'http://newsapi.org/v2/top-headlines?' +
-        'country=ru&' +
-        'apiKey=9253aa616bb04518ba1688a6aae6bdb2';
-    const resPosts = await fetch(urlPosts);
-    const jsonPosts = await resPosts.json();
+import Popular from "../../components/posts/popular";
+
+import {getPostData} from "../../lib/categories";
+
+export async function getServerSideProps({ params }) {
+    const data = await getPostData(params.slug);
 
     return {
         props: {
-            posts: jsonPosts.articles
+            data: data
         },
     }
 }
 
-export default function Post({ posts }) {
+export default function Slug({ data }) {
+    const {general, popularArticles} = data;
     return (
         <Layout article>
             <div className="pl-xl-5">
                 <div className="row">
                     <div className="col-lg-8 col-xl-9">
                         <div className="d-flex flex-column flex-md-row justify-content-md-between">
-                            <h4 className="card-subtitle font-family-condensed letter-spacing-lg font-weight-normal mb-2">{posts[0].source.name}</h4>
-                            <small className="font-family-condensed letter-spacing-lg">{posts[0].publishedAt}</small>
+                            <h4 className="card-subtitle font-family-condensed letter-spacing-lg font-weight-normal mb-2">Heading name?</h4>
+                            <small className="font-family-condensed letter-spacing-lg">{general.published_diff_for_humans}</small>
                         </div>
-                        <h1 className="my-lg-3">{posts[0].title}</h1>
+                        <h1 className="my-lg-3">{general.title}</h1>
 
                         <div className="d-flex justify-content-between align-items-center">
                             <div className="mb-1">
@@ -36,15 +35,15 @@ export default function Post({ posts }) {
                                 <a href="#" className="badge rounded-circle bg-secondary text-black-50 py-1 mr-1"><i className="icon-vk lead"/></a>
                             </div>
 
-                            <small className="font-family-condensed text-muted"><i className="icon-eye"/> 1447</small>
+                            <small className="font-family-condensed text-muted"><i className="icon-eye"/> {general.number_of_view}</small>
                         </div>
                     </div>
                 </div>
                 <div className="row">
                     <div className="col-lg-8 col-xl-9 mb-4">
                         <div className="border-top border-black border-md pt-1">
-                            <p className="font-family-condensed letter-spacing-lg small">{posts[0].author}</p>
-                            <img src={posts[0].urlToImage} className="w-100" alt="..."/>
+                            <p className="font-family-condensed letter-spacing-lg small">{general.meta_author}</p>
+                            <img src={general.img_original} className="w-100" alt="..."/>
                                 <p className="my-4 bg-secondary p-3 border-left border-md">Таким образом сложившаяся
                                     структура организации позволяет выполнять важные задания по разработке модели
                                     развития. Значимость этих проблем настолько очевидна, что дальнейшее развитие
@@ -111,7 +110,7 @@ export default function Post({ posts }) {
                         </div>
                     </div>
                     <div className="col-lg-4 col-xl-3">
-                        <Popular posts={posts} />
+                        <Popular posts={popularArticles} />
                     </div>
                 </div>
                 <div className="d-flex flex-column flex-sm-row justify-content-sm-between pt-1 border-top mx-lg-4 mb-3">
@@ -200,7 +199,7 @@ export default function Post({ posts }) {
                     </div>
                     <div className="col-lg-4 col-xl-3">
                         <div className="bg-secondary p-2">
-                            <Popular posts={posts.slice(0, 5)} />
+                            <Popular posts={popularArticles} />
                         </div>
                     </div>
                 </div>

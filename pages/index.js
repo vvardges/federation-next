@@ -1,13 +1,13 @@
 import React from "react";
 import Layout from '../components/layout';
-import fetch from 'node-fetch';
 
 import PostCard from "../components/post/postCard";
 import PostCardSmall from "../components/post/postCardSmall";
 import CategoryCard from "../components/category/categoryCard";
 import Popular from "../components/posts/popular";
 import More from "../components/posts/more";
-import {getAllCategories, getPageData} from "../lib/categories";
+
+import {getPageData} from "../lib/categories";
 
 export async function getServerSideProps() {
     const data = await getPageData('main');

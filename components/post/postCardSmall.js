@@ -13,7 +13,7 @@ const PostCardSmall = ({ post }) => (
                 <div className="card-body p-0">
                     <p className="card-subtitle font-family-condensed letter-spacing-lg lead my-2"><span
                         className="border-bottom">{post.heading.title}</span></p>
-                    <Link href="/post">
+                    <Link href="/post/[slug]" as={`/post/${post.slug}`}>
                         <a><h3 className="card-title">{post.title}</h3></a>
                     </Link>
                     <p className="card-text small font-family-condensed">

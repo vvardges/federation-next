@@ -9,7 +9,7 @@ const PostCard = ({ post }) => (
                     <h4 className="card-subtitle font-family-condensed letter-spacing-lg font-weight-normal mb-2">
                         <span className="border-bottom">{post.heading.title}</span>
                     </h4>
-                    <Link href="/post">
+                    <Link href="/post/[slug]" as={`/post/${post.slug}`}>
                         <a><h2 className="card-title">{post.title}</h2></a>
                     </Link>
                     <p className="card-text letter-spacing-xs">{post.description}</p>
