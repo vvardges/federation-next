@@ -12,7 +12,7 @@ const PostCard = ({ post }) => (
                     <Link href="/post/[slug]" as={`/post/${post.slug}`}>
                         <a><h2 className="card-title">{post.title}</h2></a>
                     </Link>
-                    <p className="card-text letter-spacing-xs">{post.description}</p>
+                    <p className="card-text letter-spacing-xs">{post.main_key_thought}</p>
                     <p className="card-text small font-family-condensed">
                         <span className="letter-spacing-lg">{post.author.name}</span>
                         <span className="text-muted ml-2">{post.published_diff_for_humans}</span>
