@@ -44,7 +44,7 @@ export default function Header({ isCategory }) {
                             <ul className="navbar-nav justify-content-between w-100">
                                 {categories.slice(0, categories.length / 2).map(category =>
                                     <li className={`nav-item ${isOpen ? "h4" : ""}`} key={category.id}>
-                                        <Link href="/category/[id]" as={`/category/${category.slug}`}>
+                                        <Link href="/category/[slug]" as={`/category/${category.slug}`}>
                                             <a className={`nav-link text-${category.super_header ? "primary" : isOpen ? "white" : "dark"}`}>{category.title}</a>
                                         </Link>
                                     </li>
@@ -58,7 +58,7 @@ export default function Header({ isCategory }) {
                             <ul className="navbar-nav justify-content-between w-100">
                                 {categories.slice(categories.length / 2).map(category =>
                                     <li className={`nav-item ${isOpen ? "h4" : ""}`} key={category.id}>
-                                        <Link href="/category/[id]" as={`/category/${category.slug}`}>
+                                        <Link href="/category/[slug]" as={`/category/${category.slug}`}>
                                             <a className={`nav-link text-${category.super_header ? "primary" : isOpen ? "white" : "dark"}`}>{category.title}</a>
                                         </Link>
                                     </li>

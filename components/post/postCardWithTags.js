@@ -5,7 +5,7 @@ const PostCardWithTags = ({ post }) => (
     <div className="card mb-3">
         <div className="row align-items-center">
             <div className="col-lg-5">
-                <img src={post.urlToImage} className="card-img mb-2" alt="..."/>
+                <img src={post.img_original} className="card-img mb-2" alt="..."/>
             </div>
             <div className="col-lg-5">
                 <div className="card-body p-0">
@@ -16,12 +16,12 @@ const PostCardWithTags = ({ post }) => (
                         <span className="badge badge-secondary">#Деньгиневсем</span>
                     </div>
                     <h3 className="card-title">{post.title}</h3>
-                    <p className="card-text letter-spacing-xs">{post.description}</p>
+                    <p className="card-text letter-spacing-xs">{post.main_key_thought}</p>
                 </div>
                 <div className="card-footer px-0">
                     <small className="font-family-condensed">
-                        <span className="letter-spacing-lg">{post.author}</span>
-                        <span className="text-muted ml-2">{post.publishedAt}</span>
+                        <span className="letter-spacing-lg">{post.author.name}</span>
+                        <span className="text-muted ml-2">{post.published_diff_for_humans}</span>
                     </small>
                 </div>
             </div>

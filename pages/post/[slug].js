@@ -1,9 +1,10 @@
 import Layout from '../../components/layout';
+import {useEffect} from "react";
+import {countPostView, getAllCategories, getPostData} from "../../lib/categories";
 
-import Popular from "../../components/posts/popular";
-
-import {getPostData} from "../../lib/categories";
 import PostsByCategory from "../../components/post/postsByCategory";
+import Popular from "../../components/posts/popular";
+import Content from "../../components/content";
 
 export async function getServerSideProps({ params }) {
     const data = await getPostData(params.slug);
@@ -15,29 +16,13 @@ export async function getServerSideProps({ params }) {
     }
 }
 
-function Content({ data }) {
-    const {type, value, author} = data;
-    switch (type) {
-        case "heading":
-            return <h4 className="mt-4">{value}</h4>;
-        case "paragraph":
-            return <p className="pl-lg-5">{value}</p>;
-        case "quote":
-            return (
-                <div className="my-4 bg-secondary p-3 pl-4">
-                    <p className="font-italic">{value}</p>
-                    <p className="text-right mb-0">{author}</p>
-                </div>
-            );
-        case "lead":
-            return <p className="my-4 bg-secondary p-3 border-left border-md">{value}</p>;
-        default:
-            return <p>{value}</p>;
-    }
-}
-
 export default function Slug({ data }) {
     const {general, popularArticles, content, articlesByCategories} = data;
+
+    useEffect( () => {
+        countPostView(general.id).then();
+    }, []);
+
     return (
         <Layout article>
             <div className="pl-xl-5">
@@ -66,9 +51,7 @@ export default function Slug({ data }) {
                         <div className="border-top border-black border-md pt-1">
                             <p className="font-family-condensed letter-spacing-lg small">{general.author.name}</p>
                             <img src={general.img_original} className="w-100" alt="..."/>
-                            {content && content.map((data, index) =>
-                                <Content data={data} key={index}/>
-                            )}
+                            <Content content={content}/>
                                 {/*<p className="my-4 bg-secondary p-3 border-left border-md">Таким образом сложившаяся*/}
                                 {/*    структура организации позволяет выполнять важные задания по разработке модели*/}
                                 {/*    развития. Значимость этих проблем настолько очевидна, что дальнейшее развитие*/}
