@@ -1,5 +1,5 @@
 import Link from "next/link";
-import {useEffect, useState} from "react";
+import React, {useEffect, useState} from "react";
 import {getAllCategories} from "../lib/categories";
 
 export default function Header({ isCategory }) {
@@ -24,7 +24,9 @@ export default function Header({ isCategory }) {
                         <i className="icon-cloud"/> +6°C МОСКВА
                     </div>
                     <div className="float-right d-none d-xl-block">
-                        <a className="text-white ml-2" href="./about.html">О журнале</a>
+                        <Link href="/about">
+                            <a className="text-white ml-2">О журнале</a>
+                        </Link>
                         <a className="text-info ml-2" href="" data-toggle="modal" data-target="#exampleModal">Написать в редакцию</a>
                     </div>
                 </div>
