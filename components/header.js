@@ -3,16 +3,16 @@ import React, {useEffect, useState, useContext} from "react";
 import {getAllCategories} from "../lib/categories";
 import Modal from "./modal";
 
-function CategoryHeader({ title, subcategories }) {
+function CategoryHeader({ currentCategory, subcategories }) {
     return (
         <nav className="navbar navbar-dark navbar-expand-xl bg-dark">
             <div className="container">
-                <h2 className="text-white font-weight-normal mb-0 mx-auto">{title}</h2>
+                <h2 className="text-white font-weight-normal mb-0 mx-auto">{currentCategory.title}</h2>
                 <div className="collapse navbar-collapse ml-3" id="navbarTogglerDemo02">
                     <ul className="navbar-nav font-family-condensed font-weight-normal letter-spacing-sm h4 w-100 justify-content-between">
                         {subcategories.map(subcategory =>
                             <li className="nav-item" key={subcategory.id}>
-                                <Link href="/subcategory/[slug]" as={`/subcategory/${subcategory.slug}`}>
+                                <Link href={`/subcategory/[slug]?page=1&cat=${currentCategory.id}`} as={`/subcategory/${subcategory.slug}?page=1&cat=${currentCategory.id}`}>
                                     <a className="nav-link">{subcategory.title}</a>
                                 </Link>
                             </li>
@@ -26,16 +26,32 @@ function CategoryHeader({ title, subcategories }) {
     );
 }
 
-function SubcategoryHeader({ title, categories }) {
+function SubcategoryHeader({ title, categories, selectedCategories }) {
+    const [isModalOpen, toggleModal] = useState(false);
     return (
         <div>
             <nav className="navbar navbar-dark bg-dark">
                 <div className="container">
-                    <h2 className="text-white font-weight-normal mb-0">Пандемия <i className="icon-slash h3"/>
-                        <span className="text-muted h4 font-family-condensed align-middle font-weight-normal">{title}<button
-                            className="btn btn-sm btn-link text-muted"><i className="icon-times-circle"/></button></span>
-                        <button className="btn btn-sm btn-link text-white" data-toggle="modal"
-                                data-target="#exampleModal2"><i className="icon-plus-circle"/></button>
+                    <h2 className="text-white font-weight-normal mb-0">{title} <i className="icon-slash h3"/>
+                        {categories.filter(category => selectedCategories.includes(""+category.id)).map(category =>
+                            <span className="text-muted h4 font-family-condensed align-middle font-weight-normal" key={category.id}>
+                                {category.title}<button className="btn btn-sm btn-link text-muted"><i className="icon-times-circle"/></button>
+                            </span>
+                        )}
+                        <button className="btn btn-sm btn-link text-white" onClick={toggleModal}><i className="icon-plus-circle"/></button>
+                        {isModalOpen && <Modal toggle={toggleModal} title={"Написать в редакцию"}>
+                            <ul className="list-unstyled h4 font-family-condensed font-weight-normal text-muted text-center">
+                                <li className="list-group-item">Коронавирус</li>
+                                <li className="list-group-item text-white">
+                                    Личные деньги
+                                    <button className="btn btn-sm btn-link text-white"><i className="icon-times-circle"/></button>
+                                </li>
+                                <li className="list-group-item">Я предприниматель</li>
+                                <li className="list-group-item">Моё здоровье</li>
+                                <li className="list-group-item">Уровень жизни</li>
+                                <li className="list-group-item">Ты и закон</li>
+                            </ul>
+                        </Modal>}
                     </h2>
                 </div>
             </nav>
@@ -79,6 +95,8 @@ export default function Header({ data }) {
 
     const [isModalOpen, toggleModal] = useState(false);
 
+    const cats = [...categories];
+
     return (
         <div className="sticky-top">
             <nav className="navbar text-white bg-dark smallest font-family-roboto">
@@ -90,7 +108,7 @@ export default function Header({ data }) {
                         <Link href="/about">
                             <a className="text-white ml-2">О журнале</a>
                         </Link>
-                        <button className="btn btn-link btn-sm text-info ml-2" onClick={toggleModal}>Написать в редакцию</button>
+                        <a className="text-info ml-2" href="" onClick={toggleModal}>Написать в редакцию</a>
                         {isModalOpen && <Modal toggle={toggleModal} title={"Написать в редакцию"}>
                             <form>
                                 <div className="form-group">
@@ -144,8 +162,8 @@ export default function Header({ data }) {
                     </div>
                 </div>
             </nav>
-            {data && data.page === "category" && <CategoryHeader title={data.title} subcategories={data.subcategories}/>}
-            {data && data.page === "subcategory" && <SubcategoryHeader title={data.title} categories={categories}/>}
+            {data && data.page === "category" && <CategoryHeader currentCategory={data.currentCategory} subcategories={data.subcategories}/>}
+            {data && data.page === "subcategory" && <SubcategoryHeader title={data.title} categories={cats} selectedCategories={data.selectedCategories}/>}
         </div>
     );
 }

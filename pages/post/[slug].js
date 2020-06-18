@@ -1,6 +1,6 @@
 import Layout from '../../components/layout';
-import {useEffect} from "react";
-import {countPostView, getAllCategories, getPostData} from "../../lib/categories";
+import React, {useEffect} from "react";
+import {countPostView, getPostData} from "../../lib/categories";
 
 import PostsByCategory from "../../components/post/postsByCategory";
 import Popular from "../../components/posts/popular";

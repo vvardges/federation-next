@@ -24,7 +24,7 @@ export default function Category({ data }) {
     return (
         <Layout data={{
             page: "category",
-            title: data.general.title,
+            currentCategory: data.general,
             subcategories: data.subcategories
         }}>
             <PostCardWithTags post={topFirstArticle}/>
