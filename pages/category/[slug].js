@@ -22,7 +22,11 @@ export default function Category({ data }) {
     const {topFirstArticle, articlesBySubcategories, articlesByCurrentCategory, readMoreArticles} = data;
 
     return (
-        <Layout category>
+        <Layout data={{
+            page: "category",
+            title: data.general.title,
+            subcategories: data.subcategories
+        }}>
             <PostCardWithTags post={topFirstArticle}/>
 
             <Small posts={articlesBySubcategories}/>

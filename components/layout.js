@@ -5,11 +5,11 @@ import Header from "./header";
 
 export default class Layout extends React.Component {
     render() {
-        const {children} = this.props;
+        const {children, data} = this.props;
 
         return (
             <React.Fragment>
-                <Header isCategory={this.props.category}/>
+                <Header data={data}/>
                 <div className="container py-4">
                     {children}
                 </div>
