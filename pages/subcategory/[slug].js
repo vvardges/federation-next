@@ -25,7 +25,6 @@ export default function Category({ data }) {
 
 
     const setPage = (page) => {
-        console.log(router.query);
         router.push({
             pathname: `/subcategory/[slug]`,
             query: {
@@ -41,11 +40,28 @@ export default function Category({ data }) {
         });
     };
 
+    const setCats = (cats) => {
+        router.push({
+            pathname: `/subcategory/[slug]`,
+            query: {
+                page: router.query.page,
+                cat: cats
+            }
+        }, {
+            pathname: `/subcategory/${data.general.slug}`,
+            query: {
+                page: router.query.page,
+                cat: cats
+            }
+        });
+    };
+
     return (
         <Layout data={{
             page: "subcategory",
             title: data.general.title,
-            selectedCategories: Array.from(router.query.cat)
+            selectedCategories: Array.from(router.query.cat),
+            onCategoriesChange: cats => setCats(cats)
         }}>
             <div className="row">
                 <div className="col-lg-9">

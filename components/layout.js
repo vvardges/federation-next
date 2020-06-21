@@ -1,7 +1,7 @@
 import React from "react";
 
 import Footer from "./footer";
-import Header from "./header";
+import Header from "./header/header";
 
 export default class Layout extends React.Component {
     render() {

@@ -21,7 +21,7 @@ function useOnClickOutside(ref, handler) {
     }, []);
 }
 
-export default function({ toggle, title, children }) {
+export default function({ toggle, title, children, footer }) {
     const ref = useRef();
 
     useOnClickOutside(ref, () => toggle(false));
@@ -51,8 +51,7 @@ export default function({ toggle, title, children }) {
                             {children}
                         </div>
                         <div className="modal-footer pt-0">
-                            <button type="button" className="btn btn-link btn-lg text-white letter-spacing-lg">Отправить <i
-                                className="icon-arrow-right h6 ml-2"/></button>
+                            {footer}
                         </div>
                     </div>
                 </div>

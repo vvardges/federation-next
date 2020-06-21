@@ -10,7 +10,7 @@ const More = ({ categories }) => (
                 <div className="row">
                     {categories.map(category =>
                         category.articles.map(post =>
-                            <div className="col-sm-4 col-12">
+                            <div className="col-sm-4 col-12" key={post.id}>
                                 <div className="card mb-3" key={category.id}>
                                     <div className="row">
                                         <div className="col-4 col-sm-12">
