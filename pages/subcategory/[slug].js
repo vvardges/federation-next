@@ -5,9 +5,9 @@ import {getSubcategoryData} from "../../lib/categories";
 import {useRouter} from "next/router";
 import Popular from "../../components/posts/popular";
 import Pagination from "../../components/pagination";
+import Link from "next/link";
 
 export async function getServerSideProps({ query }) {
-    console.log(query);
     const data = await getSubcategoryData(query);
 
     return {
@@ -62,9 +62,11 @@ export default function Category({ data }) {
                                                 <img src={post.img_original} className="card-img mb-2" alt="..."/>
                                             </div>
                                             <div className="col-lg-8">
-                                                <h4 className="mb-1">{post.title}</h4>
+                                                <Link href="/post/[slug]" as={`/post/${post.slug}`}>
+                                                    <a><h4 className="mb-1">{post.title}</h4></a>
+                                                </Link>
                                                 <p>{post.main_key_thought}</p>
-                                                <small className="font-family-condensed text-muted font-weight-bold">{post.heading.title}</small>
+                                                {post.heading && <small className="font-family-condensed text-muted font-weight-bold">{post.heading.title}</small>}
                                             </div>
                                         </div>
                                     </div>

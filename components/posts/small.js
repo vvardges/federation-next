@@ -1,4 +1,5 @@
 import React from "react";
+import Link from "next/link";
 
 const Small = ({ posts }) => (
     <div className="bg-secondary border-black border-left border-md mb-3 py-2">
@@ -9,7 +10,9 @@ const Small = ({ posts }) => (
                         <small className="font-family-condensed letter-spacing-lg">{post.source.name}</small>
                     </div>
                     <div className="card-body py-0">
-                        <h5 className="card-title mb-0">{post.title}</h5>
+                        <Link href="/post/[slug]" as={`/post/${post.slug}`}>
+                            <a className="h5 card-title mb-0">{post.title}</a>
+                        </Link>
                     </div>
                     <div className="card-footer d-flex no-gutters">
                         <div className="col-auto">

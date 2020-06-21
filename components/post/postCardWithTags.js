@@ -15,7 +15,9 @@ const PostCardWithTags = ({ post }) => (
                         <span className="badge badge-secondary">#Бизнесдлявсех</span>
                         <span className="badge badge-secondary">#Деньгиневсем</span>
                     </div>
-                    <h3 className="card-title">{post.title}</h3>
+                    <Link href="/post/[slug]" as={`/post/${post.slug}`}>
+                        <a><h3 className="card-title">{post.title}</h3></a>
+                    </Link>
                     <p className="card-text letter-spacing-xs">{post.main_key_thought}</p>
                 </div>
                 <div className="card-footer px-0">

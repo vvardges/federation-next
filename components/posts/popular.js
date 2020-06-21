@@ -1,4 +1,5 @@
 import React from "react";
+import Link from "next/link";
 
 const Popular = ({ posts }) => (
     <div className="mb-2">
@@ -7,7 +8,9 @@ const Popular = ({ posts }) => (
             {posts.map(post =>
                 <li className="list-group-item border-left-0 border-right-0" key={post.id}>
                     <small className="font-family-condensed letter-spacing-lg">{post.heading.title}</small>
-                    <h5 className="my-1">{post.title}</h5>
+                    <Link href="/post/[slug]" as={`/post/${post.slug}`}>
+                        <a><h5 className="my-1">{post.title}</h5></a>
+                    </Link>
                     <small className="text-muted font-family-condensed">{post.published_diff_for_humans}</small>
                 </li>
             )}

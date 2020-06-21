@@ -1,4 +1,5 @@
 import React from "react";
+import Link from "next/link";
 
 const More = ({ categories }) => (
     <div className="mt-4 pt-2">
@@ -10,14 +11,16 @@ const More = ({ categories }) => (
                     {categories.map(category =>
                         category.articles.map(post =>
                             <div className="col-sm-4 col-12">
-                                <div className="card" key={category.id}>
+                                <div className="card mb-3" key={category.id}>
                                     <div className="row">
                                         <div className="col-4 col-sm-12">
                                             <img src={post.img_md11} className="img-fluid mb-2" alt="..."/>
                                         </div>
                                         <div className="col">
                                             <p className="card-subtitle font-family-condensed letter-spacing-lg lead">{category.title}</p>
-                                            <h5 className="card-title">{post.title}</h5>
+                                            <Link href="/post/[slug]" as={`/post/${post.slug}`}>
+                                                <a className="h5 card-title">{post.title}</a>
+                                            </Link>
                                         </div>
                                     </div>
                                 </div>

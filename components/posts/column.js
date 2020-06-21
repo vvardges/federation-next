@@ -1,4 +1,5 @@
 import React from "react";
+import Link from "next/link";
 
 const Column = ({ posts }) => (
     <div className="mt-4">
@@ -13,7 +14,9 @@ const Column = ({ posts }) => (
                                 <span className="badge badge-secondary">#Проблемы</span>
                                 <span className="badge badge-secondary">#Деньги</span>
                             </div>
-                            <h4 className="card-title">{post.title}</h4>
+                            <Link href="/post/[slug]" as={`/post/${post.slug}`}>
+                                <a><h4 className="card-title">{post.title}</h4></a>
+                            </Link>
                             <p className="card-text letter-spacing-xs">{post.main_key_thought}</p>
                         </div>
                         <div className="card-footer p-0">

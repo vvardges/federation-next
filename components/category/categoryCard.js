@@ -1,4 +1,5 @@
 import React from "react";
+import Link from "next/link";
 
 const CategoryCard = ({ category }) => (
     <div className="bg-secondary border-left border-md mb-3">
@@ -7,7 +8,9 @@ const CategoryCard = ({ category }) => (
             {category.articles.map((post, index) =>
                 <div className="card bg-secondary" key={index}>
                     <div className="card-body py-0">
-                        <h5 className="card-title mb-0">{post.title}</h5>
+                        <Link href="/post/[slug]" as={`/post/${post.slug}`}>
+                            <a className="h5 card-title mb-0">{post.title}</a>
+                        </Link>
                     </div>
                     <div className="card-footer d-flex no-gutters">
                         <div className="col-auto">
