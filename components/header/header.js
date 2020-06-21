@@ -22,12 +22,6 @@ export default function Header({ data }) {
 
     const [isModalOpen, toggleModal] = useState(false);
 
-    const initialCats = categories.map(category => {
-        return {
-            ...category,
-            selected: data.selectedCategories.includes(""+category.id)
-        }
-    });
 
     return (
         <div className="sticky-top">
@@ -95,7 +89,12 @@ export default function Header({ data }) {
                 </div>
             </nav>
             {data && data.page === "category" && <CategoryHeader currentCategory={data.currentCategory} subcategories={data.subcategories}/>}
-            {data && data.page === "subcategory" && <SubcategoryHeader title={data.title} categories={initialCats} onFilter={data.onCategoriesChange}/>}
+            {data && data.page === "subcategory" && <SubcategoryHeader title={data.title} categories={categories.map(category => {
+                return {
+                    ...category,
+                    selected: data.selectedCategories.includes(""+category.id)
+                }
+            })} onFilter={data.onCategoriesChange}/>}
         </div>
     );
 }

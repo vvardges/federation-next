@@ -8,7 +8,7 @@ const PostsByCategory = ({ categories }) => (
                 <p className="font-family-condensed letter-spacing-lg lead m-0 p-3">{category.title}</p>
                 <div className="card-group flex-column flex-md-row">
                     {category.articles.map(post =>
-                        <div className="card">
+                        <div className="card" key={post.id}>
                             <div className="card-body py-0">
                                 <Link href="/post/[slug]" as={`/post/${post.slug}`}>
                                     <a><h5 className="card-title mb-0">{post.title}</h5></a>
