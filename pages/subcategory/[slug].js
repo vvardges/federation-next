@@ -19,7 +19,9 @@ export async function getServerSideProps({ query }) {
 
 export default function Category({ data }) {
     const {articlesToShow, popularArticles} = data;
-    const {current_page, total} = articlesToShow;
+    const {current_page, last_page} = articlesToShow;
+
+    console.log(last_page);
 
     const router = useRouter();
 
@@ -91,7 +93,7 @@ export default function Category({ data }) {
                         )}
                     </ul>
 
-                    <Pagination currentPage={current_page} totalPages={total} handleClick={(page) => setPage(page)}/>
+                    <Pagination currentPage={current_page} totalPages={last_page} handleClick={(page) => setPage(page)}/>
                 </div>
                 <div className="col-lg-3">
                     <div className="bg-danger text-center mb-2">
