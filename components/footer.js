@@ -1,8 +1,15 @@
+import Link from "next/link";
+import React from "react";
+
 export default function Footer() {
     return (
         <div className="border-top border-black bg-secondary text-center font-family-condensed py-1">
             <div className="container">
-                <img src="/img/logo.svg" className="mt-3" alt=""/>
+                <Link href="/">
+                    <a>
+                        <img src="/img/logo.svg" className="mt-3" alt=""/>
+                    </a>
+                </Link>
                 <hr/>
                 <div className="mb-4">
                     <a href="#" className="badge rounded-circle bg-white text-black-50 py-1 mx-1"><i className="icon-facebook lead"/></a>

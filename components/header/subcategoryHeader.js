@@ -28,12 +28,12 @@ function FilterCategoriesModal({initialCategories, onFilter}) {
             {isModalOpen && <Modal
                 toggle={toggleModal}
                 title={"Написать в редакцию"}
-                footer={<button type="button" className="btn btn-link btn-lg text-white letter-spacing-lg" onClick={submitSelectedCats}>
-                    Филтровать <i className="icon-arrow-right h6 ml-2"/>
+                footer={<button type="button" className="btn btn-link btn-lg text-white letter-spacing-lg font-family-condensed" onClick={submitSelectedCats}>
+                    Фильтровать <i className="icon-arrow-right h6 ml-2"/>
                 </button>}>
                 <ul className="list-unstyled h4 font-family-condensed font-weight-normal text-muted text-center">
                     {categories.map((category, index) =>
-                        <li className={`list-group-item ${category.selected ? "text-white" : ""}`} key={category.id} onClick={() => toggleCategory(index)}>
+                        <li className={`list-group-item cursor-pointer ${category.selected ? "text-white" : ""}`} key={category.id} onClick={() => toggleCategory(index)}>
                             {category.title}
                             {category.selected && <button className="btn btn-sm btn-link text-white"><i className="icon-times-circle"/></button>}
                         </li>

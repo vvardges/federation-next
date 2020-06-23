@@ -56,9 +56,11 @@ export default function Header({ data }) {
                     <button className={`navbar-toggler border-0 ${isOpen ? "text-white" : "text-dark"}`} type="button" onClick={toggle}>
                         <i className={isOpen ? "icon-close" : "icon-navbar-toggler"}/>
                     </button>
-                    <a className="navbar-brand d-xl-none mx-auto" href="#">
-                        <img src="/img/logo.svg" className="align-top" alt=""/>
-                    </a>
+                    <Link href="/">
+                        <a className="navbar-brand d-xl-none mx-auto">
+                            <img src="/img/logo.svg" className="align-top" alt=""/>
+                        </a>
+                    </Link>
                     <div className={`collapse navbar-collapse ${isOpen ? 'show pl-3' : ''}`}>
                         <div className="d-flex flex-column flex-xl-row justify-content-between small font-family-condensed w-100">
                             <ul className="navbar-nav justify-content-between w-100">
