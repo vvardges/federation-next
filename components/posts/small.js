@@ -7,7 +7,7 @@ const Small = ({ posts }) => (
             {posts.map((post, index) =>
                 <div className="card bg-secondary" key={index}>
                     <div className="card-header">
-                        <small className="font-family-condensed letter-spacing-lg">{post.source.name}</small>
+                        <small className="font-family-condensed letter-spacing-lg">{post.source ? post.source.name : ""}</small>
                     </div>
                     <div className="card-body py-0">
                         <Link href="/post/[slug]" as={`/post/${post.slug}`}>
