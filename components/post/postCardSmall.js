@@ -11,7 +11,7 @@ const PostCardSmall = ({ post }) => (
             </div>
             <div className="col-lg-5">
                 <div className="card-body p-0">
-                    <p className="card-subtitle font-family-condensed letter-spacing-lg lead my-2">
+                    <p className="card-subtitle font-family-condensed letter-spacing-lg lead mb-3">
                         <span className="border-bottom">{post.heading.title}</span>
                     </p>
                     <Link href="/post/[slug]" as={`/post/${post.slug}`}>

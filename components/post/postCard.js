@@ -6,11 +6,11 @@ const PostCard = ({ post }) => (
         <div className="row align-items-center">
             <div className="col-lg-6">
                 <div className="card-body p-0">
-                    <h4 className="card-subtitle font-family-condensed letter-spacing-lg font-weight-normal mb-2">
+                    <h4 className="card-subtitle font-family-condensed letter-spacing-lg font-weight-normal mb-3">
                         <span className="border-bottom">{post.heading.title}</span>
                     </h4>
                     <Link href="/post/[slug]" as={`/post/${post.slug}`}>
-                        <a><h2 className="card-title">{post.title}</h2></a>
+                        <a><h2 className="card-title mb-3">{post.title}</h2></a>
                     </Link>
                     <p className="card-text letter-spacing-xs">{post.main_key_thought}</p>
                     <p className="card-text small font-family-condensed">

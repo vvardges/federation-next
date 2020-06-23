@@ -7,7 +7,7 @@ const Popular = ({ posts }) => (
         <ul className="list-group">
             {posts.map(post =>
                 <li className="list-group-item border-left-0 border-right-0" key={post.id}>
-                    <small className="font-family-condensed letter-spacing-lg">{post.heading.title}</small>
+                    <small className="font-family-condensed letter-spacing-lg">{post.heading ? post.heading.title : ""}</small>
                     <Link href="/post/[slug]" as={`/post/${post.slug}`}>
                         <a><h5 className="my-1">{post.title}</h5></a>
                     </Link>
