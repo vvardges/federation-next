@@ -1,14 +1,14 @@
 import React from "react";
 import Layout from '../../components/layout';
 
-import {getSubcategoryData} from "../../lib/categories";
+import {getSearchData} from "../../lib/categories";
 import {useRouter} from "next/router";
 import Popular from "../../components/posts/popular";
 import Pagination from "../../components/pagination";
 import Link from "next/link";
 
 export async function getServerSideProps({ query }) {
-    const data = await getSubcategoryData(query);
+    const data = await getSearchData(query);
 
     return {
         props: {
@@ -17,22 +17,21 @@ export async function getServerSideProps({ query }) {
     }
 }
 
-export default function Category({ data }) {
+export default function Search({ data }) {
     const {articlesToShow, popularArticles} = data;
     const {current_page, last_page} = articlesToShow;
 
     const router = useRouter();
 
-
     const setPage = (page) => {
         router.push({
-            pathname: `/subcategory/[slug]`,
+            pathname: `/search/[q]`,
             query: {
                 page: page,
                 cat: router.query.cat
             }
         }, {
-            pathname: `/subcategory/${data.general.slug}`,
+            pathname: `/search/${router.query.q}`,
             query: {
                 page: page,
                 cat: router.query.cat
@@ -42,7 +41,7 @@ export default function Category({ data }) {
 
     const setCats = (cats) => {
         router.push({
-            pathname: `/subcategory/[slug]`,
+            pathname: `/subcategory/[keyword]`,
             query: {
                 page: router.query.page,
                 cat: cats
@@ -58,9 +57,9 @@ export default function Category({ data }) {
 
     return (
         <Layout data={{
-            page: "subcategory",
-            title: data.general.title,
-            selectedCategories: Array.from(router.query.cat),
+            page: "search",
+            title: router.query.q,
+            selectedCategories: router.query.cat ? Array.from(router.query.cat) : [],
             onCategoriesChange: cats => setCats(cats)
         }}>
             <div className="row">
