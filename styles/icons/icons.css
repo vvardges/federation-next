@@ -67,3 +67,6 @@
 .icon-navbar-toggler:before {
   content: "\e90d";
 }
+.icon-search:before {
+  content: "\e90e";
+}

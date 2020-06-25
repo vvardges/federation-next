@@ -50,16 +50,17 @@ export default function SubcategoryHeader({ title, categories, onFilter }) {
         onFilter(categories.filter(cat => cat.selected).map(cat => cat.id));
     };
 
+    const selectedCategories = categories.filter(category => category.selected);
     return (
         <div>
             <nav className="navbar navbar-dark bg-dark">
                 <div className="container">
                     <h2 className="text-white font-weight-normal mb-0">{title} <i className="icon-slash h3"/>
-                        {categories.filter(category => category.selected).map(category =>
+                        {selectedCategories.length ? selectedCategories.map(category =>
                             <span className="text-muted h4 font-family-condensed align-middle font-weight-normal" key={category.id}>
                                 {category.title}<button className="btn btn-sm btn-link text-muted" onClick={() => removeCat(category.id)}><i className="icon-times-circle"/></button>
                             </span>
-                        )}
+                        ): <span className="text-muted h4 font-family-condensed align-middle font-weight-normal">Фильтрование по рубрике</span>}
 
                         <FilterCategoriesModal initialCategories={categories} onFilter={onFilter}/>
                     </h2>

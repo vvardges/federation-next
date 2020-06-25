@@ -1,7 +1,7 @@
 import React from "react";
 import Link from "next/link";
 
-const PostCardSmall = ({ post }) => (
+const PostCardSmall = ({ post }) => post ? (
     <div className="card mb-3">
         <div className="row align-items-center flex-row-reverse">
             <div className="col-lg-2">
@@ -28,6 +28,6 @@ const PostCardSmall = ({ post }) => (
             </div>
         </div>
     </div>
-);
+) : null;
 
 export default PostCardSmall;
