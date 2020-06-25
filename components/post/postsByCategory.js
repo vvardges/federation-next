@@ -4,7 +4,7 @@ import Link from "next/link";
 const PostsByCategory = ({ categories }) => (
     <div>
         {categories.map(category =>
-            <div className="border-left border-md mb-3">
+            <div className="border-left border-md mb-3" key={category.id}>
                 <p className="font-family-condensed letter-spacing-lg lead m-0 p-3">{category.title}</p>
                 <div className="card-group flex-column flex-md-row">
                     {category.articles.map(post =>

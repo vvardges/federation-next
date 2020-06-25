@@ -41,7 +41,7 @@ export default function({ toggle, title, children, footer }) {
                 <div className="modal-dialog" ref={ref}>
                     <div className="modal-content">
                         <div className="modal-header text-center bg-black">
-                            <button type="button" className="close" onClick={() => toggle(false)}>
+                            <button type="button" className="close cursor-pointer" onClick={() => toggle(false)}>
                                 <i className="icon-close d-none d-lg-block"/>
                                 <i className="icon-arrow-left d-lg-none"/>
                             </button>

@@ -1,4 +1,5 @@
 import React from "react";
+import ReactHtmlParser from 'react-html-parser';
 
 function ContentGenerator({ data }) {
     const {type, value, author} = data;
@@ -12,7 +13,7 @@ function ContentGenerator({ data }) {
         case "paragraph":
             return (
                 <div className="pl-xl-7">
-                    <p className="my-3 pl-lg-5">{value}</p>
+                    <p className="my-3 pl-lg-5">{ReactHtmlParser(value)}</p>
                 </div>
             );
         case "quote":

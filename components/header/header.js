@@ -6,6 +6,7 @@ import Modal from "../modal";
 import CategoryHeader from "./categoryHeader";
 import SubcategoryHeader from "./subcategoryHeader";
 import SearchBar from "./searchBar";
+import WriteUsModal from "./writeUsModal";
 
 export default function Header({ data }) {
     const [categories, setCategories] = useState([]);
@@ -21,8 +22,6 @@ export default function Header({ data }) {
     const [isOpen, setIsOpen] = useState(false);
     const toggle = () => setIsOpen(!isOpen);
 
-    const [isModalOpen, toggleModal] = useState(false);
-
     const [isSearchOpen, toggleSearch] = useState(false);
 
 
@@ -37,20 +36,7 @@ export default function Header({ data }) {
                         <Link href="/about">
                             <a className="text-white ml-2">О журнале</a>
                         </Link>
-                        <a className="text-info ml-2" onClick={toggleModal}>Написать в редакцию</a>
-                        {isModalOpen && <Modal toggle={toggleModal} title={"Написать в редакцию"}>
-                            <form>
-                                <div className="form-group">
-                                    <input type="text" className="form-control form-control-lg text-white" placeholder="Ваше имя"/>
-                                </div>
-                                <div className="form-group">
-                                    <input type="email" className="form-control form-control-lg text-white" placeholder="E-mail"/>
-                                </div>
-                                <div className="form-group">
-                                    <textarea className="form-control form-control-lg text-white" rows="3" placeholder="Напишите нам что-то ;)"/>
-                                </div>
-                            </form>
-                        </Modal>}
+                        <WriteUsModal />
                     </div>
                 </div>
             </nav>
