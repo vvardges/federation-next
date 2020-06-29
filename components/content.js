@@ -1,6 +1,53 @@
 import React from "react";
 import ReactHtmlParser from 'react-html-parser';
 
+import {
+    XYPlot,
+    XAxis,
+    YAxis,
+    VerticalGridLines,
+    HorizontalGridLines,
+    VerticalBarSeries,
+    HorizontalBarSeries,
+    RadialChart, ChartLabel, LineSeries
+} from 'react-vis';
+import Gallery from "./gallery";
+
+const data = [{x: '2016', y: 10}, {x: '2017', y: 5}, {x: '2018', y: 15}];
+
+function ChartGenerator() {
+    return (
+        <div>
+            <XYPlot xType="ordinal" width={300} height={300} xDistance={100}>
+                <VerticalGridLines />
+                <HorizontalGridLines />
+                <XAxis />
+                <YAxis />
+                <VerticalBarSeries data={data} />
+            </XYPlot>
+            <XYPlot width={300} height={300} stackBy="x">
+                <VerticalGridLines />
+                <HorizontalGridLines />
+                <XAxis />
+                <YAxis />
+                <HorizontalBarSeries data={[{y: 2, x: 10}, {y: 4, x: 5}, {y: 5, x: 15}]} />
+                <HorizontalBarSeries data={[{y: 2, x: 12}, {y: 4, x: 2}, {y: 5, x: 11}]} />
+            </XYPlot>
+            <RadialChart width={300} height={300} data={[{angle: 45}, {angle: 55}]}/>
+            <XYPlot width={300} height={300}>
+                <HorizontalGridLines />
+                <VerticalGridLines />
+                <XAxis />
+                <YAxis />
+                <LineSeries
+                    className="first-series"
+                    data={[{x: 1, y: 1}, {x: 2, y: 2}, {x: 3, y: 12}, {x: 4, y: 15}]}
+                />
+            </XYPlot>
+        </div>
+    )
+}
+
 function ContentGenerator({ data }) {
     const {type, value, author} = data;
     switch (type) {
@@ -33,9 +80,7 @@ function ContentGenerator({ data }) {
             );
         case "gallery":
             return (
-                <div className="position-absolute" style={{left: -70}}>
-                    <img src={data.mainThumbnail} alt=""/>
-                </div>
+                <Gallery data={data}/>
             );
         case "table":
             const {columns, rows} = data.data;
@@ -62,7 +107,13 @@ function ContentGenerator({ data }) {
                 </div>
             );
         default:
-            return <p>{value}</p>;
+            return (
+                <div className="d-flex justify-content-center">
+                    <div className="d-inline-flex bg-secondary">
+                        <ChartGenerator/>
+                    </div>
+                </div>
+            );
     }
 }
 
