@@ -3,7 +3,7 @@ import Layout from '../../components/layout';
 
 import Column from "../../components/posts/column";
 import PostCardWithTags from "../../components/post/postCardWithTags";
-import MoreBySubcategories from "../../components/posts/MoreBySubcategories";
+import MoreBySubcategories from "../../components/posts/moreBySubcategories";
 import Small from "../../components/posts/small";
 
 import {getCategoryData} from "../../lib/categories";
