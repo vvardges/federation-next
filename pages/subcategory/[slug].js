@@ -6,6 +6,7 @@ import {useRouter} from "next/router";
 import Popular from "../../components/posts/popular";
 import Pagination from "../../components/pagination";
 import Link from "next/link";
+import MoreBySubcategories from "../../components/posts/moreBySubcategories";
 
 export async function getServerSideProps({ query }) {
     const data = await getSubcategoryData(query);
@@ -18,7 +19,7 @@ export async function getServerSideProps({ query }) {
 }
 
 export default function Category({ data }) {
-    const {articlesToShow, popularArticles} = data;
+    const {articlesToShow, popularArticles, moreArticlesBySubcategories} = data;
     const {current_page, last_page} = articlesToShow;
 
     const router = useRouter();
@@ -92,6 +93,7 @@ export default function Category({ data }) {
                     </ul>
 
                     <Pagination currentPage={current_page} totalPages={last_page} handleClick={(page) => setPage(page)}/>
+
                 </div>
                 <div className="col-lg-3">
                     <div className="bg-danger text-center mb-2">
@@ -99,6 +101,7 @@ export default function Category({ data }) {
                     </div>
                     <Popular posts={popularArticles} />
                 </div>
+                <MoreBySubcategories categories={moreArticlesBySubcategories}/>
             </div>
         </Layout>
     );

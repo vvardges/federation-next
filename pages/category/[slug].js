@@ -3,7 +3,7 @@ import Layout from '../../components/layout';
 
 import Column from "../../components/posts/column";
 import PostCardWithTags from "../../components/post/postCardWithTags";
-import More from "../../components/posts/more";
+import MoreBySubcategories from "../../components/posts/MoreBySubcategories";
 import Small from "../../components/posts/small";
 
 import {getCategoryData} from "../../lib/categories";
@@ -19,7 +19,7 @@ export async function getServerSideProps({ params }) {
 }
 
 export default function Category({ data }) {
-    const {topFirstArticle, articlesBySubcategories, articlesByCurrentCategory, readMoreArticles} = data;
+    const {topFirstArticle, articlesBySubcategories, articlesByCurrentCategory, moreArticlesBySubcategories} = data;
 
     return (
         <Layout data={{
@@ -33,7 +33,7 @@ export default function Category({ data }) {
 
             <Column posts={articlesByCurrentCategory}/>
 
-            <More categories={readMoreArticles}/>
+            <MoreBySubcategories categories={moreArticlesBySubcategories}/>
         </Layout>
     );
 }
