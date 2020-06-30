@@ -31,16 +31,18 @@ function useWindowSize() {
 }
 
 export default function Gallery ({ data }) {
+    const size = useWindowSize();
+    const isXL = size.width >= 1200;
 
     const [isFullScreen, setFullScreen] = useState(false);
     const toggle = () => setFullScreen(!isFullScreen);
 
-    const size = useWindowSize();
-    const isXL = size.width >= 1200;
-
     return (
         <div>
-            {isFullScreen || !isXL ?
+            {!isFullScreen && isXL ?
+                <div className="position-absolute" onClick={toggle}>
+                    <img src={data.mainThumbnail} alt="" width={250}/>
+                </div> :
                 <Carousel
                     centered
                     infinite
@@ -51,10 +53,6 @@ export default function Gallery ({ data }) {
                         <img src={image} onClick={toggle} key={image}/>
                     )}
                 </Carousel>
-                :
-                <div className="position-absolute" onClick={toggle}>
-                    <img src={data.mainThumbnail} alt="" width={250}/>
-                </div>
             }
         </div>
     );

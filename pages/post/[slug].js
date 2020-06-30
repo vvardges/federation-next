@@ -2,7 +2,7 @@ import Layout from '../../components/layout';
 import React, {useEffect} from "react";
 import {countPostView, getPostData} from "../../lib/categories";
 
-import PostsByCategory from "../../components/post/postsByCategory";
+import PostsByCategorySmall from "../../components/post/postsByCategorySmall";
 import Popular from "../../components/posts/popular";
 import Content from "../../components/content";
 
@@ -79,7 +79,7 @@ export default function Slug({ data }) {
                 </div>
                 <div className="row">
                     <div className="col-lg-8 col-xl-9 mb-4">
-                        <PostsByCategory categories={articlesByCategories} />
+                        <PostsByCategorySmall categories={articlesByCategories} />
                     </div>
                     <div className="col-lg-4 col-xl-3">
                         <div className="bg-secondary p-2">

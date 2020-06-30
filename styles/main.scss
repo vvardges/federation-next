@@ -221,8 +221,8 @@ button:focus {
   }
 }
 
-@include media-breakpoint-up(xl) {
-  .content {
+.content {
+  @include media-breakpoint-up(xl) {
     div {
       margin: 0 auto;
     }
@@ -239,5 +239,16 @@ button:focus {
       position: relative;
       left: -120px;
     }
+
+  }
+
+  .quote::before {
+    position: absolute;
+    color: #707173;
+    left: 10px;
+    top: -55px;
+
+    content: "“";
+    font-size: 144px;
   }
 }

@@ -57,7 +57,7 @@ function ContentGenerator({ data }) {
             return (<p>{ReactHtmlParser(value)}</p>);
         case "quote":
             return (
-                <div className="bg-secondary p-3">
+                <div className="bg-secondary p-3 pl-5">
                     <p className="font-italic">{value}</p>
                     <p className="text-right mb-0">{author}</p>
                 </div>
