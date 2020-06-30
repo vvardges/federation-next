@@ -208,8 +208,36 @@ button:focus {
   cursor: pointer;
 }
 
-.BrainhubCarouselItem {
-  &:not(.BrainhubCarouselItem--active) {
-    opacity: 0.5;
+.BrainhubCarousel {
+  .BrainhubCarouselItem {
+    &:not(.BrainhubCarouselItem--active) {
+      opacity: 0.5;
+      transform: scale(0.9);
+    }
+  }
+
+  .BrainhubCarousel__arrows {
+    background-color: $dark;
+  }
+}
+
+@include media-breakpoint-up(xl) {
+  .content {
+    div {
+      margin: 0 auto;
+    }
+
+    .paragraph, .heading {
+      max-width: 630px;
+    }
+
+    .quote, .lead {
+      max-width: 837px;
+    }
+
+    .quote, .lead, .heading {
+      position: relative;
+      left: -120px;
+    }
   }
 }

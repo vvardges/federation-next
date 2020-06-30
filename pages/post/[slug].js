@@ -49,7 +49,7 @@ export default function Slug({ data }) {
                     </div>
                 </div>
                 <div className="row">
-                    <div className="col-lg-8 col-xl-9 mb-4">
+                    <div className="col-lg-8 col-xl-9">
                         <div className="pl-xl-6">
                             <div className="border-top border-black border-md pt-1">
                                 <p className="font-family-condensed letter-spacing-lg small">{general.author.name}</p>
@@ -59,12 +59,12 @@ export default function Slug({ data }) {
                         <div className="pl-xl-5">
                             <p className="my-3 bg-secondary p-3 border-left border-md">{general.main_key_thought}</p>
                         </div>
-                        <Content content={content}/>
                     </div>
                     <div className="col-lg-4 col-xl-3">
                         <Popular posts={popularArticles} />
                     </div>
                 </div>
+                <Content content={content}/>
                 <div className="d-flex flex-column flex-sm-row justify-content-sm-between pt-1 border-top mx-lg-4 mb-3">
                     <div className="mb-1">
                         <a href="#" className="badge rounded-circle bg-secondary text-black-50 py-1 mr-1"><i className="icon-facebook lead"/></a>

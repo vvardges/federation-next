@@ -52,31 +52,19 @@ function ContentGenerator({ data }) {
     const {type, value, author} = data;
     switch (type) {
         case "heading":
-            return (
-                <div className="pl-xl-6">
-                    <h4 className="my-3">{value}</h4>
-                </div>
-            );
+            return (<h4>{value}</h4> );
         case "paragraph":
-            return (
-                <div className="pl-xl-7">
-                    <p className="my-3 pl-lg-5">{ReactHtmlParser(value)}</p>
-                </div>
-            );
+            return (<p>{ReactHtmlParser(value)}</p>);
         case "quote":
             return (
-                <div className="pl-xl-6 my-3">
-                    <div className="bg-secondary p-3 pl-5">
-                        <p className="font-italic">{value}</p>
-                        <p className="text-right mb-0">{author}</p>
-                    </div>
+                <div className="bg-secondary p-3">
+                    <p className="font-italic">{value}</p>
+                    <p className="text-right mb-0">{author}</p>
                 </div>
             );
         case "lead":
             return (
-                <div className="pl-xl-6 my-3">
-                    <p className="bg-secondary p-3 border-left border-md">{value}</p>
-                </div>
+                <p className="bg-secondary p-3 border-left border-md">{value}</p>
             );
         case "gallery":
             return (
@@ -85,7 +73,7 @@ function ContentGenerator({ data }) {
         case "table":
             const {columns, rows} = data.data;
             return (
-                <div className="my-3 border-top bg-secondary border-md font-family-roboto">
+                <div className="border-top bg-secondary border-md font-family-roboto">
                     <table className="table table-borderless table-sm mb-0">
                         <thead>
                         <tr className="bg-white">
@@ -120,7 +108,13 @@ function ContentGenerator({ data }) {
 export default function Content({ content }) {
     if (!content) return;
 
-    return content.map((data, index) =>
-        <ContentGenerator data={data} key={index}/>
+    return (
+        <div className="content">
+            {content.map((data, index) =>
+                <div className={`${data.type} my-3`} key={index}>
+                    <ContentGenerator data={data}/>
+                </div>
+            )}
+        </div>
     )
 }
