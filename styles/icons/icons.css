@@ -70,3 +70,9 @@
 .icon-search:before {
   content: "\e90e";
 }
+.icon-fullscreen-open:before {
+  content: "\e90f";
+}
+.icon-fullscreen-close:before {
+  content: "\e910";
+}
