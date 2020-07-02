@@ -4,7 +4,7 @@ import Link from "next/link";
 const MoreBySubcategories = ({ categories }) => (
     <div>
         {categories.map(category =>
-            <div className="mt-4 pt-2">
+            <div className="mt-4 pt-2" key={category.id}>
                 <hr className="d-none d-lg-block"/>
                 <h3 className="font-family-condensed mb-3 mt-1 text-center text-md-left">{category.title}</h3>
                 <div className="row">

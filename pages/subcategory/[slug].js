@@ -75,8 +75,8 @@ export default function Category({ data }) {
                     </div>
                     <Popular posts={popularArticles} />
                 </div>
-                <MoreBySubcategories categories={moreArticlesBySubcategories}/>
             </div>
+            <MoreBySubcategories categories={moreArticlesBySubcategories}/>
         </Layout>
     );
 }

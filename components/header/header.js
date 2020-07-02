@@ -2,7 +2,6 @@ import Link from "next/link";
 import React, {useEffect, useState} from "react";
 import {getAllCategories} from "../../lib/categories";
 
-import Modal from "../modal";
 import CategoryHeader from "./categoryHeader";
 import SubcategoryHeader from "./subcategoryHeader";
 import SearchBar from "./searchBar";
