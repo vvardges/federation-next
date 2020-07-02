@@ -5,8 +5,8 @@ import {getSubcategoryData} from "../../lib/categories";
 import {useRouter} from "next/router";
 import Popular from "../../components/posts/popular";
 import Pagination from "../../components/pagination";
-import Link from "next/link";
 import MoreBySubcategories from "../../components/posts/moreBySubcategories";
+import List from "../../components/posts/list";
 
 export async function getServerSideProps({ query }) {
     const data = await getSubcategoryData(query);
@@ -60,40 +60,14 @@ export default function Category({ data }) {
     return (
         <Layout data={{
             page: "subcategory",
-            title: data.general.title,
+            title: <h2 className="text-white font-weight-normal mb-0 d-inline-block">{data.general.title}</h2>,
             selectedCategories: Array.from(router.query.cat),
             onCategoriesChange: cats => setCats(cats)
         }}>
             <div className="row">
                 <div className="col-lg-9">
-                    <ul className="list-group list-group-flush mb-4">
-                        {articlesToShow.data.map(post =>
-                            <li className="list-group-item" key={post.id}>
-                                <div className="row no-gutters">
-                                    <div className="col-5 col-sm-3 col-md-2">
-                                        <p className="font-family-condensed text-muted small">{post.published_diff_for_humans}</p>
-                                    </div>
-                                    <div className="col">
-                                        <div className="row flex-lg-row-reverse">
-                                            <div className="col-6 col-lg-4">
-                                                <img src={post.img_original} className="card-img mb-2" alt="..."/>
-                                            </div>
-                                            <div className="col-lg-8">
-                                                <Link href="/post/[slug]" as={`/post/${post.slug}`}>
-                                                    <a><h4 className="mb-1">{post.title}</h4></a>
-                                                </Link>
-                                                <p>{post.main_key_thought}</p>
-                                                {post.heading && <small className="font-family-condensed text-muted font-weight-bold">{post.heading.title}</small>}
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-                        )}
-                    </ul>
-
+                    <List posts={articlesToShow.data} />
                     <Pagination currentPage={current_page} totalPages={last_page} handleClick={(page) => setPage(page)}/>
-
                 </div>
                 <div className="col-lg-3">
                     <div className="bg-danger text-center mb-2">

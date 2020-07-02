@@ -188,6 +188,13 @@ input.text-white:focus, textarea.text-white:focus {
   filter: blur(2px);
 }
 
+#__next {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
 .btn-super {
   background: linear-gradient(to right, black 50%, white 50%);
   background-size: 200% 100%;
@@ -197,6 +204,16 @@ input.text-white:focus, textarea.text-white:focus {
   &:hover {
     color: white;
     background-position: left bottom;
+  }
+}
+
+.input-search {
+  max-width: 100%;
+  font-size: 24px !important;
+  height: 28px !important;
+
+  &:focus {
+    outline: 0;
   }
 }
 

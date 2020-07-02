@@ -22,7 +22,8 @@ export default function Header({ data }) {
     const [isOpen, setIsOpen] = useState(false);
     const toggle = () => setIsOpen(!isOpen);
 
-    const [isSearchOpen, toggleSearch] = useState(false);
+    const [isSearchOpen, setSearch] = useState(false);
+    const toggleSearch = () => setSearch(!isSearchOpen);
 
 
     return (
@@ -41,17 +42,18 @@ export default function Header({ data }) {
                 </div>
             </nav>
             <nav className={`navbar navbar-expand-xl border-bottom align-items-start ${isOpen ? "navbar-dark bg-black vh-100" : "navbar-light bg-white"}`}>
-                <div className="container">
-                    <button className={`navbar-toggler border-0 ${isOpen ? "text-white" : "text-dark"}`} type="button" onClick={toggle}>
-                        <i className={isOpen ? "icon-close" : "icon-navbar-toggler"}/>
-                    </button>
-                    <Link href="/">
-                        <a className="navbar-brand d-xl-none mx-auto">
-                            <img src="/img/logo.svg" className="align-top" alt=""/>
-                        </a>
-                    </Link>
-                    <div className={`collapse navbar-collapse ${isOpen ? 'show pl-3' : ''}`}>
-                        {!isSearchOpen ?
+                {!isSearchOpen ?
+                    <div className="container">
+                        <button className={`navbar-toggler border-0 ${isOpen ? "text-white" : "text-dark"}`} type="button" onClick={toggle}>
+                            <i className={isOpen ? "icon-close" : "icon-navbar-toggler"}/>
+                        </button>
+                        <Link href="/">
+                            <a className="navbar-brand d-xl-none mx-auto">
+                                <img src="/img/logo.svg" className="align-top" alt=""/>
+                            </a>
+                        </Link>
+                        <button className="btn btn-link d-xl-none" onClick={toggleSearch}><i className="icon-search"/></button>
+                        <div className={`collapse navbar-collapse ${isOpen ? 'show pl-3' : ''}`}>
                             <div className="d-flex flex-column flex-xl-row justify-content-between small font-family-condensed w-100">
                                 <ul className="navbar-nav justify-content-between w-100">
                                     {categories.slice(0, categories.length / 2).map(category =>
@@ -79,11 +81,13 @@ export default function Header({ data }) {
                                         <button className="btn btn-link" onClick={toggleSearch}><i className="icon-search"/></button>
                                     </li>
                                 </ul>
-                            </div> :
-                            <SearchBar/>
-                        }
+                            </div>
+                        </div>
+                    </div> :
+                    <div className="container">
+                        <SearchBar handleClose={toggleSearch}/>
                     </div>
-                </div>
+                }
             </nav>
             {data && data.page === "category" && <CategoryHeader currentCategory={data.currentCategory} subcategories={data.subcategories}/>}
             {data && (data.page === "subcategory" || data.page === "search") && <SubcategoryHeader title={data.title} categories={categories.map(category => {

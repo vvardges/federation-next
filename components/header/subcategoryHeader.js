@@ -24,7 +24,7 @@ function FilterCategoriesModal({initialCategories, onFilter}) {
 
     return (
         <>
-            <button className="btn btn-sm btn-link text-white" onClick={toggleModal}><i className="icon-plus-circle"/></button>
+            <button className="btn btn-link text-white" onClick={toggleModal}><i className="icon-plus-circle"/></button>
             {isModalOpen && <Modal
                 toggle={toggleModal}
                 title={"Написать в редакцию"}
@@ -52,18 +52,18 @@ export default function SubcategoryHeader({ title, categories, onFilter }) {
 
     const selectedCategories = categories.filter(category => category.selected);
     return (
-        <div>
+        <>
             <nav className="navbar navbar-dark bg-dark">
-                <div className="container">
-                    <h2 className="text-white font-weight-normal mb-0">{title} <i className="icon-slash h3"/>
+                <div className="container justify-content-start">
+                    {title} <i className="icon-slash h3 mb-0 text-white ml-1"/>
+                    <div className="text-white">
                         {selectedCategories.length ? selectedCategories.map(category =>
-                            <span className="text-muted h4 font-family-condensed align-middle font-weight-normal" key={category.id}>
-                                {category.title}<button className="btn btn-sm btn-link text-muted" onClick={() => removeCat(category.id)}><i className="icon-times-circle"/></button>
-                            </span>
+                            <button className="btn btn-link btn-lg text-muted font-family-condensed py-0" key={category.id}>
+                                {category.title} <i className="icon-times-circle h5" onClick={() => removeCat(category.id)}/>
+                            </button>
                         ): <span className="text-muted h4 font-family-condensed align-middle font-weight-normal">Фильтрование по рубрике</span>}
-
                         <FilterCategoriesModal initialCategories={categories} onFilter={onFilter}/>
-                    </h2>
+                    </div>
                 </div>
             </nav>
             <div className="bg-light py-2">
@@ -86,6 +86,6 @@ export default function SubcategoryHeader({ title, categories, onFilter }) {
                     </div>
                 </div>
             </div>
-        </div>
+        </>
     );
 }
