@@ -1,5 +1,6 @@
 import React from "react";
 import Link from "next/link";
+import Tags from "../tags";
 
 const PostCardWithTags = ({ post }) => (
     <div className="card mb-3">
@@ -9,12 +10,7 @@ const PostCardWithTags = ({ post }) => (
             </div>
             <div className="col-lg-5">
                 <div className="card-body p-0">
-                    <div className="font-family-condensed letter-spacing-lg mb-3">
-                        <span className="badge badge-secondary">#Москва</span>
-                        <span className="badge badge-secondary">#Бизнесдома</span>
-                        <span className="badge badge-secondary">#Бизнесдлявсех</span>
-                        <span className="badge badge-secondary">#Деньгиневсем</span>
-                    </div>
+                    <Tags tags={post.tag_article}/>
                     <Link href="/post/[slug]" as={`/post/${post.slug}`}>
                         <a><h3 className="card-title">{post.title}</h3></a>
                     </Link>

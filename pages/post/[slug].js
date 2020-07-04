@@ -5,6 +5,7 @@ import {countPostView, getPostData} from "../../lib/categories";
 import PostsByCategorySmall from "../../components/post/postsByCategorySmall";
 import Popular from "../../components/posts/popular";
 import Content from "../../components/content";
+import Tags from "../../components/tags";
 
 export async function getServerSideProps({ params }) {
     const data = await getPostData(params.slug);
@@ -17,7 +18,7 @@ export async function getServerSideProps({ params }) {
 }
 
 export default function Slug({ data }) {
-    const {general, popularArticles, content, articlesByCategories} = data;
+    const {general, popularArticles, content, articlesByCategories, tags} = data;
 
     useEffect( () => {
         countPostView(general.id).then();
@@ -72,10 +73,7 @@ export default function Slug({ data }) {
                         <a href="#" className="badge rounded-circle bg-secondary text-black-50 py-1 mr-1"><i className="icon-twitter lead"/></a>
                         <a href="#" className="badge rounded-circle bg-secondary text-black-50 py-1 mr-1"><i className="icon-vk lead"/></a>
                     </div>
-                    <div className="font-family-condensed letter-spacing-lg">
-                        <span className="badge badge-secondary">#Москва</span>
-                        <span className="badge badge-secondary">#Бизнесдома</span>
-                    </div>
+                    <Tags tags={tags}/>
                 </div>
                 <div className="row">
                     <div className="col-lg-8 col-xl-9 mb-4">

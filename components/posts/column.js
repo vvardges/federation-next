@@ -1,5 +1,6 @@
 import React from "react";
 import Link from "next/link";
+import Tags from "../tags";
 
 const Column = ({ posts }) => (
     <div className="mt-4">
@@ -9,11 +10,7 @@ const Column = ({ posts }) => (
                     <div className="card h-100">
                         <img src={post.img_md11} className="card-img-top" alt="..."/>
                         <div className="card-body px-0 py-1">
-                            <div className="font-family-condensed letter-spacing-lg mb-1">
-                                <span className="badge badge-secondary">#Зарплата</span>
-                                <span className="badge badge-secondary">#Проблемы</span>
-                                <span className="badge badge-secondary">#Деньги</span>
-                            </div>
+                            <Tags tags={post.tag_article}/>
                             <Link href="/post/[slug]" as={`/post/${post.slug}`}>
                                 <a><h4 className="card-title">{post.title}</h4></a>
                             </Link>
