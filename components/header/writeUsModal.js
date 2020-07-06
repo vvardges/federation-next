@@ -17,7 +17,6 @@ const WriteUsModal = () => {
     const onSubmit = () => {
         submitFeedback({client, email, message}).then(response => {
             const errors = response.errors;
-            console.log(errors);
             errors ? setErrors(errors) : setSubmitted(true);
         });
     };
