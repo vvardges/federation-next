@@ -18,7 +18,7 @@ function FilterCategoriesModal({initialCategories, onFilter}) {
 
     const submitSelectedCats = () => {
         const selectedCats = categories.filter(cat => cat.selected).map(cat => cat.id);
-        onFilter(selectedCats);
+        onFilter("cat", selectedCats);
         toggleModal(false);
     };
 
@@ -44,10 +44,10 @@ function FilterCategoriesModal({initialCategories, onFilter}) {
     );
 }
 
-export default function SubcategoryHeader({ title, categories, onFilter }) {
+export default function SubcategoryHeader({ title, categories, tags, onFilter }) {
     const removeCat = (catId) => {
         categories.find(cat => cat.id === catId).selected = false;
-        onFilter(categories.filter(cat => cat.selected).map(cat => cat.id));
+        onFilter("cat", categories.filter(cat => cat.selected).map(cat => cat.id));
     };
 
     const selectedCategories = categories.filter(category => category.selected);
@@ -72,17 +72,11 @@ export default function SubcategoryHeader({ title, categories, onFilter }) {
                         <div className="input-group input-group-sm">
                             <input type="text" className="form-control" placeholder="Поиск по тегам"/>
                         </div>
-                        <div className="btn-grou ml-2" role="group" aria-label="First group">
-                            <button type="button" className="btn btn-sm letter-spacing-lg btn-outline-gray">#Москва
-                            </button>
-                            <button type="button" className="btn btn-sm letter-spacing-lg btn-dark">#Бизнесдома</button>
-                            <button type="button"
-                                    className="btn btn-sm letter-spacing-lg btn-outline-dark">#Бизнесдлявсех
-                            </button>
-                            <button type="button"
-                                    className="btn btn-sm letter-spacing-lg btn-outline-dark">#Деньгиневсем
-                            </button>
-                        </div>
+                        {tags && <div className="btn-grou ml-2">
+                            {tags.map(tag =>
+                                <button type="button" className="btn btn-sm letter-spacing-lg btn-outline-gray mx-1" onClick={() => onFilter("tag", tag.id)} key={tag.id}>#{tag.name}</button>
+                            )}
+                        </div>}
                     </div>
                 </div>
             </div>

@@ -19,40 +19,40 @@ export async function getServerSideProps({ query }) {
 }
 
 export default function Category({ data }) {
-    const {articlesToShow, popularArticles, moreArticlesBySubcategories} = data;
+    const {articlesToShow, popularArticles, moreArticlesBySubcategories, tags} = data;
     const {current_page, last_page} = articlesToShow;
 
     const router = useRouter();
 
 
-    const setPage = (page) => {
-        router.push({
-            pathname: `/subcategory/[slug]`,
-            query: {
-                page: page,
-                cat: router.query.cat
-            }
-        }, {
-            pathname: `/subcategory/${data.general.slug}`,
-            query: {
-                page: page,
-                cat: router.query.cat
-            }
-        });
-    };
+    // const setPage = (page) => {
+    //     router.push({
+    //         pathname: `/subcategory/[slug]`,
+    //         query: {
+    //             page: page,
+    //             cat: router.query.cat
+    //         }
+    //     }, {
+    //         pathname: `/subcategory/${data.general.slug}`,
+    //         query: {
+    //             page: page,
+    //             cat: router.query.cat
+    //         }
+    //     });
+    // };
 
-    const setCats = (cats) => {
+    const setQueryParam = (param, value) => {
         router.push({
             pathname: `/subcategory/[slug]`,
             query: {
-                page: router.query.page,
-                cat: cats
+                ...router.query,
+                [param]: value
             }
         }, {
             pathname: `/subcategory/${data.general.slug}`,
             query: {
-                page: router.query.page,
-                cat: cats
+                ...router.query,
+                [param]: value
             }
         });
     };
@@ -62,12 +62,13 @@ export default function Category({ data }) {
             page: "subcategory",
             title: <h2 className="text-white font-weight-normal mb-0 d-inline-block">{data.general.title}</h2>,
             selectedCategories: Array.from(router.query.cat),
-            onCategoriesChange: cats => setCats(cats)
+            tags: tags,
+            handleQueryUpdate: (param, values) => setQueryParam(param, values)
         }}>
             <div className="row">
                 <div className="col-lg-9">
                     <List posts={articlesToShow.data} />
-                    <Pagination currentPage={current_page} totalPages={last_page} handleClick={(page) => setPage(page)}/>
+                    <Pagination currentPage={current_page} totalPages={last_page} handleClick={(page) => setQueryParam("page", page)}/>
                 </div>
                 <div className="col-lg-3">
                     <div className="bg-danger text-center mb-2">

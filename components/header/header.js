@@ -89,12 +89,16 @@ export default function Header({ data }) {
                 }
             </nav>
             {data && data.page === "category" && <CategoryHeader currentCategory={data.currentCategory} subcategories={data.subcategories}/>}
-            {data && (data.page === "subcategory" || data.page === "search") && <SubcategoryHeader title={data.title} categories={categories.map(category => {
+            {data && (data.page === "subcategory" || data.page === "search") &&
+            <SubcategoryHeader
+                title={data.title}
+                tags={data.tags}
+                categories={categories.map(category => {
                 return {
                     ...category,
                     selected: data.selectedCategories.includes(""+category.id)
                 }
-            })} onFilter={data.onCategoriesChange}/>}
+            })} onFilter={data.handleQueryUpdate}/>}
         </div>
     );
 }
