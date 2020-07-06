@@ -25,22 +25,6 @@ export default function Category({ data }) {
     const router = useRouter();
 
 
-    // const setPage = (page) => {
-    //     router.push({
-    //         pathname: `/subcategory/[slug]`,
-    //         query: {
-    //             page: page,
-    //             cat: router.query.cat
-    //         }
-    //     }, {
-    //         pathname: `/subcategory/${data.general.slug}`,
-    //         query: {
-    //             page: page,
-    //             cat: router.query.cat
-    //         }
-    //     });
-    // };
-
     const setQueryParam = (param, value) => {
         router.push({
             pathname: `/subcategory/[slug]`,

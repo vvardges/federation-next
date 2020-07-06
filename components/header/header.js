@@ -91,8 +91,7 @@ export default function Header({ data }) {
             {data && data.page === "category" && <CategoryHeader currentCategory={data.currentCategory} subcategories={data.subcategories}/>}
             {data && (data.page === "subcategory" || data.page === "search") &&
             <SubcategoryHeader
-                title={data.title}
-                tags={data.tags}
+                {...data}
                 categories={categories.map(category => {
                 return {
                     ...category,

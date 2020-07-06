@@ -18,7 +18,7 @@ export async function getServerSideProps({ query }) {
 }
 
 export default function Search({ data }) {
-    const {articlesToShow, popularArticles} = data;
+    const {articlesToShow, popularArticles, tags} = data;
     const {current_page, last_page} = articlesToShow;
 
     const router = useRouter();
@@ -48,12 +48,13 @@ export default function Search({ data }) {
                 <input
                     type="text"
                     value={searchValue}
-                    className="form-control-plaintext text-white input-search w-auto font-family-condensed text-truncate d-inline-block"
+                    className="form-control form-control-lg border-0 text-white w-auto font-family-condensed text-truncate d-inline-block"
                     onChange={(evt) => setSearchValue(evt.target.value)}
                     onKeyDown={handleKeyDown}
                 />
             ),
             selectedCategories: router.query.cat ? Array.from(router.query.cat) : [],
+            tags: tags,
             onCategoriesChange: cats => updateQuery('cat', cats)
         }}>
             {articlesToShow.data.length ?

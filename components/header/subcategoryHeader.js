@@ -1,5 +1,6 @@
 import Modal from "../modal";
 import React, {useEffect, useState} from "react";
+import TagsBar from "./tagsBar";
 
 function FilterCategoriesModal({initialCategories, onFilter}) {
     const [categories, setCategories] = useState([]);
@@ -44,7 +45,7 @@ function FilterCategoriesModal({initialCategories, onFilter}) {
     );
 }
 
-export default function SubcategoryHeader({ title, categories, tags, onFilter }) {
+export default function SubcategoryHeader({ title, categories, tags, onFilter, page }) {
     const removeCat = (catId) => {
         categories.find(cat => cat.id === catId).selected = false;
         onFilter("cat", categories.filter(cat => cat.selected).map(cat => cat.id));
@@ -66,20 +67,7 @@ export default function SubcategoryHeader({ title, categories, tags, onFilter })
                     </div>
                 </div>
             </nav>
-            <div className="bg-light py-2">
-                <div className="container font-family-condensed text-black-50">
-                    <div className="btn-toolbar">
-                        <div className="input-group input-group-sm">
-                            <input type="text" className="form-control" placeholder="Поиск по тегам"/>
-                        </div>
-                        {tags && <div className="btn-grou ml-2">
-                            {tags.map(tag =>
-                                <button type="button" className="btn btn-sm letter-spacing-lg btn-outline-gray mx-1" onClick={() => onFilter("tag", tag.id)} key={tag.id}>#{tag.name}</button>
-                            )}
-                        </div>}
-                    </div>
-                </div>
-            </div>
+            <TagsBar tags={tags} page={page}/>
         </>
     );
 }

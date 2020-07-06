@@ -25,13 +25,13 @@ function ChartGenerator() {
                 <YAxis />
                 <VerticalBarSeries data={data} />
             </XYPlot>
-            <XYPlot width={300} height={300} stackBy="x">
+            <XYPlot width={300} height={300} stackBy="x" yType="ordinal">
                 <VerticalGridLines />
                 <HorizontalGridLines />
                 <XAxis />
                 <YAxis />
-                <HorizontalBarSeries data={[{y: 2, x: 10}, {y: 4, x: 5}, {y: 5, x: 15}]} />
-                <HorizontalBarSeries data={[{y: 2, x: 12}, {y: 4, x: 2}, {y: 5, x: 11}]} />
+                <HorizontalBarSeries data={[{y: 'Am', x: 10}, {y: 'Uk', x: 5}, {y: 'Ru', x: 15}]} color="#000"/>
+                <HorizontalBarSeries data={[{y: 'Am', x: 12}, {y: 'Uk', x: 2}, {y: 'Ru', x: 11}]} />
             </XYPlot>
             <RadialChart width={300} height={300} data={[{angle: 45}, {angle: 55}]}/>
             <XYPlot width={300} height={300}>
@@ -118,6 +118,7 @@ export default function Content({ content }) {
 
     return (
         <div className="content">
+            <ChartGenerator/>
             {content.map((data, index) =>
                 <div className={`${data.type} my-3`} key={index}>
                     <ContentGenerator data={data}/>
