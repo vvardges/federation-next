@@ -13,8 +13,6 @@ import {
 } from 'react-vis';
 import Gallery from "./gallery";
 
-const data = [{x: '2016', y: 10}, {x: '2017', y: 5}, {x: '2018', y: 15}];
-
 function ChartGenerator() {
     return (
         <div>
@@ -97,9 +95,17 @@ function ContentGenerator({ data }) {
         case "youtube":
         case "vimeo":
             const {url} = data;
+            const src = `${type === "youtube" ? "https://www.youtube.com/embed" : "https://player.vimeo.com/video"}${url.substring(url.lastIndexOf("/"))}`;
             return (
                 <div className="mx-auto">
-                    <iframe width="100%"  height="500" src={url} frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen />
+                    <iframe
+                        src={src}
+                        width="100%"
+                        height="500"
+                        frameBorder="0"
+                        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                        allowFullScreen
+                    />
                 </div>
             );
         default:
@@ -118,7 +124,6 @@ export default function Content({ content }) {
 
     return (
         <div className="content">
-            <ChartGenerator/>
             {content.map((data, index) =>
                 <div className={`${data.type} my-3`} key={index}>
                     <ContentGenerator data={data}/>
