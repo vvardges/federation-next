@@ -229,24 +229,10 @@ button:focus {
   .BrainhubCarouselItem {
     &:not(.BrainhubCarouselItem--active) {
       opacity: 0.5;
-      transform: scale(0.9);
     }
-    //&.BrainhubCarouselItem--active::before {
-    //  position: absolute;
-    //  background-color: black;
-    //  opacity: 0.6;
-    //  top: 0;
-    //  right: 0;
-    //  width: 50px;
-    //  height: 50px;
-    //  border-radius: 50%;
-    //  content: 'a';
-    //  color: white;
-    //}
-  }
-
-  .BrainhubCarousel__arrows {
-    background-color: $dark;
+    &.BrainhubCarouselItem--active {
+      margin: 0 10px;
+    }
   }
 }
 
@@ -283,5 +269,22 @@ button:focus {
 
   a {
     text-decoration: underline;
+  }
+
+  .gallery {
+    .btn-resize {
+      position: absolute;
+      bottom: 7px;
+      right: 7px;
+
+      width: 40px;
+      height: 40px;
+
+      opacity: 0.6;
+
+      &:hover {
+        opacity: 1;
+      }
+    }
   }
 }

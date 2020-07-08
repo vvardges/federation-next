@@ -37,27 +37,32 @@ export default function Gallery ({ data }) {
     const [isFullScreen, setFullScreen] = useState(false);
     const toggle = () => setFullScreen(!isFullScreen);
 
+    const {images, mainThumbnail} = data;
+    const isMulti = images.length > 2;
+
     return (
-        <div>
+        <div className="gallery">
             {!isFullScreen && isXL ?
                 <div className="position-absolute">
-                    <div className="position-absolute fixed-bottom">
-                        <button className="btn btn-dark rounded-circle" onClick={toggle}><i className="icon-fullscreen-open"/></button>
-                    </div>
-                    <img src={data.mainThumbnail} alt="" width={250}/>
+                    <button className="btn btn-dark btn-resize rounded-circle" onClick={toggle}><i className="icon-fullscreen-open"/></button>
+                    <img src={mainThumbnail} alt="" width={250}/>
                 </div> :
-                <Carousel
-                    centered
-                    infinite
-                    slidesPerPage={2}
-                    arrowLeft={isXL ? <i className="icon-arrow-left cursor-pointer" /> : null}
-                    arrowRight={isXL ? <i className="icon-arrow-right cursor-pointer" /> : null}
-                    addArrowClickHandler={isXL}
-                >
-                    {data.images.map(image =>
-                        <img src={image} onClick={toggle} key={image}/>
-                    )}
-                </Carousel>
+                <div className="text-center">
+                    {isXL && <button className="btn btn-dark btn-resize rounded-circle position-relative mx-auto" style={{right: -300}} onClick={toggle}><i className="icon-fullscreen-close"/></button>}
+                    <Carousel
+                        centered
+                        infinite={isMulti}
+                        draggable={!isXL}
+                        slidesPerPage={2}
+                        arrowLeft={isXL && isMulti ? <i className="icon-arrow-left cursor-pointer mr-2" /> : null}
+                        arrowRight={isXL && isMulti ? <i className="icon-arrow-right cursor-pointer ml-2" /> : null}
+                        addArrowClickHandler={isXL}
+                    >
+                        {images.map(image =>
+                            <img src={image} onClick={toggle} className="w-100" key={image}/>
+                        )}
+                    </Carousel>
+                </div>
             }
         </div>
     );
