@@ -6,6 +6,7 @@ import {useRouter} from "next/router";
 import Popular from "../components/posts/popular";
 import Pagination from "../components/pagination";
 import List from "../components/posts/list";
+import Banner from "../components/banner";
 
 export async function getServerSideProps({ query }) {
     const data = await getSearchData(query);
@@ -18,7 +19,7 @@ export async function getServerSideProps({ query }) {
 }
 
 export default function Search({ data }) {
-    const {articlesToShow, popularArticles, tags} = data;
+    const {articlesToShow, popularArticles, tags, advertising} = data;
     const {current_page, last_page} = articlesToShow;
 
     const router = useRouter();
@@ -64,10 +65,9 @@ export default function Search({ data }) {
                         <Pagination currentPage={current_page} totalPages={last_page} handleClick={(page) => updateQuery('page', page)}/>
                     </div>
                     <div className="col-lg-3">
-                        <div className="bg-danger text-center mb-2">
-                            <img src="/img/banner.png" className="img-fluid" alt=""/>
-                        </div>
+                        {/*<Banner banner={advertising[0]}/>*/}
                         <Popular posts={popularArticles}/>
+                        {/*<Banner banner={advertising[1]}/>*/}
                     </div>
                 </div> :
                 <h3 className="text-center">К сожалению, мы не смогли найти никаких результатов для "{router.query.q}"</h3>

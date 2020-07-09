@@ -7,6 +7,7 @@ import Popular from "../../components/posts/popular";
 import Pagination from "../../components/pagination";
 import MoreBySubcategories from "../../components/posts/moreBySubcategories";
 import List from "../../components/posts/list";
+import Banner from "../../components/banner";
 
 export async function getServerSideProps({ query }) {
     const data = await getSubcategoryData(query);
@@ -19,7 +20,7 @@ export async function getServerSideProps({ query }) {
 }
 
 export default function Category({ data }) {
-    const {articlesToShow, popularArticles, moreArticlesBySubcategories, tags} = data;
+    const {articlesToShow, popularArticles, moreArticlesBySubcategories, tags, advertising} = data;
     const {current_page, last_page} = articlesToShow;
 
     const router = useRouter();
@@ -55,10 +56,9 @@ export default function Category({ data }) {
                     <Pagination currentPage={current_page} totalPages={last_page} handleClick={(page) => setQueryParam("page", page)}/>
                 </div>
                 <div className="col-lg-3">
-                    <div className="bg-danger text-center mb-2">
-                        <img src="/img/banner.png" className="img-fluid" alt=""/>
-                    </div>
+                    <Banner banner={advertising[0]}/>
                     <Popular posts={popularArticles} />
+                    <Banner banner={advertising[1]}/>
                 </div>
             </div>
             <MoreBySubcategories categories={moreArticlesBySubcategories}/>

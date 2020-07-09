@@ -19,7 +19,7 @@ export async function getServerSideProps({ params }) {
 }
 
 export default function Category({ data }) {
-    const {topFirstArticle, articlesBySubcategories, articlesByCurrentCategory, moreArticlesBySubcategories} = data;
+    const {topFirstArticle, articlesBySubcategories, articlesByCurrentCategory, moreArticlesBySubcategories, advertising} = data;
 
     return (
         <Layout data={{
@@ -27,11 +27,11 @@ export default function Category({ data }) {
             currentCategory: data.general,
             subcategories: data.subcategories
         }}>
-            <PostCardWithTags post={topFirstArticle}/>
+            <PostCardWithTags post={topFirstArticle} banner={advertising[0]}/>
 
             <Small posts={articlesBySubcategories}/>
 
-            <Column posts={articlesByCurrentCategory}/>
+            <Column posts={articlesByCurrentCategory} banner={advertising[1]}/>
 
             <MoreBySubcategories categories={moreArticlesBySubcategories}/>
         </Layout>

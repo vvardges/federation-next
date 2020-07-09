@@ -20,11 +20,14 @@ export async function getServerSideProps() {
 }
 
 export default function Home({ data }) {
-    const {topFirstArticle, topSecondArticle, articlesByCategories, popularArticles, readMoreArticles} = data;
+    const {topFirstArticle, topSecondArticle, articlesByCategories, popularArticles, readMoreArticles, advertising} = data;
     return (
-        <Layout home>
+        <Layout data={{
+            page: "home",
+            banner: advertising[0]
+        }}>
             <PostCard post={topFirstArticle} />
-            <PostCardSmall post={topSecondArticle}/>
+            <PostCardSmall post={topSecondArticle} banner={advertising[1]}/>
 
             <div className="row mt-4">
                 <div className="col-lg-9">
@@ -37,7 +40,7 @@ export default function Home({ data }) {
                 </div>
             </div>
 
-            <More categories={readMoreArticles}/>
+            <More categories={readMoreArticles} banner={advertising[2]}/>
         </Layout>
     );
 }

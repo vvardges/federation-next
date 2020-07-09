@@ -1,7 +1,8 @@
 import React from "react";
 import Link from "next/link";
+import Banner from "../banner";
 
-const More = ({ categories }) => (
+const More = ({ categories, banner }) => (
     <div className="mt-4 pt-2">
         <hr className="d-none d-lg-block"/>
         <h3 className="font-family-condensed mb-3 mt-1 text-center text-md-left">Что еще почитать</h3>
@@ -29,8 +30,8 @@ const More = ({ categories }) => (
                     )}
                 </div>
             </div>
-            <div className="col-lg-3 text-center">
-                <img src="/img/banner.png" className="img-fluid" alt=""/>
+            <div className="col-lg-3">
+                <Banner banner={banner}/>
             </div>
         </div>
     </div>

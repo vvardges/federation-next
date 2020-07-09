@@ -1,8 +1,9 @@
 import React from "react";
 import Link from "next/link";
 import Tags from "../tags";
+import Banner from "../banner";
 
-const PostCardWithTags = ({ post }) => (
+const PostCardWithTags = ({ post, banner }) => (
     <div className="card mb-3">
         <div className="row align-items-center">
             <div className="col-lg-5">
@@ -24,9 +25,7 @@ const PostCardWithTags = ({ post }) => (
                 </div>
             </div>
             <div className="col-lg-2">
-                <div className="bg-danger text-center">
-                    <img src="/img/banner.png" className="img-fluid" alt=""/>
-                </div>
+                <Banner banner={banner}/>
             </div>
         </div>
     </div>
