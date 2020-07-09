@@ -10,7 +10,7 @@ export default class Layout extends React.Component {
 
         return (
             <React.Fragment>
-                {data.banner && <Banner banner={data.banner}/>}
+                {data && data.banner && <Banner banner={data.banner}/>}
                 <Header data={data}/>
                 <div className="container py-4">
                     {children}
