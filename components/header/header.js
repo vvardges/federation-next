@@ -33,7 +33,7 @@ export default function Header({ data }) {
                         <i className="icon-cloud"/> +6°C МОСКВА
                     </div>
                     <div className="float-right d-none d-xl-block">
-                        <Link href="/about">
+                        <Link href="/page/[slug]" as="/page/about">
                             <a className="text-white ml-2">О журнале</a>
                         </Link>
                         <WriteUsModal />

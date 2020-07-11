@@ -1,13 +1,13 @@
 import React from "react";
-import Layout from '../components/layout';
+import Layout from '../../components/layout';
 
-import Popular from "../components/posts/popular";
-import Content from "../components/content";
+import Popular from "../../components/posts/popular";
+import Content from "../../components/content";
 
-import {getPageData} from "../lib/categories";
+import {getPageData} from "../../lib/categories";
 
-export async function getServerSideProps() {
-    const data = await getPageData('about');
+export async function getServerSideProps({ params }) {
+    const data = await getPageData(params.slug);
 
     return {
         props: {
@@ -17,11 +17,11 @@ export async function getServerSideProps() {
 }
 
 export default function About({ data }) {
-    const { popularArticles, content } = data;
+    const { popularArticles, content, general } = data;
     return (
         <Layout about>
             <div className="pl-xl-5">
-                <h1 className="my-md-5">О журнале</h1>
+                <h1 className="my-md-5">{general.title}</h1>
                 <div className="row">
                     <div className="col-lg-8 col-xl-9 mb-4">
                         <div className="border-top border-md border-black pt-4">
