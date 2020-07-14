@@ -11,9 +11,10 @@ function FilterCategoriesModal({initialCategories, onFilter}) {
 
     const [isModalOpen, toggleModal] = useState(false);
 
-    const toggleCategory = (index) => {
+    const toggleCategory = (id) => {
         const updatedCategories = [...categories];
-        updatedCategories[index].selected = !updatedCategories[index].selected;
+        const selectedCat = updatedCategories.find(c => c.id === id);
+        selectedCat.selected = !selectedCat.selected;
         setCategories(updatedCategories);
     };
 
@@ -28,13 +29,13 @@ function FilterCategoriesModal({initialCategories, onFilter}) {
             <button className="btn btn-link text-white" onClick={toggleModal}><i className="icon-plus-circle"/></button>
             {isModalOpen && <Modal
                 toggle={toggleModal}
-                title={"Написать в редакцию"}
+                title={"ДОБАВИТЬ РУБРИКУ"}
                 footer={<button type="button" className="btn btn-link btn-lg text-white letter-spacing-lg font-family-condensed" onClick={submitSelectedCats}>
                     Фильтровать <i className="icon-arrow-right h6 ml-2"/>
                 </button>}>
                 <ul className="list-unstyled h4 font-family-condensed font-weight-normal text-muted text-center">
-                    {categories.map((category, index) =>
-                        <li className={`list-group-item cursor-pointer ${category.selected ? "text-white" : ""}`} key={category.id} onClick={() => toggleCategory(index)}>
+                    {categories.map(category =>
+                        <li className={`list-group-item cursor-pointer ${category.selected ? "text-white" : ""}`} key={category.id} onClick={() => toggleCategory(category.id)}>
                             {category.title}
                             {category.selected && <button className="btn btn-sm btn-link text-white"><i className="icon-times-circle"/></button>}
                         </li>

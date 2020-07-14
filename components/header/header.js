@@ -92,12 +92,18 @@ export default function Header({ data }) {
             {data && (data.page === "subcategory" || data.page === "search") &&
             <SubcategoryHeader
                 {...data}
-                categories={categories.map(category => {
+                categories={[...categories.map(category => {
                 return {
                     ...category,
                     selected: data.selectedCategories.includes(""+category.id)
                 }
-            })} onFilter={data.handleQueryUpdate}/>}
+                }), {
+                    id: 0,
+                    title: "Архивные рубрики",
+                    selected: data.selectedCategories.includes("0")
+                }]}
+                onFilter={data.handleQueryUpdate}
+            />}
         </div>
     );
 }

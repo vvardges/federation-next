@@ -142,7 +142,7 @@ function ContentGenerator({ data }) {
                 </div>
             );
         case "advertising":
-            return <div>adv</div>;
+            return <div>asd</div>;
         default:
             return null;
     }

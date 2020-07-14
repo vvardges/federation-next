@@ -6,7 +6,7 @@ export default function Pagination ({currentPage, totalPages, handleClick}) {
         pages.push(i);
     }
 
-    return totalPages.length > 1 ? (
+    return totalPages > 1 ? (
         <nav className="mb-4 text-center">
             <ul className="pagination font-family-condensed">
                 {totalPages > 1 && <li className={`page-item mr-2 ${currentPage === 1 ? "disabled" : "cursor-pointer"}`} onClick={() => handleClick(Math.max(currentPage - 1, 1))}>
