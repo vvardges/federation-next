@@ -6,6 +6,7 @@ import PostsByCategorySmall from "../../components/post/postsByCategorySmall";
 import Popular from "../../components/posts/popular";
 import Content from "../../components/content";
 import Tags from "../../components/tags";
+import {FacebookProvider, Comments} from "react-facebook";
 
 export async function getServerSideProps({ params }) {
     const data = await getPostData(params.slug);
@@ -18,14 +19,14 @@ export async function getServerSideProps({ params }) {
 }
 
 export default function Slug({ data }) {
-    const {general, popularArticles, content, articlesByCategories, tags} = data;
+    const {general, popularArticles, content, articlesByCategories, tags, facebook_id, facebook_url} = data;
 
     useEffect( () => {
         countPostView(general.id).then();
     }, []);
 
     return (
-        <Layout article>
+        <Layout>
             <div>
                 <div className="row">
                     <div className="col-lg-8 col-xl-9">
@@ -84,6 +85,11 @@ export default function Slug({ data }) {
                             <Popular posts={popularArticles} />
                         </div>
                     </div>
+                </div>
+                <div className="text-center mt-4">
+                    <FacebookProvider appId={facebook_id}>
+                        <Comments href={facebook_url} />
+                    </FacebookProvider>
                 </div>
             </div>
         </Layout>

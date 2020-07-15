@@ -48,7 +48,7 @@ function ChartGenerator({chartType, data}) {
                     height={300}
                     data={data.map((d, i) => {
                         return {
-                            angle: +d.label,
+                            angle: +d.angle,
                             color: colors[i]
                         }
                     })}
@@ -142,7 +142,7 @@ function ContentGenerator({ data }) {
                 </div>
             );
         case "advertising":
-            return <div>asd</div>;
+            return <div>adv</div>;
         default:
             return null;
     }
