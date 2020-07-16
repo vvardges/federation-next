@@ -3,6 +3,7 @@ import React from "react";
 import Footer from "./footer";
 import Header from "./header/header";
 import Banner from "./banner";
+import Cookie from "./cookie";
 
 export default class Layout extends React.Component {
     render() {
@@ -16,6 +17,7 @@ export default class Layout extends React.Component {
                     {children}
                 </div>
                 <Footer/>
+                <Cookie/>
             </React.Fragment>
         );
     }
