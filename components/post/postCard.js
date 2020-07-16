@@ -2,7 +2,7 @@ import React from "react";
 import Link from "next/link";
 
 const PostCard = ({ post }) => post ? (
-    <div className="card mb-3">
+    <div className="card">
         <div className="row align-items-center">
             <div className="col-lg-6">
                 <div className="card-body p-0">

@@ -1,14 +1,10 @@
 import React from "react";
 import Link from "next/link";
-import Banner from "../banner";
 
-const PostCardSmall = ({ post, banner }) => post ? (
-    <div className="card mb-3">
+const PostCardSmall = ({ post }) => post ? (
+    <div className="card">
         <div className="row align-items-center flex-row-reverse">
-            <div className="col-lg-2">
-                <Banner banner={banner} />
-            </div>
-            <div className="col-lg-5">
+            <div className="col-lg-6">
                 <div className="card-body p-0">
                     <p className="card-subtitle font-family-condensed letter-spacing-lg lead mb-3">
                         <span className="border-bottom">{post.heading.title}</span>
@@ -22,7 +18,7 @@ const PostCardSmall = ({ post, banner }) => post ? (
                     </p>
                 </div>
             </div>
-            <div className="col-lg-5">
+            <div className="col-lg-6">
                 <img src={post.img_original} className="card-img" alt="..."/>
             </div>
         </div>

@@ -6,6 +6,7 @@ import PostCardSmall from "../components/post/postCardSmall";
 import CategoryCard from "../components/category/categoryCard";
 import Popular from "../components/posts/popular";
 import More from "../components/posts/more";
+import Banner from "../components/banner";
 
 import {getPageData} from "../lib/categories";
 
@@ -27,7 +28,15 @@ export default function Home({ data }) {
             banner: advertising[0]
         }}>
             <PostCard post={topFirstArticle} />
-            <PostCardSmall post={topSecondArticle} banner={advertising[1]}/>
+
+            <div className="row mt-4 flex-row-reverse">
+                <div className="col-lg-3">
+                    <Banner banner={advertising[1]}/>
+                </div>
+                <div className="col-lg-9 d-flex align-items-center">
+                    <PostCardSmall post={topSecondArticle} banner={advertising[1]}/>
+                </div>
+            </div>
 
             <div className="row mt-4">
                 <div className="col-lg-9">
