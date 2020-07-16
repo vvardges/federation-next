@@ -2,7 +2,7 @@ import React from "react";
 import Link from "next/link";
 
 const Small = ({ posts }) => (
-    <div className="bg-secondary border-black border-left border-md mb-3 py-2">
+    <div className="bg-secondary border-black border-left border-md my-3 py-2">
         <div className="card-group flex-column flex-lg-row">
             {posts.map(post =>
                 <div className="card bg-secondary" key={post.id}>

@@ -1,21 +1,18 @@
 import Link from "next/link";
 import React, {useEffect, useState} from "react";
-import {getAllCategories} from "../../lib/categories";
+import { getAllCategories } from "../../lib/categories";
 
 import CategoryHeader from "./categoryHeader";
 import SubcategoryHeader from "./subcategoryHeader";
 import SearchBar from "./searchBar";
 import WriteUsModal from "./writeUsModal";
+import ExchangeRates from "../widgets/exchangeRates";
 
 export default function Header({ data }) {
     const [categories, setCategories] = useState([]);
 
     useEffect( () => {
-        async function fetchData() {
-            const categories = await getAllCategories();
-            return categories;
-        }
-        fetchData().then(data => setCategories(data));
+        getAllCategories().then(data => setCategories(data));
     }, []);
 
     const [isOpen, setIsOpen] = useState(false);
@@ -31,6 +28,8 @@ export default function Header({ data }) {
                 <div className="container letter-spacing-md">
                     <div className="float-left text-white">
                         <i className="icon-cloud"/> +6°C МОСКВА
+
+                        <ExchangeRates/>
                     </div>
                     <div className="float-right d-none d-xl-block">
                         <Link href="/page/[slug]" as="/page/about">

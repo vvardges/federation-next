@@ -1,15 +1,14 @@
 import React from "react";
 import Link from "next/link";
 import Tags from "../tags";
-import Banner from "../banner";
 
-const PostCardWithTags = ({ post, banner }) => (
+const PostCardWithTags = ({ post }) => (
     <div className="card mb-3">
         <div className="row align-items-center">
-            <div className="col-lg-5">
+            <div className="col-lg-6">
                 <img src={post.img_original} className="card-img mb-2" alt="..."/>
             </div>
-            <div className="col-lg-5">
+            <div className="col-lg-6">
                 <div className="card-body p-0">
                     <Tags tags={post.tag_article}/>
                     <Link href="/post/[slug]" as={`/post/${post.slug}`}>
@@ -23,9 +22,6 @@ const PostCardWithTags = ({ post, banner }) => (
                         <span className="text-muted ml-2">{post.published_diff_for_humans}</span>
                     </small>
                 </div>
-            </div>
-            <div className="col-lg-2">
-                <Banner banner={banner}/>
             </div>
         </div>
     </div>

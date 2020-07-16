@@ -5,6 +5,7 @@ import Column from "../../components/posts/column";
 import PostCardWithTags from "../../components/post/postCardWithTags";
 import MoreBySubcategories from "../../components/posts/moreBySubcategories";
 import Small from "../../components/posts/small";
+import Banner from "../../components/banner";
 
 import {getCategoryData} from "../../lib/categories";
 
@@ -27,7 +28,14 @@ export default function Category({ data }) {
             currentCategory: data.general,
             subcategories: data.subcategories
         }}>
-            <PostCardWithTags post={topFirstArticle} banner={advertising[0]}/>
+            <div className="row flex-row-reverse ">
+                <div className="col-lg-3">
+                    <Banner banner={advertising[0]}/>
+                </div>
+                <div className="col-lg-9 d-flex align-items-center">
+                    <PostCardWithTags post={topFirstArticle} banner={advertising[0]}/>
+                </div>
+            </div>
 
             <Small posts={articlesBySubcategories}/>
 
