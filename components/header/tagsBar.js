@@ -4,7 +4,7 @@ import {useRouter} from "next/router";
 const TagsBar = ({ tags, page }) => {
     const router = useRouter();
 
-    const toggleCat = (tagId) => {
+    const toggleTag = (tagId) => {
         const tags = router.query.tag ? [...Array.from(router.query.tag)] : [];
         const index = tags.indexOf(`${tagId}`);
 
@@ -18,13 +18,18 @@ const TagsBar = ({ tags, page }) => {
         if (tags.length) query.tag =  tags;
         else delete query.tag;
 
-        delete query.slug;
-
-        router.push({
-            pathname: router.pathname, query
-        }, {
-            pathname: `/${page}/${router.query.slug}`, query
-        });
+        if (query.slug) {
+            delete query.slug;
+            router.push({
+                pathname: router.pathname, query
+            }, {
+                pathname: `/${page}/${router.query.slug}`, query
+            });
+        } else {
+            router.push({
+                pathname: router.pathname, query
+            });
+        }
     };
 
     const isSelected = (tagId) => {
@@ -42,7 +47,7 @@ const TagsBar = ({ tags, page }) => {
                     </div>
                     <div className="btn-group ml-2">
                         {tags.filter(tag => tag.name.includes(searchValue)).map(tag =>
-                            <button type="button" className={`btn btn-sm letter-spacing-lg mx-1 ${isSelected(tag.id) ? "btn-dark" : "btn-outline-gray"}`} onClick={() => toggleCat(tag.id)} key={tag.id}>#{tag.name}</button>
+                            <button type="button" className={`btn btn-sm letter-spacing-lg mx-1 ${isSelected(tag.id) ? "btn-dark" : "btn-outline-gray"}`} onClick={() => toggleTag(tag.id)} key={tag.id}>#{tag.name}</button>
                         )}
                     </div>
                 </div>

@@ -24,7 +24,7 @@ export default function Search({ data }) {
 
     const router = useRouter();
 
-    const updateQuery = (param, value) => {
+    const  updateQuery = (param, value) => {
         router.push({
             pathname: `/search`,
             query: {
@@ -56,7 +56,7 @@ export default function Search({ data }) {
             ),
             selectedCategories: router.query.cat ? Array.from(router.query.cat) : [],
             tags: tags,
-            onCategoriesChange: cats => updateQuery('cat', cats)
+            handleQueryUpdate: updateQuery
         }}>
             {articlesToShow.data.length ?
                 <div className="row">
