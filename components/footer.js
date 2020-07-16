@@ -22,13 +22,13 @@ export default function Footer() {
                     <Link href="/page/[slug]" as="/page/privacy-policy">
                         <a className="d-block">Политика конфиденциальности</a>
                     </Link>
-                    <Link href="/page/[slug]" as="/page/processing-rules">
+                    <Link href="/page/[slug]" as="/page/warning-of-age-limit">
                         <a className="d-block">Предупреждение о возрастном ограничение</a>
                     </Link>
                     <Link href="/page/[slug]" as="/page/disclaimers">
                         <a className="d-block">Отказ от ответственности</a>
                     </Link>
-                    <Link href="/page/[slug]" as="/page/warning-of-age-limit">
+                    <Link href="/page/[slug]" as="/page/processing-rules">
                         <a className="d-block">Правила обработки персональных данных</a>
                     </Link>
                     <Link href="/page/[slug]" as="/page/cookie-policy">
