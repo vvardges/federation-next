@@ -6,7 +6,9 @@ import PostsByCategorySmall from "../../components/post/postsByCategorySmall";
 import Popular from "../../components/posts/popular";
 import Content from "../../components/content";
 import Tags from "../../components/tags";
-import {FacebookProvider, Comments} from "react-facebook";
+import ShareIcons from "../../components/shareIcons";
+
+import { FacebookProvider, Comments } from "react-facebook";
 
 export async function getServerSideProps({ params }) {
     const data = await getPostData(params.slug);
@@ -38,13 +40,7 @@ export default function Slug({ data }) {
                             <h1 className="my-lg-3">{general.title}</h1>
 
                             <div className="d-flex justify-content-between align-items-center">
-                                <div className="mb-1">
-                                    <a href="#" className="badge rounded-circle bg-secondary text-black-50 py-1 mr-1"><i className="icon-facebook lead"/></a>
-                                    <a href="#" className="badge rounded-circle bg-secondary text-black-50 py-1 mr-1"><i className="icon-telegram lead"/></a>
-                                    <a href="#" className="badge rounded-circle bg-secondary text-black-50 py-1 mr-1"><i className="icon-twitter lead"/></a>
-                                    <a href="#" className="badge rounded-circle bg-secondary text-black-50 py-1 mr-1"><i className="icon-vk lead"/></a>
-                                </div>
-
+                                <ShareIcons/>
                                 <small className="font-family-condensed text-muted"><i className="icon-eye"/> {general.number_of_view}</small>
                             </div>
                         </div>
@@ -68,12 +64,7 @@ export default function Slug({ data }) {
                 </div>
                 <Content content={content}/>
                 <div className="d-flex flex-column flex-sm-row justify-content-sm-between pt-1 border-top mx-lg-4 mb-3">
-                    <div className="mb-1">
-                        <a href="#" className="badge rounded-circle bg-secondary text-black-50 py-1 mr-1"><i className="icon-facebook lead"/></a>
-                        <a href="#" className="badge rounded-circle bg-secondary text-black-50 py-1 mr-1"><i className="icon-telegram lead"/></a>
-                        <a href="#" className="badge rounded-circle bg-secondary text-black-50 py-1 mr-1"><i className="icon-twitter lead"/></a>
-                        <a href="#" className="badge rounded-circle bg-secondary text-black-50 py-1 mr-1"><i className="icon-vk lead"/></a>
-                    </div>
+                    <ShareIcons/>
                     <Tags tags={tags}/>
                 </div>
                 <div className="row">
