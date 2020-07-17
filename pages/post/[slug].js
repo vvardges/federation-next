@@ -1,5 +1,6 @@
 import Layout from '../../components/layout';
 import React, {useEffect} from "react";
+import Link from "next/link";
 import {countPostView, getPostData} from "../../lib/categories";
 
 import PostsByCategorySmall from "../../components/post/postsByCategorySmall";
@@ -34,7 +35,9 @@ export default function Slug({ data }) {
                     <div className="col-lg-8 col-xl-9">
                         <div className="pl-xl-6">
                             <div className="d-flex flex-column flex-md-row justify-content-md-between">
-                                <h4 className="card-subtitle font-family-condensed letter-spacing-lg font-weight-normal mb-2">{general.heading.title}</h4>
+                                <Link href="/category/[slug]" as={`/category/${general.heading.slug}`}>
+                                    <h4 className="card-subtitle font-family-condensed letter-spacing-lg font-weight-normal mb-2 cursor-pointer">{general.heading.title}</h4>
+                                </Link>
                                 <small className="font-family-condensed letter-spacing-lg">{general.published_diff_for_humans}</small>
                             </div>
                             <h1 className="my-lg-3">{general.title}</h1>
