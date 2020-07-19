@@ -1,12 +1,13 @@
 import React from "react";
 import Link from "next/link";
 import Tags from "../tags";
+import Image from "../image";
 
 const PostCardWithTags = ({ post }) => (
     <div className="card mb-3">
         <div className="row align-items-center">
             <div className="col-lg-6">
-                <img src={post.img_original} className="card-img mb-2" alt="..."/>
+                <Image post={post} size="lg16"/>
             </div>
             <div className="col-lg-6">
                 <div className="card-body p-0">

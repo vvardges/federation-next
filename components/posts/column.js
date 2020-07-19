@@ -2,6 +2,7 @@ import React from "react";
 import Link from "next/link";
 import Tags from "../tags";
 import Banner from "../banner";
+import Image from "../image";
 
 const Column = ({ posts, banner }) => (
     <div className="mt-4">
@@ -9,7 +10,7 @@ const Column = ({ posts, banner }) => (
             {posts.map((post, index) =>
                 <div className="col mb-4" key={index}>
                     <div className="card h-100">
-                        <img src={post.img_md11} className="card-img-top" alt="..."/>
+                        <Image post={post} size="md11"/>
                         <div className="card-body px-0 py-1">
                             <Tags tags={post.tag_article}/>
                             <Link href="/post/[slug]" as={`/post/${post.slug}`}>

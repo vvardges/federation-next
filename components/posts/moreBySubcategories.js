@@ -1,5 +1,6 @@
 import React from "react";
 import Link from "next/link";
+import Image from "../image";
 
 const MoreBySubcategories = ({ categories }) => (
     <div>
@@ -13,7 +14,9 @@ const MoreBySubcategories = ({ categories }) => (
                             <div className="card mb-3" key={category.id}>
                                 <div className="row">
                                     <div className="col-4 col-sm-12">
-                                        <img src={post.img_md16} className="img-fluid mb-2" alt="..."/>
+                                        <div className="mb-2">
+                                            <Image post={post} size="lg16"/>
+                                        </div>
                                     </div>
                                     <div className="col">
                                         <Link href="/post/[slug]" as={`/post/${post.slug}`}>

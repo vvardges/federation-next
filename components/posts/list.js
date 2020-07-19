@@ -1,5 +1,6 @@
 import Link from "next/link";
 import React from "react";
+import Image from "../image";
 
 const List = ({ posts }) => {
     return (
@@ -13,7 +14,9 @@ const List = ({ posts }) => {
                         <div className="col">
                             <div className="row flex-lg-row-reverse">
                                 <div className="col-6 col-lg-4">
-                                    <img src={post.img_original} className="card-img mb-2" alt="..."/>
+                                    <div className="mb-2">
+                                        <Image post={post} size="lg16"/>
+                                    </div>
                                 </div>
                                 <div className="col-lg-8">
                                     <Link href="/post/[slug]" as={`/post/${post.slug}`}>

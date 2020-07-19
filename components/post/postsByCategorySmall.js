@@ -1,5 +1,6 @@
 import React from "react";
 import Link from "next/link";
+import Image from "../image";
 
 const PostsByCategorySmall = ({ categories }) => (
     <div>
@@ -16,7 +17,9 @@ const PostsByCategorySmall = ({ categories }) => (
                                     </Link>
                                 </div>
                                 <div className="col-auto">
-                                    <img src={post.img_sm11} className="img-fluid mb-2" alt="..."/>
+                                    <div className="mb-2">
+                                        <Image post={post} size="sm11"/>
+                                    </div>
                                 </div>
                             </div>
                             <div className="card-footer">

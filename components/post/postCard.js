@@ -1,6 +1,8 @@
 import React from "react";
 import Link from "next/link";
 
+import Image from "../image";
+
 const PostCard = ({ post }) => post ? (
     <div className="card">
         <div className="row align-items-center">
@@ -20,7 +22,7 @@ const PostCard = ({ post }) => post ? (
                 </div>
             </div>
             <div className="col-lg-6">
-                <img src={post.img_original} className="card-img" alt="..."/>
+                <Image post={post} size="lg16"/>
             </div>
         </div>
     </div>

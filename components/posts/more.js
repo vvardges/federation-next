@@ -1,6 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import Banner from "../banner";
+import Image from "../image";
 
 const More = ({ categories, banner }) => (
     <div className="mt-4 pt-2">
@@ -15,7 +16,9 @@ const More = ({ categories, banner }) => (
                                 <div className="card mb-3" key={category.id}>
                                     <div className="row">
                                         <div className="col-4 col-sm-12">
-                                            <img src={post.img_md11} className="img-fluid mb-2" alt="..."/>
+                                            <div className="mb-2">
+                                                <Image post={post} size="md11"/>
+                                            </div>
                                         </div>
                                         <div className="col">
                                             <p className="card-subtitle font-family-condensed letter-spacing-lg lead">{category.title}</p>
