@@ -75,9 +75,6 @@ export default function Header({ data }) {
                                             </Link>
                                         </li>
                                     )}
-                                    <li className="nav-item">
-                                        <button className="btn btn-link" onClick={toggleSearch}><i className="icon-search"/></button>
-                                    </li>
                                 </ul>
                             </div>
                         </div>

@@ -11,7 +11,6 @@ import {
     RadialChart, LineMarkSeries
 } from 'react-vis';
 import Gallery from "./gallery";
-import Banner from "./banner";
 
 const axisStyle = {
     line: {stroke: '#B6B6B6'},
@@ -25,7 +24,7 @@ function ChartGenerator({chartType, data}) {
     switch (chartType) {
         case "VerticalBar":
             return (
-                <XYPlot xType="ordinal" width={570} height={360} >
+                <XYPlot xType="ordinal" width={570} height={360}>
                     <XAxis style={axisStyle}/>
                     <YAxis style={axisStyle}/>
                     <VerticalBarSeries data={data} color="#4F91CF"/>
