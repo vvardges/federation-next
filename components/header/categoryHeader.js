@@ -9,7 +9,8 @@ export default function CategoryHeader({ currentCategory, subcategories }) {
         <nav className="navbar navbar-dark navbar-expand-xl bg-dark">
             <div className="container">
                 <h2 className="text-white font-weight-normal mb-0 mx-auto">{currentCategory.title}</h2>
-                {/*<button className="btn btn-link text-white" onClick={toggleSubheader}><i className="icon-cloud"/></button>*/}
+                <button className="btn btn-link text-white" onClick={toggleSubheader}><i className="icon-arrow-right"/></button>
+
                 <div className={`collapse navbar-collapse ml-3 ${showSubheader ? "show" : ""}`}>
                     <ul className="navbar-nav font-family-condensed font-weight-normal letter-spacing-sm h4 w-100">
                         {subcategories.map(subcategory =>

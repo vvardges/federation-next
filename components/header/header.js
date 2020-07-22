@@ -27,8 +27,6 @@ export default function Header({ data }) {
             <nav className="navbar text-white bg-dark smallest font-family-roboto">
                 <div className="container letter-spacing-md">
                     <div className="float-left text-white">
-                        <i className="icon-cloud"/> +6°C МОСКВА
-
                         <ExchangeRates/>
                     </div>
                     <div className="float-right d-none d-xl-block">
@@ -55,7 +53,7 @@ export default function Header({ data }) {
                             <div className="d-flex flex-column flex-xl-row justify-content-between small font-family-condensed w-100">
                                 <ul className="navbar-nav justify-content-between w-100">
                                     {categories.slice(0, categories.length / 2).map(category =>
-                                        <li className={`nav-item ${isOpen ? "h4" : ""}`} key={category.id}>
+                                        <li className={`nav-item ${isOpen ? "h4" : ""}`} key={category.id} onClick={toggle}>
                                             <Link href="/category/[slug]" as={`/category/${category.slug}`}>
                                                 <a className={`nav-link text-${category.super_header ? "primary" : isOpen ? "white" : "dark"}`}>{category.title}</a>
                                             </Link>
@@ -69,12 +67,15 @@ export default function Header({ data }) {
                                 </Link>
                                 <ul className="navbar-nav justify-content-between w-100">
                                     {categories.slice(categories.length / 2).map(category =>
-                                        <li className={`nav-item ${isOpen ? "h4" : ""}`} key={category.id}>
+                                        <li className={`nav-item ${isOpen ? "h4" : ""}`} key={category.id} onClick={toggle}>
                                             <Link href="/category/[slug]" as={`/category/${category.slug}`}>
                                                 <a className={`nav-link text-${category.super_header ? "primary" : isOpen ? "white" : "dark"}`}>{category.title}</a>
                                             </Link>
                                         </li>
                                     )}
+                                    <li className="nav-item">
+                                        <button className="btn btn-link" onClick={toggleSearch}><i className="icon-search"/></button>
+                                    </li>
                                 </ul>
                             </div>
                         </div>

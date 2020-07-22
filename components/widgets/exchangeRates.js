@@ -12,10 +12,10 @@ const ExchangeRates = () => {
 
     return (
         <>
-            <span className="px-2">
+            <span className="pr-2">
                 $ {exchangeRates[0].USD[0]}
             </span>
-            <span className="px-2">
+            <span className="pr-2">
                 € {exchangeRates[1].EUR[0]}
             </span>
         </>

@@ -41,11 +41,11 @@ const TagsBar = ({ tags, page }) => {
     return tags ? (
         <div className="bg-light py-2">
             <div className="container font-family-condensed text-black-50">
-                <div className="btn-toolbar">
-                    <div className="input-group input-group-sm">
+                <div className="btn-toolbar row">
+                    <div className="input-group input-group-sm col-auto">
                         <input type="text" className="form-control" placeholder="Поиск по тегам" value={searchValue} onChange={(e) => setSearchValue(e.target.value)}/>
                     </div>
-                    <div className="btn-group ml-2">
+                    <div className="btn-group ml-2 col overflow-auto">
                         {tags.filter(tag => tag.name.includes(searchValue)).map(tag =>
                             <button type="button" className={`btn btn-sm letter-spacing-lg mx-1 ${isSelected(tag.id) ? "btn-dark" : "btn-outline-gray"}`} onClick={() => toggleTag(tag.id)} key={tag.id}>#{tag.name}</button>
                         )}

@@ -58,14 +58,14 @@ export default function SubcategoryHeader({ title, categories, tags, onFilter, p
             <nav className="navbar navbar-dark bg-dark">
                 <div className="container justify-content-start">
                     {title} <i className="icon-slash h3 mb-0 text-white ml-1"/>
-                    <div className="text-white">
+                    <div className="text-white d-none d-xl-block">
                         {selectedCategories.length ? selectedCategories.map(category =>
                             <button className="btn btn-link btn-lg text-muted font-family-condensed py-0" key={category.id}>
                                 {category.title} <i className="icon-times-circle h5" onClick={() => removeCat(category.id)}/>
                             </button>
                         ): <span className="text-muted h4 font-family-condensed align-middle font-weight-normal">Фильтрование по рубрике</span>}
-                        <FilterCategoriesModal initialCategories={categories} onFilter={onFilter}/>
                     </div>
+                    <FilterCategoriesModal initialCategories={categories} onFilter={onFilter}/>
                 </div>
             </nav>
             <TagsBar tags={tags} page={page}/>
