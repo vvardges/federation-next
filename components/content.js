@@ -11,6 +11,7 @@ import {
     RadialChart, LineMarkSeries
 } from 'react-vis';
 import Gallery from "./gallery";
+import Banner from "./banner";
 
 const axisStyle = {
     line: {stroke: '#B6B6B6'},
@@ -141,7 +142,7 @@ function ContentGenerator({ data }) {
                 </div>
             );
         case "advertising":
-            return <div>adv</div>;
+            return <Banner banner={data}/>;
         default:
             return null;
     }
