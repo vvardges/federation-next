@@ -20,7 +20,7 @@ export async function getServerSideProps({ query }) {
 
 export default function Search({ data }) {
     const {articlesToShow, popularArticles, tags, advertising} = data;
-    const {current_page, last_page} = articlesToShow;
+    const {last_page} = articlesToShow;
 
     const router = useRouter();
 
@@ -54,15 +54,13 @@ export default function Search({ data }) {
                     onKeyDown={handleKeyDown}
                 />
             ),
-            selectedCategories: router.query.cat ? Array.from(router.query.cat) : [],
             tags: tags,
-            handleQueryUpdate: updateQuery
         }}>
             {articlesToShow.data.length ?
                 <div className="row">
                     <div className="col-lg-9">
                         <List posts={articlesToShow.data}/>
-                        <Pagination currentPage={current_page} totalPages={last_page} handleClick={(page) => updateQuery('page', page)}/>
+                        <Pagination totalPages={last_page}/>
                     </div>
                     <div className="col-lg-3">
                         {/*<Banner banner={advertising[0]}/>*/}

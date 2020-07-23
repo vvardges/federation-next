@@ -3,19 +3,17 @@ import {useRouter} from "next/router";
 
 const TagsBar = ({ tags, page }) => {
     const router = useRouter();
+    const queryTags = router.query.tag ? Array.isArray(router.query.tag) ? router.query.tag : [router.query.tag] : [];
 
     const toggleTag = (tagId) => {
-        const tags = router.query.tag ? [...Array.from(router.query.tag)] : [];
-        const index = tags.indexOf(`${tagId}`);
+        const index = queryTags.indexOf(`${tagId}`);
 
-        if (index === -1) tags.push(tagId);
-        else tags.splice(index, 1);
+        if (index === -1) queryTags.push(tagId);
+        else queryTags.splice(index, 1);
 
-        const query = {
-            ...router.query,
-        };
+        const query = {...router.query};
 
-        if (tags.length) query.tag =  tags;
+        if (queryTags.length) query.tag =  queryTags;
         else delete query.tag;
 
         if (query.slug) {
@@ -33,7 +31,7 @@ const TagsBar = ({ tags, page }) => {
     };
 
     const isSelected = (tagId) => {
-        return router.query.tag && router.query.tag.includes(`${tagId}`);
+        return queryTags && queryTags.indexOf(`${tagId}`) !== -1;
     };
 
     const [searchValue, setSearchValue] = useState("");

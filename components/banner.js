@@ -9,7 +9,9 @@ const Banner = ({ banner }) => {
     }, []);
 
     return (
-        ReactHtmlParser(banner.code)
+        <div className="mb-4">
+            {ReactHtmlParser(banner.code)}
+        </div>
     )
 };
 

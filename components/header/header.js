@@ -21,7 +21,6 @@ export default function Header({ data }) {
     const [isSearchOpen, setSearch] = useState(false);
     const toggleSearch = () => setSearch(!isSearchOpen);
 
-
     return (
         <div className="sticky-top">
             <nav className="navbar text-white bg-dark smallest font-family-roboto">
@@ -53,7 +52,7 @@ export default function Header({ data }) {
                             <div className="d-flex flex-column flex-xl-row justify-content-between small font-family-condensed w-100">
                                 <ul className="navbar-nav justify-content-between w-100">
                                     {categories.slice(0, categories.length / 2).map(category =>
-                                        <li className={`nav-item ${isOpen ? "h4" : ""}`} key={category.id} onClick={toggle}>
+                                        <li className={`nav-item ${isOpen ? "h4" : ""}`} key={category.id} onClick={() => setIsOpen(false)}>
                                             <Link href="/category/[slug]" as={`/category/${category.slug}`}>
                                                 <a className={`nav-link text-${category.super_header ? "primary" : isOpen ? "white" : "dark"}`}>{category.title}</a>
                                             </Link>
@@ -67,7 +66,7 @@ export default function Header({ data }) {
                                 </Link>
                                 <ul className="navbar-nav justify-content-between w-100">
                                     {categories.slice(categories.length / 2).map(category =>
-                                        <li className={`nav-item ${isOpen ? "h4" : ""}`} key={category.id} onClick={toggle}>
+                                        <li className={`nav-item ${isOpen ? "h4" : ""}`} key={category.id} onClick={() => setIsOpen(false)}>
                                             <Link href="/category/[slug]" as={`/category/${category.slug}`}>
                                                 <a className={`nav-link text-${category.super_header ? "primary" : isOpen ? "white" : "dark"}`}>{category.title}</a>
                                             </Link>
@@ -89,17 +88,10 @@ export default function Header({ data }) {
             {data && (data.page === "subcategory" || data.page === "search") &&
             <SubcategoryHeader
                 {...data}
-                categories={[...categories.map(category => {
-                return {
-                    ...category,
-                    selected: data.selectedCategories.includes(""+category.id)
-                }
-                }), {
+                categories={[...categories, {
                     id: 0,
                     title: "Архивные рубрики",
-                    selected: data.selectedCategories.includes("0")
                 }]}
-                onFilter={data.handleQueryUpdate}
             />}
         </div>
     );

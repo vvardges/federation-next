@@ -1,71 +1,51 @@
-import Modal from "../modal";
-import React, {useEffect, useState} from "react";
+import React from "react";
 import TagsBar from "./tagsBar";
+import FilterCategoriesModal from "./filterCategoriesModal";
+import {useRouter} from "next/router";
 
-function FilterCategoriesModal({initialCategories, onFilter}) {
-    const [categories, setCategories] = useState([]);
+export default function SubcategoryHeader({ title, categories, tags, page }) {
+    const router = useRouter();
+    const selectedCatIds = router.query.cat ? Array.isArray(router.query.cat) ? router.query.cat : [router.query.cat] : [];
 
-    useEffect(() => {
-        setCategories(initialCategories);
-    }, [initialCategories]);
+    const onFilter = (cat) => {
+        const query = {
+            ...router.query,
+            page: 1,
+            tag: [],
+            cat
+        };
 
-    const [isModalOpen, toggleModal] = useState(false);
-
-    const toggleCategory = (id) => {
-        const updatedCategories = [...categories];
-        const selectedCat = updatedCategories.find(c => c.id === id);
-        selectedCat.selected = !selectedCat.selected;
-        setCategories(updatedCategories);
+        router.push({
+            pathname: router.pathname, query
+        }, {
+            pathname: router.asPath.slice(0, router.asPath.indexOf("?")), query
+        });
     };
 
-    const submitSelectedCats = () => {
-        const selectedCats = categories.filter(cat => cat.selected).map(cat => cat.id);
-        onFilter("cat", selectedCats);
-        toggleModal(false);
-    };
-
-    return (
-        <>
-            <button className="btn btn-link text-white" onClick={toggleModal}><i className="icon-plus-circle"/></button>
-            {isModalOpen && <Modal
-                toggle={toggleModal}
-                title={"ДОБАВИТЬ РУБРИКУ"}
-                footer={<button type="button" className="btn btn-link btn-lg text-white letter-spacing-lg font-family-condensed" onClick={submitSelectedCats}>
-                    Фильтровать <i className="icon-arrow-right h6 ml-2"/>
-                </button>}>
-                <ul className="list-unstyled h4 font-family-condensed font-weight-normal text-muted text-center">
-                    {categories.map(category =>
-                        <li className={`list-group-item cursor-pointer ${category.selected ? "text-white" : ""}`} key={category.id} onClick={() => toggleCategory(category.id)}>
-                            {category.title}
-                            {category.selected && <button className="btn btn-sm btn-link text-white"><i className="icon-times-circle"/></button>}
-                        </li>
-                    )}
-                </ul>
-            </Modal>}
-        </>
-    );
-}
-
-export default function SubcategoryHeader({ title, categories, tags, onFilter, page }) {
     const removeCat = (catId) => {
-        categories.find(cat => cat.id === catId).selected = false;
-        onFilter("cat", categories.filter(cat => cat.selected).map(cat => cat.id));
+        categories.find(cat => cat.id === catId).isSelected = false;
+        onFilter(categories.filter(cat => cat.isSelected).map(cat => cat.id));
     };
 
-    const selectedCategories = categories.filter(category => category.selected);
+    categories.forEach(category => category.isSelected = selectedCatIds.indexOf(`${category.id}`) !== -1);
+
     return (
         <>
             <nav className="navbar navbar-dark bg-dark">
-                <div className="container justify-content-start">
-                    {title} <i className="icon-slash h3 mb-0 text-white ml-1"/>
-                    <div className="text-white d-none d-xl-block">
-                        {selectedCategories.length ? selectedCategories.map(category =>
-                            <button className="btn btn-link btn-lg text-muted font-family-condensed py-0" key={category.id}>
-                                {category.title} <i className="icon-times-circle h5" onClick={() => removeCat(category.id)}/>
-                            </button>
-                        ): <span className="text-muted h4 font-family-condensed align-middle font-weight-normal">Фильтрование по рубрике</span>}
+                <div className="container">
+                    <div className="row mw-100">
+                        <div className="col-auto">
+                            {title} <i className="icon-slash h3 mb-0 text-white ml-1"/>
+                            <FilterCategoriesModal initialCategories={categories} onFilter={onFilter} showText={!selectedCatIds.length}/>
+                        </div>
+                        <div className="btn-group col overflow-auto text-white">
+                            {categories.filter(category => category.isSelected).map(category =>
+                                <button className="btn btn-link btn-lg text-muted font-family-condensed py-0 text-nowrap" key={category.id}>
+                                    {category.title} <i className="icon-times-circle h5" onClick={() => removeCat(category.id)}/>
+                                </button>
+                            )}
+                        </div>
                     </div>
-                    <FilterCategoriesModal initialCategories={categories} onFilter={onFilter}/>
                 </div>
             </nav>
             <TagsBar tags={tags} page={page}/>

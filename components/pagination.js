@@ -1,10 +1,25 @@
 import React from "react";
+import {useRouter} from "next/router";
 
-export default function Pagination ({currentPage, totalPages, handleClick}) {
+export default function Pagination ({ totalPages }) {
     const pages = [];
     for (let i = 1; i <= totalPages; i++) {
         pages.push(i);
     }
+
+    const router = useRouter();
+    const currentPage = +router.query.page;
+
+
+    const handleClick = (page) => {
+        const query = {...router.query, page};
+
+        router.push({
+            pathname: router.pathname, query
+        }, {
+            pathname: router.asPath.slice(0, router.asPath.indexOf("?")), query
+        });
+    };
 
     return totalPages > 1 ? (
         <nav className="mb-4 text-center">
