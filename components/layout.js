@@ -10,7 +10,7 @@ export default class Layout extends React.Component {
         const {children, data} = this.props;
 
         return (
-            <div style={{background: data?.currentCategory?.background}}>
+            <div className="bg-body" style={{background: data?.currentCategory?.background}}>
                 {data?.banner && <Banner banner={data.banner}/>}
                 <Header data={data}/>
                 <div className="container py-4">

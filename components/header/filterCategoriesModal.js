@@ -1,7 +1,7 @@
 import Modal from "../modal";
-import {useEffect, useState} from "react";
+import React, {useEffect, useState} from "react";
 
-function FilterCategoriesModal({ initialCategories, onFilter, showText }) {
+function FilterCategoriesModal({ initialCategories, onFilter }) {
     const [categories, setCategories] = useState([]);
 
     useEffect(() => {
@@ -25,9 +25,9 @@ function FilterCategoriesModal({ initialCategories, onFilter, showText }) {
 
     return (
         <>
-            <button className="btn btn-link text-white" onClick={toggleModal}>
+            <button className="btn btn-link text-white position-sticky sticky-right" onClick={toggleModal}>
                 <i className="icon-plus-circle"/>
-                {showText && <span className="text-muted h4 font-family-condensed align-middle font-weight-normal ml-1">Фильтрование по рубрике</span>}
+                {/*<span className="text-muted h4 font-family-condensed align-middle font-weight-normal ml-1">Фильтрование по рубрике</span>*/}
             </button>
             {isModalOpen && <Modal
                 toggle={toggleModal}

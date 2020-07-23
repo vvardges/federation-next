@@ -34,9 +34,8 @@ export default function SubcategoryHeader({ title, categories, tags, page }) {
             <nav className="navbar navbar-dark bg-dark">
                 <div className="container">
                     <div className="row mw-100">
-                        <div className="col-auto">
+                        <div className="col-auto d-flex align-items-center">
                             {title} <i className="icon-slash h3 mb-0 text-white ml-1"/>
-                            <FilterCategoriesModal initialCategories={categories} onFilter={onFilter} showText={!selectedCatIds.length}/>
                         </div>
                         <div className="btn-group col overflow-auto text-white">
                             {categories.filter(category => category.isSelected).map(category =>
@@ -44,6 +43,7 @@ export default function SubcategoryHeader({ title, categories, tags, page }) {
                                     {category.title} <i className="icon-times-circle h5" onClick={() => removeCat(category.id)}/>
                                 </button>
                             )}
+                            <FilterCategoriesModal initialCategories={categories} onFilter={onFilter}/>
                         </div>
                     </div>
                 </div>
