@@ -41,7 +41,7 @@ export default function Category({ data }) {
 
             <Column posts={articlesByCurrentCategory} banner={advertising[1]}/>
 
-            <MoreBySubcategories categories={moreArticlesBySubcategories}/>
+            <MoreBySubcategories categories={moreArticlesBySubcategories} classNames="h3 font-family-condensed letter-spacing-lg"/>
         </Layout>
     );
 }

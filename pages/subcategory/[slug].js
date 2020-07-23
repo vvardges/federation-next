@@ -41,7 +41,10 @@ export default function Category({ data }) {
                             <Banner banner={advertising[1]}/>
                         </div>
                     </div>
-                    <MoreBySubcategories categories={moreArticlesBySubcategories}/>
+                    <MoreBySubcategories
+                        categories={moreArticlesBySubcategories}
+                        classNames="h4 font-family-condensed bg-secondary d-inline-block px-3 font-weight-normal"
+                    />
                 </> :
                 <h3 className="text-center">К сожалению, мы не смогли найти никаких результатов</h3>
             }

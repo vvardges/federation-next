@@ -9,9 +9,7 @@ export default function SubcategoryHeader({ title, categories, tags, page }) {
 
     const onFilter = (cat) => {
         const query = {
-            ...router.query,
             page: 1,
-            tag: [],
             cat
         };
 
@@ -22,9 +20,8 @@ export default function SubcategoryHeader({ title, categories, tags, page }) {
         });
     };
 
-    const removeCat = (catId) => {
-        categories.find(cat => cat.id === catId).isSelected = false;
-        onFilter(categories.filter(cat => cat.isSelected).map(cat => cat.id));
+    const removeCat = (id) => {
+        onFilter(selectedCatIds.filter(catId => catId !== `${id}`));
     };
 
     categories.forEach(category => category.isSelected = selectedCatIds.indexOf(`${category.id}`) !== -1);
@@ -33,14 +30,14 @@ export default function SubcategoryHeader({ title, categories, tags, page }) {
         <>
             <nav className="navbar navbar-dark bg-dark">
                 <div className="container">
-                    <div className="row mw-100">
+                    <div className="row no-gutters mw-100">
                         <div className="col-auto d-flex align-items-center">
                             {title} <i className="icon-slash h3 mb-0 text-white ml-1"/>
                         </div>
-                        <div className="btn-group col overflow-auto text-white">
+                        <div className="d-flex col overflow-auto text-white">
                             {categories.filter(category => category.isSelected).map(category =>
-                                <button className="btn btn-link btn-lg text-muted font-family-condensed py-0 text-nowrap" key={category.id}>
-                                    {category.title} <i className="icon-times-circle h5" onClick={() => removeCat(category.id)}/>
+                                <button className="btn btn-link btn-lg text-muted font-family-condensed py-0 text-nowrap" key={category.id} onClick={() => removeCat(category.id)}>
+                                    {category.title} <i className="icon-times-circle h5"/>
                                 </button>
                             )}
                             <FilterCategoriesModal initialCategories={categories} onFilter={onFilter}/>

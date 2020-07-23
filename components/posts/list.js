@@ -6,7 +6,7 @@ const List = ({ posts }) => {
     return (
         <ul className="list-group list-group-flush mb-4">
             {posts.map(post =>
-                <li className="list-group-item" key={post.id}>
+                <li className="list-group-item py-3" key={post.id}>
                     <div className="row no-gutters">
                         <div className="col-5 col-sm-3 col-md-2">
                             <p className="font-family-condensed text-muted small">{post.published_diff_for_humans}</p>
@@ -15,7 +15,7 @@ const List = ({ posts }) => {
                             <div className="row flex-lg-row-reverse">
                                 <div className="col-6 col-lg-4">
                                     <div className="mb-2">
-                                        <Image post={post} size="lg16"/>
+                                        <Image post={post} size="md16"/>
                                     </div>
                                 </div>
                                 <div className="col-lg-8">

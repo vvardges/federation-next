@@ -4,7 +4,7 @@ import Link from "next/link";
 const Image = ({ post, size }) => {
     return (
         <Link href="/post/[slug]" as={`/post/${post.slug}`}>
-            <a><img src={post[`img_${size}`]} className={`img-fluid`} alt="..."/></a>
+            <a className="d-flex"><img src={post[`img_${size}`]} className={`img-fluid`} alt="..."/></a>
         </Link>
     )
 };

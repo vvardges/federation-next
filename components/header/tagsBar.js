@@ -41,7 +41,14 @@ const TagsBar = ({ tags, page }) => {
             <div className="container font-family-condensed text-black-50">
                 <div className="btn-toolbar row">
                     <div className="input-group input-group-sm col-auto">
-                        <input type="text" className="form-control" placeholder="Поиск по тегам" value={searchValue} onChange={(e) => setSearchValue(e.target.value)}/>
+                        <input
+                            type="text"
+                            className="form-control"
+                            placeholder="Поиск по тегам"
+                            value={searchValue}
+                            style={{fontSize: 24, height: 28}}
+                            onChange={(e) => setSearchValue(e.target.value)}
+                        />
                     </div>
                     <div className="btn-group ml-2 col overflow-auto">
                         {tags.filter(tag => tag.name.includes(searchValue)).map(tag =>

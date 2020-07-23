@@ -25,8 +25,8 @@ function FilterCategoriesModal({ initialCategories, onFilter }) {
 
     return (
         <>
-            <button className="btn btn-link text-white position-sticky sticky-right" onClick={toggleModal}>
-                <i className="icon-plus-circle"/>
+            <button className="btn btn-link btn-lg text-white position-sticky sticky-right" onClick={toggleModal}>
+                <i className="icon-plus-circle h5"/>
                 {/*<span className="text-muted h4 font-family-condensed align-middle font-weight-normal ml-1">Фильтрование по рубрике</span>*/}
             </button>
             {isModalOpen && <Modal
