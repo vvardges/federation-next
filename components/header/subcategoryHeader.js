@@ -13,6 +13,8 @@ export default function SubcategoryHeader({ title, categories, tags, page }) {
             cat
         };
 
+        if (router.query.q) query.q = router.query.q;
+
         router.push({
             pathname: router.pathname, query
         }, {

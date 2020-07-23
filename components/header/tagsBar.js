@@ -11,7 +11,10 @@ const TagsBar = ({ tags, page }) => {
         if (index === -1) queryTags.push(tagId);
         else queryTags.splice(index, 1);
 
-        const query = {...router.query};
+        const query = {
+            ...router.query,
+            page: 1
+        };
 
         if (queryTags.length) query.tag =  queryTags;
         else delete query.tag;
