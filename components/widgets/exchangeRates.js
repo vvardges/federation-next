@@ -8,15 +8,19 @@ const ExchangeRates = () => {
         getExchangeRates().then(data => setExchangeRates(data.exchange));
     }, []);
 
+    const formatNumber = (value) => value.slice(0, 5);
+
     if (!exchangeRates) return null;
 
     return (
         <>
             <span className="pr-2">
-                $ {exchangeRates[0].USD[0]}
+                $ {formatNumber(exchangeRates[0].USD[0])}
+                <i className={`ml-1 text-muted icon-arrow-${exchangeRates[0].dynamic}`}/>
             </span>
             <span className="pr-2">
-                € {exchangeRates[1].EUR[0]}
+                € {formatNumber(exchangeRates[1].EUR[0])}
+                <i className={`ml-1 text-muted icon-arrow-${exchangeRates[1].dynamic}`}/>
             </span>
         </>
     )

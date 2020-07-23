@@ -48,13 +48,14 @@ export default function Search({ data }) {
             title: (
                 <input
                     type="text"
+                    style={{fontSize: 36, width: 250}}
                     value={searchValue}
-                    className="form-control form-control-lg border-0 text-white w-auto font-family-condensed text-truncate d-inline-block"
+                    className="form-control form-control-lg border-0 text-white font-family-condensed text-truncate d-inline-block"
                     onChange={(evt) => setSearchValue(evt.target.value)}
                     onKeyDown={handleKeyDown}
                 />
             ),
-            tags: tags,
+            tags: tags
         }}>
             {articlesToShow.data.length ?
                 <div className="row">
