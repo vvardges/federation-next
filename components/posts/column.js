@@ -8,7 +8,7 @@ const Column = ({ posts, banner }) => (
     <div className="mt-4">
         <div className="row row-cols-1 row-cols-md-2 row-cols-lg-4">
             {posts.map((post, index) =>
-                <div className="col mb-4" key={index}>
+                <div className="col mb-2" key={index}>
                     <div className="card h-100">
                         <Image post={post} size="md11"/>
                         <div className="card-body px-0 py-1">
@@ -27,7 +27,7 @@ const Column = ({ posts, banner }) => (
                     </div>
                 </div>
             )}
-            <div className="col mb-4">
+            <div className="col mb-2">
                 <Banner banner={banner}/>
             </div>
         </div>
