@@ -45,7 +45,7 @@ export default function Gallery ({ data }) {
             {!isFullScreen && isXL ?
                 <div className="position-absolute">
                     <button className="btn btn-dark btn-resize rounded-circle" onClick={toggle}><i className="icon-fullscreen-open"/></button>
-                    <img src={mainThumbnail} alt="" width={250}/>
+                    <img src={mainThumbnail.img} alt="" width={250}/>
                 </div> :
                 <div className="text-center">
                     {isXL && <button className="btn btn-dark btn-resize rounded-circle position-relative mx-auto" style={{right: -300}} onClick={toggle}><i className="icon-fullscreen-close"/></button>}
@@ -59,7 +59,10 @@ export default function Gallery ({ data }) {
                         addArrowClickHandler={isXL}
                     >
                         {images.map(image =>
-                            <img src={image} onClick={toggle} className="w-100" key={image}/>
+                            <div className="text-left">
+                                <img src={image.img} onClick={toggle} className="w-100" key={image}/>
+                                <small className="text-muted font-family-condensed">{image.source}</small>
+                            </div>
                         )}
                     </Carousel>
                 </div>
