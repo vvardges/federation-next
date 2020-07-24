@@ -11,8 +11,8 @@ import ShareIcons from "../../components/shareIcons";
 
 import { FacebookProvider, Comments } from "react-facebook";
 
-export async function getServerSideProps({ params }) {
-    const data = await getPostData(params.slug);
+export async function getServerSideProps({ query }) {
+    const data = await getPostData(query);
 
     return {
         props: {

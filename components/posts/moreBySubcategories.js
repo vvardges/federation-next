@@ -3,7 +3,7 @@ import Link from "next/link";
 import Image from "../image";
 
 const MoreBySubcategories = ({ categories, classNames }) => (
-    categories.map(category =>
+    categories.filter(category => category.articles.length > 0).map(category =>
         <div key={category.id}>
             <hr className="d-none d-lg-block mb-0"/>
             <p className={`my-2 text-center text-md-left ${classNames}`}>{category.title}</p>
