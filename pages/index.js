@@ -38,13 +38,13 @@ export default function Home({ data }) {
                 </div>
             </div>
 
-            <div className="row mt-4">
+            <div className="row">
                 <div className="col-lg-9">
                     {articlesByCategories.map((category) =>
                         <CategoryCard key={category.id} category={category}/>
                     )}
                 </div>
-                <div className="col-lg-3">
+                <div className="col-lg-3 d-flex align-items-center">
                     <Popular posts={popularArticles}/>
                 </div>
             </div>

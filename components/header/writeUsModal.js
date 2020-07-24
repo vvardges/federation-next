@@ -23,7 +23,7 @@ const WriteUsModal = () => {
 
     return (
         <>
-        <a className="text-info ml-2 cursor-pointer" onClick={toggleModal}>Написать в редакцию</a>
+        <a className="text-info ml-2 ml-xl-4 cursor-pointer" onClick={toggleModal}>Написать в редакцию</a>
         {isModalOpen &&
             <Modal
              toggle={toggleModal}

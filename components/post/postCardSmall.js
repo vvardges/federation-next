@@ -6,10 +6,10 @@ import Image from "../image";
 const PostCardSmall = ({ post }) => post ? (
     <div className="card">
         <div className="row align-items-center flex-row-reverse">
-            <div className="col-lg-6">
+            <div className="col-lg-5">
                 <div className="card-body p-0">
                     <p className="card-subtitle font-family-condensed letter-spacing-lg lead mb-3">
-                        <span className="border-bottom">{post.heading.title}</span>
+                        <span className="border-bottom pr-2 pb-1">{post.heading.title}</span>
                     </p>
                     <Link href="/post/[slug]" as={`/post/${post.slug}`}>
                         <a><h3 className="card-title">{post.title}</h3></a>
@@ -20,7 +20,7 @@ const PostCardSmall = ({ post }) => post ? (
                     </p>
                 </div>
             </div>
-            <div className="col-lg-6">
+            <div className="col-lg-7">
                 <Image post={post} size="lg16"/>
             </div>
         </div>
