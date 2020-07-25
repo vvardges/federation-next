@@ -2,8 +2,8 @@ import React from "react";
 import Link from "next/link";
 
 const CategoryCard = ({ category }) => (
-    <div className="bg-secondary border-left border-md mb-3">
-        <p className="font-family-condensed letter-spacing-lg lead m-0 p-3">{category.title}</p>
+    <div className="bg-secondary border-left border-md mb-4">
+        <p className="font-family-condensed letter-spacing-lg lead m-0 p-3"><span className="pl-1">{category.title}</span></p>
         <div className="card-group">
             {category.articles.map((post, index) =>
                 <div className="card bg-secondary" key={index}>

@@ -43,7 +43,7 @@ export default function Slug({ data }) {
                             <h1 className="my-lg-3">{general.title}</h1>
 
                             <div className="d-flex justify-content-between align-items-center">
-                                <ShareIcons/>
+                                <ShareIcons fullPath={general.fullUrl}/>
                                 <small className="font-family-condensed text-muted"><i className="icon-eye"/> {general.number_of_view}</small>
                             </div>
                         </div>

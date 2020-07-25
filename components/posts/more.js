@@ -4,7 +4,7 @@ import Banner from "../banner";
 import Image from "../image";
 
 const More = ({ categories, banner }) => (
-    <div className="mt-4 pt-2">
+    <div>
         <hr className="d-none d-lg-block"/>
         <h3 className="font-family-condensed mb-3 mt-1 text-center text-md-left">Что еще почитать</h3>
         <div className="row">
@@ -13,7 +13,7 @@ const More = ({ categories, banner }) => (
                     {categories.map(category =>
                         category.articles.map(post =>
                             <div className="col-sm-4 col-12" key={post.id}>
-                                <div className="card mb-3" key={category.id}>
+                                <div className="card mb-4" key={category.id}>
                                     <div className="row">
                                         <div className="col-4 col-sm-12">
                                             <div className="mb-2">
