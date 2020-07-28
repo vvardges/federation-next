@@ -302,3 +302,7 @@ button:focus {
 #__next-prerender-indicator {
   display: none;
 }
+
+.scroll-invisible::-webkit-scrollbar {
+  display: none;
+}
