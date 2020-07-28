@@ -26,7 +26,7 @@ export default function Footer() {
                     <a href={settings.find(s => s.name === "VK_link").value} target="_blank" className="badge rounded-circle bg-white text-black-50 py-1 mx-2"><i className="icon-vk lead"/></a>
                 </div>}
 
-                <p className="text-muted mb-3 letter-spacing-lg">Полное или частное использование материалов возможно только с разрешением редакции.</p>
+                <p className="text-muted mb-3 letter-spacing-lg">Полное или частное использование материалов возможно только с разрешения редакции.</p>
                 <div className="letter-spacing-lg my-4">
                     <Link href="/page/[slug]" as="/page/privacy-policy">
                         <a className="d-block">Политика конфиденциальности</a>

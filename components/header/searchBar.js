@@ -5,7 +5,7 @@ const SearchBar = ({ handleClose }) => {
     const router = useRouter();
 
     const handleKeyDown = (event) => {
-        if (event.key === 'Enter') {
+        if (event.key === 'Enter' && event.target.value) {
             router.push({
                 pathname: `/search`,
                 query: {

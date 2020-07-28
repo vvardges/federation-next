@@ -1,74 +1,9 @@
 import React from "react";
 import ReactHtmlParser from 'react-html-parser';
 
-import {
-    XYPlot,
-    XAxis,
-    YAxis,
-    HorizontalGridLines,
-    VerticalBarSeries,
-    HorizontalBarSeries,
-    RadialChart, LineMarkSeries
-} from 'react-vis';
 import Gallery from "./gallery";
 import Banner from "./banner";
-
-const axisStyle = {
-    line: {stroke: '#B6B6B6'},
-    ticks: {stroke: '#B6B6B6'},
-    text: {stroke: 'none', fill: '#757575'}
-};
-
-const colors = ['#4F91CF', '#99C1E5', '#FFA24B', '#3DB45E', '#F56A4C', '#A6CF4F', '#D48FEC'];
-
-function ChartGenerator({chartType, data}) {
-    switch (chartType) {
-        case "VerticalBar":
-            return (
-                <XYPlot xType="ordinal" width={570} height={360}>
-                    <XAxis style={axisStyle}/>
-                    <YAxis style={axisStyle}/>
-                    <VerticalBarSeries data={data} color="#4F91CF"/>
-                </XYPlot>
-            );
-        case "HorizontalBar":
-            return (
-                <XYPlot width={660} height={360} stackBy="x" yType="ordinal" margin={{left: 100}}>
-                    <YAxis style={axisStyle} tickSize={1}/>
-                    {data.map((d, i) =>
-                        <HorizontalBarSeries key={i} data={d.values.map(v => {return {x:+v.x, y:v.y}})} color={colors[i]}/>
-                    )}
-                </XYPlot>
-            );
-        case "Radial":
-            return (
-                <RadialChart
-                    colorType="literal"
-                    width={300}
-                    height={300}
-                    data={data.map((d, i) => {
-                        return {
-                            angle: +d.angle,
-                            color: colors[i]
-                        }
-                    })}
-                />
-            );
-        case "Line":
-            return (
-                <XYPlot width={570} height={500} xType="ordinal" yType="ordinal">
-                    <HorizontalGridLines />
-                    <XAxis style={axisStyle}/>
-                    <YAxis style={axisStyle}/>
-                    <LineMarkSeries
-                        data={data}
-                        lineStyle={{fill:"none", stroke:"#CDE7FF", strokeWidth: 4}}
-                        markStyle={{fill:"#4F91CF"}}
-                    />
-                </XYPlot>
-            );
-    }
-}
+import ChartGenerator from "./ChartGenerator";
 
 function ContentGenerator({ data }) {
     const {type, value, author} = data;
@@ -80,7 +15,7 @@ function ContentGenerator({ data }) {
         case "quote":
             return (
                 <div className="bg-secondary p-3 pl-5">
-                    <p className="font-italic">{value}</p>
+                    <p className="font-italic">{ReactHtmlParser(value)}</p>
                     <p className="text-right mb-0">{author}</p>
                 </div>
             );
@@ -152,7 +87,7 @@ export default function Content({ content }) {
     if (!content) return;
 
     return (
-        <div className="content">
+        <div className="content pb-4">
             {content.map((data, index) =>
                 <div className={`${data.type} my-3`} key={index}>
                     <ContentGenerator data={data}/>

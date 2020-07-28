@@ -1,44 +1,21 @@
 import React, {useEffect, useState} from "react";
-
 import Carousel from '@brainhubeu/react-carousel';
 
-function useWindowSize() {
-    const isClient = typeof window === 'object';
-
-    function getSize() {
-        return {
-            width: isClient ? window.innerWidth : undefined,
-            height: isClient ? window.innerHeight : undefined
-        };
-    }
-
-    const [windowSize, setWindowSize] = useState(getSize);
-
-    useEffect(() => {
-        if (!isClient) {
-            return false;
-        }
-
-        function handleResize() {
-            setWindowSize(getSize());
-        }
-
-        window.addEventListener('resize', handleResize);
-        return () => window.removeEventListener('resize', handleResize);
-    }, []); // Empty array ensures that effect is only run on mount and unmount
-
-    return windowSize;
-}
-
 export default function Gallery ({ data }) {
-    const size = useWindowSize();
-    const isXL = size.width >= 1200;
-
     const [isFullScreen, setFullScreen] = useState(false);
     const toggle = () => setFullScreen(!isFullScreen);
 
-    const {images, mainThumbnail} = data;
-    const isMulti = images.length > 2;
+    const [width, setWidth] = useState(0);
+    useEffect(() => {
+        setWidth(window.innerWidth);
+    }, []);
+
+    if (!width) return null;
+
+    let {images, mainThumbnail} = data;
+    const isMulti = images.length > 1;
+
+    const isXL = width >= 1200;
 
     return (
         <div className="gallery">
@@ -59,7 +36,7 @@ export default function Gallery ({ data }) {
                         addArrowClickHandler={isXL}
                     >
                         {images.map(image =>
-                            <div className="text-left">
+                            <div className="text-left" key={image.img}>
                                 <img src={image.img} onClick={toggle} className="w-100" key={image}/>
                                 <small className="text-muted font-family-condensed">{image.source}</small>
                             </div>

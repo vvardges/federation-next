@@ -10,6 +10,8 @@ import Tags from "../../components/tags";
 import ShareIcons from "../../components/shareIcons";
 
 import { FacebookProvider, Comments } from "react-facebook";
+import Banner from "../../components/banner";
+import ReactHtmlParser from "react-html-parser";
 
 export async function getServerSideProps({ query }) {
     const data = await getPostData(query);
@@ -22,7 +24,7 @@ export async function getServerSideProps({ query }) {
 }
 
 export default function Slug({ data }) {
-    const {general, popularArticles, content, articlesByCategories, tags, facebook_id, facebook_url} = data;
+    const {general, popularArticles, content, articlesByCategories, tags, facebook_id, facebook_url, advertising} = data;
 
     useEffect( () => {
         countPostView(general.id).then();
@@ -48,17 +50,23 @@ export default function Slug({ data }) {
                             </div>
                         </div>
                     </div>
+                    <div className="col-lg-4 col-xl-3">
+                        <Banner banner={advertising[0]}/>
+                    </div>
                 </div>
                 <div className="row">
                     <div className="col-lg-8 col-xl-9">
                         <div className="pl-xl-6">
                             <div className="border-top border-black border-md pt-1">
-                                <p className="font-family-condensed letter-spacing-lg small">{general.author.name}</p>
+                                <div className="d-flex flex-column flex-sm-row justify-content-sm-between">
+                                    <p className="font-family-condensed letter-spacing-lg small">{general.author.name}</p>
+                                    <Tags tags={tags}/>
+                                </div>
                                 <img src={general.img_original} className="w-100" alt="..."/>
                             </div>
                         </div>
                         <div className="pl-xl-5">
-                            <p className="my-3 bg-secondary p-3 border-left border-md">{general.main_key_thought}</p>
+                            <p className="my-3 bg-secondary p-3 border-left border-md">{ReactHtmlParser(general.main_key_thought)}</p>
                         </div>
                     </div>
                     <div className="col-lg-4 col-xl-3">
@@ -66,7 +74,7 @@ export default function Slug({ data }) {
                     </div>
                 </div>
                 <Content content={content}/>
-                <div className="d-flex flex-column flex-sm-row justify-content-sm-between pt-1 border-top mx-lg-4 mb-3">
+                <div className="d-flex flex-column flex-sm-row justify-content-sm-between pt-1 border-top mx-lg-4 mb-4">
                     <ShareIcons/>
                     <Tags tags={tags}/>
                 </div>

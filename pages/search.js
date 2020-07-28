@@ -35,7 +35,7 @@ export default function Search({ data }) {
     };
 
     const handleKeyDown = (event) => {
-        if (event.key === 'Enter') {
+        if (event.key === 'Enter' && event.target.value) {
             updateQuery("q", event.target.value);
         }
     };

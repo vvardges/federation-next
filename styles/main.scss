@@ -244,7 +244,7 @@ button:focus {
 
 .content {
   @include media-breakpoint-up(xl) {
-    div {
+    & > div {
       margin: 0 auto;
     }
 
@@ -297,4 +297,8 @@ button:focus {
   .chart {
     overflow: auto;
   }
+}
+
+#__next-prerender-indicator {
+  display: none;
 }
