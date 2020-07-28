@@ -1,10 +1,11 @@
 import Modal from "../modal";
-import {useState} from "react";
+import React, {useState} from "react";
 import {submitFeedback} from "../../lib/categories";
-import Link from "next/link";
+import {useRouter} from "next/router";
 
 const WriteUsModal = () => {
-    const [isModalOpen, toggleModal] = useState(false);
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const toggleModal = () => setIsModalOpen(!isModalOpen);
 
     const [client, setClient] = useState('');
     const [email, setEmail] = useState('');
@@ -13,12 +14,26 @@ const WriteUsModal = () => {
     const [errors, setErrors] = useState({});
 
     const [submitted, setSubmitted] = useState(false);
+    const [isSending, setIsSending] = useState(false);
 
     const onSubmit = () => {
+        setIsSending(true);
+
         submitFeedback({client, email, message}).then(response => {
+            setIsSending(false);
             const errors = response.errors;
             errors ? setErrors(errors) : setSubmitted(true);
         });
+    };
+
+    const router = useRouter();
+
+    const backToHomePage = () => {
+        toggleModal();
+
+        router.push({
+            pathname: "/"
+        })
     };
 
     return (
@@ -29,20 +44,18 @@ const WriteUsModal = () => {
              toggle={toggleModal}
              title={"Написать в редакцию"}
              footer={submitted ?
-                 <Link href="/">
-                     <button type="button" className="btn btn-link btn-lg text-white letter-spacing-lg font-family-condensed">
-                         На главную <i className="icon-arrow-right h6 ml-2"/>
-                     </button>
-                 </Link> :
-                 <button type="button" className="btn btn-link btn-lg text-white letter-spacing-lg font-family-condensed" onClick={onSubmit}>
+                 <button type="button" className="btn btn-link btn-lg text-white letter-spacing-lg font-family-condensed" onClick={backToHomePage}>
+                     На главную <i className="icon-arrow-right h6 ml-2"/>
+                 </button> :
+                 <button type="button" className="btn btn-link btn-lg text-white letter-spacing-lg font-family-condensed" onClick={onSubmit} disabled={isSending}>
                      Отправить <i className="icon-arrow-right h6 ml-2"/>
                  </button>
              }
             >
                 {submitted ?
                     <div className="text-muted">
-                        <h3>Спасибо!</h3>
-                        <p className="border-top border-secondary">Редакция рассмотрит Ваше обращение в ближайшее время!</p>
+                        <h3 className="mb-4">Спасибо!</h3>
+                        <p className="border-top border-secondary pt-2 mb-5">Редакция рассмотрит Ваше обращение в ближайшее время!</p>
                     </div> :
                     <form>
                         <div className="form-group">
