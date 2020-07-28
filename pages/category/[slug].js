@@ -30,7 +30,7 @@ export default function Category({ data }) {
         }}>
             <div className="row flex-row-reverse ">
                 <div className="col-lg-3">
-                    {/*<Banner banner={advertising[0]}/>*/}
+                    <Banner banner={advertising[0]}/>
                 </div>
                 <div className="col-lg-9 d-flex align-items-center">
                     <PostCardWithTags post={topFirstArticle} banner={advertising[0]}/>

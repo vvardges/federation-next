@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import Layout from '../components/layout';
 
 import {getSearchData} from "../lib/categories";
@@ -6,21 +6,10 @@ import {useRouter} from "next/router";
 import Popular from "../components/posts/popular";
 import Pagination from "../components/pagination";
 import List from "../components/posts/list";
-import Banner from "../components/banner";
 
-export async function getServerSideProps({ query }) {
-    const data = await getSearchData(query);
-
-    return {
-        props: {
-            data: data
-        },
-    }
-}
-
-export default function Search({ data }) {
-    const {articlesToShow, popularArticles, tags, advertising} = data;
-    const {last_page} = articlesToShow;
+export default function Search() {
+    const [data, setData] = useState(null);
+    const [isLoading, setIsLoading] = useState(false);
 
     const router = useRouter();
 
@@ -40,7 +29,22 @@ export default function Search({ data }) {
         }
     };
 
-    const [searchValue, setSearchValue] = useState(router.query.q);
+    const [searchValue, setSearchValue] = useState("");
+
+
+    useEffect(() => {
+        setIsLoading(true);
+        setSearchValue(router.query.q);
+        getSearchData(router.query).then((data) => {
+             setData(data);
+             setIsLoading(false);
+        });
+    }, [router.query]);
+
+    if(!data) return null;
+
+    const {articlesToShow, popularArticles, tags} = data;
+    const {last_page} = articlesToShow;
 
     return (
         <Layout data={{
@@ -57,19 +61,25 @@ export default function Search({ data }) {
             ),
             tags: tags
         }}>
-            {articlesToShow.data.length ?
-                <div className="row">
-                    <div className="col-lg-9">
-                        <List posts={articlesToShow.data}/>
-                        <Pagination totalPages={last_page}/>
-                    </div>
-                    <div className="col-lg-3">
-                        {/*<Banner banner={advertising[0]}/>*/}
-                        <Popular posts={popularArticles}/>
-                        {/*<Banner banner={advertising[1]}/>*/}
-                    </div>
-                </div> :
-                <h3 className="text-center">К сожалению, мы не смогли найти никаких результатов для "{router.query.q}"</h3>
+            {isLoading && <h3 className="text-center">Загрузка...</h3>}
+            {!isLoading &&
+                <div>
+                    {articlesToShow.data.length ?
+                        <div className="row">
+                            <div className="col-lg-9">
+                                <List posts={articlesToShow.data}/>
+                                <Pagination totalPages={last_page}/>
+                            </div>
+                            <div className="col-lg-3">
+                                <Popular posts={popularArticles}/>
+                            </div>
+                        </div> :
+                        <div className="text-center">
+                            <img src="/img/oops.png" alt="" className="mb-4"/>
+                            <h3>К сожалению, мы не смогли найти никаких результатов для "{router.query.q}"</h3>
+                        </div>
+                    }
+                </div>
             }
         </Layout>
     );
