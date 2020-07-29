@@ -12,6 +12,22 @@ import ShareIcons from "../../components/shareIcons";
 import { FacebookProvider, Comments } from "react-facebook";
 import Banner from "../../components/banner";
 import ReactHtmlParser from "react-html-parser";
+import Head from "next/head";
+
+const metaTags = [
+    "meta_keywords",
+    "meta_descriptions",
+    "meta_author",
+    "meta_copyright",
+    "og_title",
+    "og_description",
+    "og_type, og_url",
+    "twitter_site",
+    "twitter_creator",
+    "twitter_title",
+    "twitter_description",
+    "twitter_card",
+];
 
 export async function getServerSideProps({ query }) {
     const data = await getPostData(query);
@@ -32,6 +48,12 @@ export default function Slug({ data }) {
 
     return (
         <Layout>
+            <Head>
+                {metaTags.filter(metaTag => general[metaTag]).map(metaTag =>
+                    <meta name={metaTag} content={general[metaTag]} />
+                )}
+                {general.other_metategs && ReactHtmlParser(general.other_metategs)}
+            </Head>
             <div>
                 <div className="row">
                     <div className="col-lg-8 col-xl-9">
