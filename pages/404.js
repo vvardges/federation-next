@@ -2,7 +2,7 @@ import React from "react";
 import Link from "next/link";
 import Header from "../components/header/header";
 
-export default function () {
+export default function NotFound () {
     return (
         <div className="d-flex flex-column min-vh-100">
             <Header/>

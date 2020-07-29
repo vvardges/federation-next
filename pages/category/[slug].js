@@ -8,18 +8,17 @@ import Small from "../../components/posts/small";
 import Banner from "../../components/banner";
 
 import {getCategoryData} from "../../lib/categories";
+import NotFound from "../404";
 
 export async function getServerSideProps({ params }) {
-    const data = await getCategoryData(params.slug);
-
-    return {
-        props: {
-            data: data
-        },
-    }
+    const response = await getCategoryData(params.slug);
+    return { props: { response }}
 }
 
-export default function Category({ data }) {
+export default function Category({ response }) {
+    const {status, data} = response;
+    if (status !== 200) return <NotFound/>;
+
     const {topFirstArticle, articlesBySubcategories, articlesByCurrentCategory, moreArticlesBySubcategories, advertising} = data;
 
     return (

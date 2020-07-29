@@ -7,18 +7,17 @@ import Pagination from "../../components/pagination";
 import MoreBySubcategories from "../../components/posts/moreBySubcategories";
 import List from "../../components/posts/list";
 import Banner from "../../components/banner";
+import NotFound from "../404";
 
 export async function getServerSideProps({ query }) {
-    const data = await getSubcategoryData(query);
-
-    return {
-        props: {
-            data: data
-        },
-    }
+    const response = await getSubcategoryData(query);
+    return { props: { response }}
 }
 
-export default function Category({ data }) {
+export default function Category({ response }) {
+    const {status, data} = response;
+    if (status !== 200) return <NotFound/>;
+
     const {articlesToShow, popularArticles, moreArticlesBySubcategories, tags, advertising} = data;
     const {last_page} = articlesToShow;
 

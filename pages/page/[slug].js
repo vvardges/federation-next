@@ -5,18 +5,18 @@ import Popular from "../../components/posts/popular";
 import Content from "../../components/content";
 
 import {getPageData} from "../../lib/categories";
+import NotFound from "../404";
 
 export async function getServerSideProps({ params }) {
-    const data = await getPageData(params.slug);
-
-    return {
-        props: {
-            data: data
-        },
-    }
+    const response = await getPageData(params.slug);
+    return { props: { response }}
 }
 
-export default function About({ data }) {
+export default function About({ response }) {
+    const {status, data} = response;
+
+    if (status !== 200) return <NotFound/>;
+
     const { popularArticles, content, general } = data;
     return (
         <Layout about>

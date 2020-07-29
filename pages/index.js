@@ -11,17 +11,12 @@ import Banner from "../components/banner";
 import {getPageData} from "../lib/categories";
 
 export async function getServerSideProps() {
-    const data = await getPageData('main');
-
-    return {
-        props: {
-            data: data
-        },
-    }
+    const response = await getPageData('main');
+    return { props: { response }}
 }
 
-export default function Home({ data }) {
-    const {topFirstArticle, topSecondArticle, articlesByCategories, popularArticles, readMoreArticles, advertising} = data;
+export default function Home({ response }) {
+    const {topFirstArticle, topSecondArticle, articlesByCategories, popularArticles, readMoreArticles, advertising} = response.data;
     return (
         <Layout data={{
             page: "home",

@@ -1,6 +1,8 @@
 import Layout from '../../components/layout';
 import React, {useEffect} from "react";
 import Link from "next/link";
+import Head from "next/head";
+
 import {countPostView, getPostData} from "../../lib/categories";
 
 import PostsByCategorySmall from "../../components/post/postsByCategorySmall";
@@ -12,7 +14,7 @@ import ShareIcons from "../../components/shareIcons";
 import { FacebookProvider, Comments } from "react-facebook";
 import Banner from "../../components/banner";
 import ReactHtmlParser from "react-html-parser";
-import Head from "next/head";
+import NotFound from "../404";
 
 const metaTags = [
     "meta_keywords",
@@ -30,16 +32,14 @@ const metaTags = [
 ];
 
 export async function getServerSideProps({ query }) {
-    const data = await getPostData(query);
-
-    return {
-        props: {
-            data: data
-        },
-    }
+    const response = await getPostData(query);
+    return { props: { response }}
 }
 
-export default function Slug({ data }) {
+export default function Slug({ response }) {
+    const {status, data} = response;
+
+    if (status !== 200) return <NotFound/>;
     const {general, popularArticles, content, articlesByCategories, tags, facebook_id, facebook_url, advertising} = data;
 
     useEffect( () => {
