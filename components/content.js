@@ -9,7 +9,7 @@ function ContentGenerator({ data }) {
     const {type, value, author} = data;
     switch (type) {
         case "heading":
-            return (<h4>{value}</h4> );
+            return (<h4>{ReactHtmlParser(value)}</h4> );
         case "paragraph":
             return (<p>{ReactHtmlParser(value)}</p>);
         case "quote":
@@ -21,7 +21,7 @@ function ContentGenerator({ data }) {
             );
         case "lead":
             return (
-                <p className="bg-secondary p-3 border-left border-md">{value}</p>
+                <p className="bg-secondary p-3 border-left border-md">{ReactHtmlParser(value)}</p>
             );
         case "gallery":
             return (

@@ -49,13 +49,6 @@ export default function Slug({ data }) {
                                 <small className="font-family-condensed text-muted"><i className="icon-eye"/> {general.number_of_view}</small>
                             </div>
                         </div>
-                    </div>
-                    <div className="col-lg-4 col-xl-3">
-                        <Banner banner={advertising[0]}/>
-                    </div>
-                </div>
-                <div className="row">
-                    <div className="col-lg-8 col-xl-9">
                         <div className="pl-xl-6">
                             <div className="border-top border-black border-md pt-1">
                                 <div className="d-flex flex-column flex-sm-row justify-content-sm-between">
@@ -70,6 +63,7 @@ export default function Slug({ data }) {
                         </div>
                     </div>
                     <div className="col-lg-4 col-xl-3">
+                        <Banner banner={advertising[0]}/>
                         <Popular posts={popularArticles} />
                     </div>
                 </div>
