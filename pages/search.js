@@ -36,6 +36,7 @@ export default function Search() {
         setIsLoading(true);
         setSearchValue(router.query.q);
         getSearchData(router.query).then((data) => {
+            console.log(data);
              setData(data);
              setIsLoading(false);
         });

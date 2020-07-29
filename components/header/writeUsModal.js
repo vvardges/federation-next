@@ -53,9 +53,9 @@ const WriteUsModal = () => {
              }
             >
                 {submitted ?
-                    <div className="text-muted">
+                    <div className="text-muted text-center">
                         <h3 className="mb-4">Спасибо!</h3>
-                        <p className="border-top border-secondary pt-2 mb-5">Редакция рассмотрит Ваше обращение в ближайшее время!</p>
+                        <p className="border-top border-secondary p-2 mb-5 d-inline-block">Редакция рассмотрит Ваше обращение в ближайшее время!</p>
                     </div> :
                     <form>
                         <div className="form-group">
