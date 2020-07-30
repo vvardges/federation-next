@@ -21,9 +21,13 @@ export default function Header({ data }) {
     const [isSearchOpen, setSearch] = useState(false);
     const toggleSearch = () => setSearch(!isSearchOpen);
 
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const toggleModal = () => setIsModalOpen(!isModalOpen);
+
     return (
         <div className="sticky-top">
-            <nav className="navbar text-white bg-dark smallest font-family-roboto">
+            {isModalOpen && <WriteUsModal toggleModal={toggleModal} />}
+            <nav className="navbar navbar-expand-xl text-white bg-dark smallest font-family-roboto">
                 <div className="container letter-spacing-md">
                     <div className="float-left text-white">
                         <ExchangeRates/>
@@ -32,7 +36,7 @@ export default function Header({ data }) {
                         <Link href="/page/[slug]" as="/page/about">
                             <a className="text-white ml-2">О журнале</a>
                         </Link>
-                        <WriteUsModal />
+                        <a className="text-info ml-2 ml-xl-4 cursor-pointer" onClick={toggleModal}>Написать в редакцию</a>
                     </div>
                 </div>
             </nav>
@@ -72,8 +76,18 @@ export default function Header({ data }) {
                                             </Link>
                                         </li>
                                     )}
-                                    <li className="nav-item">
+                                    <li className="nav-item d-none d-xl-block">
                                         <button className="btn btn-link" onClick={toggleSearch}><i className="icon-search"/></button>
+                                    </li>
+                                </ul>
+                                <ul className="navbar-nav d-xl-none">
+                                    <li className="nav-item mb-2" onClick={() => setIsOpen(false)}>
+                                        <Link href="/page/[slug]" as="/page/about">
+                                            <a className="text-white">О журнале</a>
+                                        </Link>
+                                    </li>
+                                    <li className="nav-item" onClick={() => setIsOpen(false)}>
+                                        <a className="text-info" onClick={toggleModal}>Написать в редакцию</a>
                                     </li>
                                 </ul>
                             </div>
