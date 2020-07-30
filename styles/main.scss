@@ -93,7 +93,9 @@ $close-text-shadow: none;
 $close-font-size: 1rem;
 $display-line-height: 0.8;
 
+$input-font-family: $headings-font-family;
 $input-bg: transparent;
+$input-placeholder-color: #525252;
 $input-color: black;
 $input-focus-border-color: black;
 $input-focus-box-shadow: transparent;
@@ -114,6 +116,10 @@ $link-hover-decoration: none;
 
 .font-family-roboto {
   font-family: 'Roboto', sans-serif;
+}
+
+.font-family-pt {
+  font-family: $font-family-base;
 }
 
 .letter-spacing-xl {
@@ -273,6 +279,14 @@ button:focus {
       left: -120px;
     }
 
+  }
+
+  .paragraph {
+    font-size: 18px;
+  }
+
+  .heading {
+    margin-top: 50px !important;
   }
 
   .quote::before {

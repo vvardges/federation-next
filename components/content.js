@@ -9,7 +9,7 @@ function ContentGenerator({ data }) {
     const {type, value, author} = data;
     switch (type) {
         case "heading":
-            return (<h4>{ReactHtmlParser(value)}</h4> );
+            return (<h4 className="font-family-pt">{ReactHtmlParser(value)}</h4> );
         case "paragraph":
             return (<p>{ReactHtmlParser(value)}</p>);
         case "quote":
@@ -30,7 +30,7 @@ function ContentGenerator({ data }) {
         case "table":
             const {columns, rows} = data.data;
             return (
-                <div className="border-top bg-secondary border-md font-family-roboto">
+                <div className="border-top bg-secondary border-md font-family-roboto my-5">
                     <table className="table table-borderless table-sm mb-0">
                         <thead>
                         <tr className="bg-white">
@@ -56,11 +56,12 @@ function ContentGenerator({ data }) {
             const {url} = data;
             const src = `${type === "youtube" ? "https://www.youtube.com/embed" : "https://player.vimeo.com/video"}${url.substring(url.lastIndexOf("/"))}`;
             return (
-                <div className="mx-auto">
+                <div className="mx-auto text-center">
                     <iframe
                         src={src}
-                        width="100%"
-                        height="500"
+                        style={{maxWidth: "100%"}}
+                        width="630"
+                        height="400"
                         frameBorder="0"
                         allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
                         allowFullScreen

@@ -15,6 +15,7 @@ import { FacebookProvider, Comments } from "react-facebook";
 import Banner from "../../components/banner";
 import ReactHtmlParser from "react-html-parser";
 import NotFound from "../404";
+import Image from "../../components/image";
 
 const metaTags = [
     "meta_keywords",
@@ -57,7 +58,7 @@ export default function Slug({ response }) {
             <div>
                 <div className="row">
                     <div className="col-lg-8 col-xl-9">
-                        <div className="pl-xl-6">
+                        <div className="ml-auto" style={{maxWidth: 740}}>
                             <div className="d-flex flex-column flex-md-row justify-content-md-between">
                                 <Link href="/category/[slug]" as={`/category/${general.heading.slug}`}>
                                     <h4 className="card-subtitle font-family-condensed letter-spacing-lg font-weight-normal mb-2 cursor-pointer">{general.heading.title}</h4>
@@ -70,14 +71,14 @@ export default function Slug({ response }) {
                                 <ShareIcons fullPath={general.fullUrl}/>
                                 <small className="font-family-condensed text-muted"><i className="icon-eye"/> {general.number_of_view}</small>
                             </div>
-                        </div>
-                        <div className="pl-xl-6">
+
                             <div className="border-top border-black border-md pt-1">
                                 <div className="d-flex flex-column flex-sm-row justify-content-sm-between">
                                     <p className="font-family-condensed letter-spacing-lg small">{general.author.name}</p>
                                     <Tags tags={tags}/>
                                 </div>
-                                <img src={general.img_original} className="w-100" alt="..."/>
+                                <img src={general.img_lg175} className="w-100" alt="..."/>
+                                <small className="text-muted font-family-condensed">{general.source}</small>
                             </div>
                         </div>
                         <div className="pl-xl-5">
@@ -86,7 +87,6 @@ export default function Slug({ response }) {
                     </div>
                     <div className="col-lg-4 col-xl-3">
                         <Banner banner={advertising[0]}/>
-                        <Popular posts={popularArticles} />
                     </div>
                 </div>
                 <Content content={content}/>
