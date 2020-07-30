@@ -74,6 +74,7 @@ function ContentGenerator({ data }) {
                     <div className="bg-secondary border-top border-md p-3 font-family-condensed">
                         <p className="letter-spacing-lg">{data.title}</p>
                         <ChartGenerator {...data}/>
+                        <small className="text-muted font-family-condensed font-italic">{data.source}</small>
                     </div>
                 </div>
             );
