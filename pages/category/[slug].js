@@ -31,7 +31,7 @@ export default function Category({ response }) {
                 <div className="col-lg-3">
                     <Banner banner={advertising[0]}/>
                 </div>
-                <div className="col-lg-9 d-flex align-items-center">
+                <div className="col-lg-9">
                     <PostCardWithTags post={topFirstArticle} banner={advertising[0]}/>
                 </div>
             </div>

@@ -6,10 +6,10 @@ import Image from "../image";
 const PostCardWithTags = ({ post }) => (
     <div className="mb-3">
         <div className="row">
-            <div className="col-lg-6 d-flex align-items-center">
+            <div className="col-lg-7 d-flex align-items-center">
                 <Image post={post} size="lg16"/>
             </div>
-            <div className="col-lg-6">
+            <div className="col-lg-5">
                 <div className="card h-100">
                     <div className="card-body p-0">
                         <Tags tags={post.tag_article}/>

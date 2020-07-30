@@ -38,8 +38,8 @@ export default function HorizontalScroll ({ children }) {
     return (
         <div className="col overflow-auto position-relative align-items-center d-flex">
             {/*<div className={`collapse navbar-collapse ml-3 ${showSubheader ? "show" : ""}`}>*/}
-            {isScrollable && scrollPosition > 0 && <div className="position-absolute" style={{top:5, left:0}}>
-                <button className="btn btn-lg btn-link text-white" onClick={handleLeftBtnClick}>
+            {isScrollable && scrollPosition > 0 && <div className="position-absolute" style={{top:10, left:0}}>
+                <button className="btn btn-gradient-left text-white pr-5 border-0" onClick={handleLeftBtnClick}>
                     <i className="icon-chevron-right"/>
                 </button>
             </div>}
@@ -49,8 +49,8 @@ export default function HorizontalScroll ({ children }) {
                 </div>
                 {/*<button className="btn btn-link text-white d-xl-none" onClick={toggleSubheader}><i className="icon-cheveron-down"/></button>*/}
             </div>
-            {isScrollable && scrollPosition <= scrollWidth - offsetWidth && <div className="position-absolute" style={{top:5, right:0}}>
-                <button className="btn btn-lg btn-link text-white" onClick={handleRightBtnClick}>
+            {isScrollable && scrollPosition <= scrollWidth - offsetWidth && <div className="position-absolute" style={{top:10, right:0}}>
+                <button className="btn btn-gradient-right text-white pl-5 border-0" onClick={handleRightBtnClick}>
                     <i className="icon-chevron-right"/>
                 </button>
             </div>}

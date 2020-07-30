@@ -226,6 +226,14 @@ input.text-white:focus, textarea.text-white:focus {
   }
 }
 
+.btn-gradient-left {
+  background: linear-gradient(to left, rgba(255,0,0,0), #292929);
+}
+
+.btn-gradient-right {
+  background: linear-gradient(to right, rgba(255,0,0,0), #292929);
+}
+
 .input-search {
   max-width: 100%;
   font-size: 24px !important;
