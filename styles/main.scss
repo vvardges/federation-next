@@ -136,6 +136,18 @@ $link-hover-decoration: none;
   letter-spacing: 0.03em;
 }
 
+.letter-spacing-0 {
+  letter-spacing: 0;
+}
+
+.text-hover-dark:hover {
+  color: $dark !important;
+}
+
+.text-hover-underline:hover {
+  text-decoration: underline;
+}
+
 .border-md {
   border-width: 3px !important;
 }

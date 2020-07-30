@@ -3,7 +3,7 @@ import Link from "next/link";
 
 const Popular = ({ posts }) => (
     <div className="mb-2">
-        <h5 className="font-family-condensed">Популярное</h5>
+        <h5 className="font-family-condensed letter-spacing-0">Популярное</h5>
         <ul className="list-group">
             {posts.map(post =>
                 <li className="list-group-item border-left-0 border-right-0" key={post.id}>

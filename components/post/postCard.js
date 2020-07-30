@@ -6,7 +6,7 @@ import Image from "../image";
 const PostCard = ({ post }) => post ? (
     <div className="card">
         <div className="row align-items-center">
-            <div className="col-lg-6">
+            <div className="col">
                 <div className="card-body p-0">
                     <h4 className="card-subtitle font-family-condensed letter-spacing-lg font-weight-normal mb-3">
                         <span className="border-bottom pr-2 pb-1">{post.heading ? post.heading.title : ""}</span>
@@ -21,7 +21,7 @@ const PostCard = ({ post }) => post ? (
                     </p>
                 </div>
             </div>
-            <div className="col-lg-6">
+            <div className="col-auto">
                 <Image post={post} size="lg16"/>
             </div>
         </div>
