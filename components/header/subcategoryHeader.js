@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import TagsBar from "./tagsBar";
 import FilterCategoriesModal from "./filterCategoriesModal";
 import {useRouter} from "next/router";
@@ -28,6 +28,11 @@ export default function SubcategoryHeader({ title, categories, tags, page }) {
 
     categories.forEach(category => category.isSelected = selectedCatIds.indexOf(`${category.id}`) !== -1);
 
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const toggleModal = () => setIsModalOpen(!isModalOpen);
+
+    const selectedCategories = categories.filter(category => category.isSelected);
+
     return (
         <>
             <nav className="navbar navbar-dark bg-dark">
@@ -37,12 +42,16 @@ export default function SubcategoryHeader({ title, categories, tags, page }) {
                             {title} <i className="icon-slash h3 mb-0 text-white ml-1"/>
                         </div>
                         <div className="d-flex col overflow-auto text-white">
-                            {categories.filter(category => category.isSelected).map(category =>
+                            <button className="btn btn-link btn-lg text-white" onClick={toggleModal}>
+                                <i className="icon-plus-circle h5"/>
+                                {!selectedCategories.length && <span className="text-muted h4 font-family-condensed align-middle font-weight-normal ml-1">Фильтрование по рубрике</span>}
+                            </button>
+                            {isModalOpen && <FilterCategoriesModal initialCategories={categories} onFilter={onFilter} toggleModal={toggleModal}/>}
+                            {selectedCategories.map(category =>
                                 <button className="btn btn-link btn-lg text-muted font-family-condensed py-0 text-nowrap" key={category.id} onClick={() => removeCat(category.id)}>
                                     {category.title} <i className="icon-times-circle h5"/>
                                 </button>
                             )}
-                            <FilterCategoriesModal initialCategories={categories} onFilter={onFilter}/>
                         </div>
                     </div>
                 </div>

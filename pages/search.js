@@ -42,11 +42,6 @@ export default function Search() {
         });
     }, [router.query]);
 
-    if(!data) return null;
-
-    const {articlesToShow, popularArticles, tags} = data;
-    const {last_page} = articlesToShow;
-
     return (
         <Layout data={{
             page: "search",
@@ -60,22 +55,22 @@ export default function Search() {
                     onKeyDown={handleKeyDown}
                 />
             ),
-            tags: tags
+            tags: data?.tags
         }}>
             {isLoading && <h3 className="text-center">Загрузка...</h3>}
             {!isLoading &&
                 <div>
-                    {articlesToShow.data.length ?
+                    {data?.articlesToShow.data.length ?
                         <div className="row">
                             <div className="col-lg-9">
-                                <List posts={articlesToShow.data}/>
-                                <Pagination totalPages={last_page}/>
+                                <List posts={data?.articlesToShow.data}/>
+                                <Pagination totalPages={data?.last_page}/>
                             </div>
                             <div className="col-lg-3">
-                                <Popular posts={popularArticles}/>
+                                <Popular posts={data?.popularArticles}/>
                             </div>
                         </div> :
-                        <div className="text-center">
+                        <div className="text-center py-4">
                             <img src="/img/oops.png" alt="" className="mb-4"/>
                             <h3>К сожалению, мы не смогли найти никаких результатов для "{router.query.q}"</h3>
                         </div>

@@ -23,7 +23,10 @@ const List = ({ posts }) => {
                                         <a><h4 className="mb-1">{post.title}</h4></a>
                                     </Link>
                                     <p>{post.main_key_thought}</p>
-                                    {post.heading && <small className="font-family-condensed text-muted font-weight-bold">{post.heading.title}</small>}
+                                    <div className="d-flex">
+                                        <small className="font-family-condensed text-muted font-weight-bold">{post.author?.name}</small>
+                                        <small className="font-family-condensed text-muted font-weight-bold ml-auto">{post.heading?.title}</small>
+                                    </div>
                                 </div>
                             </div>
                         </div>
