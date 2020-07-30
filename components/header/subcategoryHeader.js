@@ -2,6 +2,7 @@ import React, {useState} from "react";
 import TagsBar from "./tagsBar";
 import FilterCategoriesModal from "./filterCategoriesModal";
 import {useRouter} from "next/router";
+import HorizontalScroll from "./horizontalScroll";
 
 export default function SubcategoryHeader({ title, categories, tags, page }) {
     const router = useRouter();
@@ -40,19 +41,19 @@ export default function SubcategoryHeader({ title, categories, tags, page }) {
                     <div className="row no-gutters mw-100">
                         <div className="col-auto d-flex align-items-center">
                             {title} <i className="icon-slash h3 mb-0 text-white ml-1"/>
-                        </div>
-                        <div className="d-flex col overflow-auto text-white">
                             <button className="btn btn-link btn-lg text-white" onClick={toggleModal}>
                                 <i className="icon-plus-circle h5"/>
                                 {!selectedCategories.length && <span className="text-muted h4 font-family-condensed align-middle font-weight-normal ml-1">Фильтрование по рубрике</span>}
                             </button>
                             {isModalOpen && <FilterCategoriesModal initialCategories={categories} onFilter={onFilter} toggleModal={toggleModal}/>}
+                        </div>
+                        <HorizontalScroll>
                             {selectedCategories.map(category =>
                                 <button className="btn btn-link btn-lg text-muted font-family-condensed py-0 text-nowrap" key={category.id} onClick={() => removeCat(category.id)}>
                                     {category.title} <i className="icon-times-circle h5"/>
                                 </button>
                             )}
-                        </div>
+                        </HorizontalScroll>
                     </div>
                 </div>
             </nav>

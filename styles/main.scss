@@ -225,12 +225,30 @@ input.text-white:focus, textarea.text-white:focus {
   }
 }
 
-.btn-gradient-left {
-  background: linear-gradient(to left, rgba(255,0,0,0), #292929);
-}
+.horizontal-scroll {
+  &-dark {
+    .btn-gradient-left {
+      color: $white;
+      background: linear-gradient(to left, rgba(255,0,0,0), #292929);
+    }
 
-.btn-gradient-right {
-  background: linear-gradient(to right, rgba(255,0,0,0), #292929);
+    .btn-gradient-right {
+      color: $white;
+      background: linear-gradient(to right, rgba(255,0,0,0), #292929);
+    }
+  }
+
+  &-light {
+    .btn-gradient-left {
+      color: $dark;
+      background: linear-gradient(to left, rgba(255,0,0,0), #ECEFF5);
+    }
+
+    .btn-gradient-right {
+      color: $dark;
+      background: linear-gradient(to right, rgba(255,0,0,0), #ECEFF5);
+    }
+  }
 }
 
 .input-search {
@@ -240,6 +258,15 @@ input.text-white:focus, textarea.text-white:focus {
 
   &:focus {
     outline: 0;
+  }
+}
+
+.tags-search {
+  font-size: 24px !important;
+  height: 28px !important;
+  border-color: #b1b2b5 !important;
+  &::placeholder {
+    color: #B1B2B5 !important;
   }
 }
 

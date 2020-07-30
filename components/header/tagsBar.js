@@ -1,5 +1,6 @@
 import React, {useState} from "react";
 import {useRouter} from "next/router";
+import HorizontalScroll from "./horizontalScroll";
 
 const TagsBar = ({ tags, page }) => {
     const router = useRouter();
@@ -46,18 +47,17 @@ const TagsBar = ({ tags, page }) => {
                     <div className="input-group input-group-sm col-auto">
                         <input
                             type="text"
-                            className="form-control"
+                            className="form-control tags-search"
                             placeholder="Поиск по тегам"
                             value={searchValue}
-                            style={{fontSize: 24, height: 28}}
                             onChange={(e) => setSearchValue(e.target.value)}
                         />
                     </div>
-                    <div className="btn-group ml-2 col overflow-auto scroll-invisible">
+                    <HorizontalScroll theme="light">
                         {tags.filter(tag => tag.name.toLowerCase().includes(searchValue.toLowerCase())).map(tag =>
                             <button type="button" className={`btn btn-sm letter-spacing-lg mx-1 ${isSelected(tag.id) ? "btn-dark" : "btn-outline-gray"}`} onClick={() => toggleTag(tag.id)} key={tag.id}>#{tag.name}</button>
                         )}
-                    </div>
+                    </HorizontalScroll>
                 </div>
             </div>
         </div>
