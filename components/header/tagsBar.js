@@ -55,7 +55,15 @@ const TagsBar = ({ tags, page }) => {
                     </div>
                     <HorizontalScroll theme="light">
                         {tags.filter(tag => tag.name.toLowerCase().includes(searchValue.toLowerCase())).map(tag =>
-                            <button type="button" className={`btn btn-sm letter-spacing-lg mx-1 ${isSelected(tag.id) ? "btn-dark" : "btn-outline-gray"}`} onClick={() => toggleTag(tag.id)} key={tag.id}>#{tag.name}</button>
+                            <button
+                                type="button"
+                                className={`btn btn-sm letter-spacing-lg mx-1 ${isSelected(tag.id) ? "btn-dark" : "btn-outline-gray"}`}
+                                onClick={() => toggleTag(tag.id)}
+                                key={tag.id}
+                                style={{borderColor: "#B1B2B5"}}
+                            >
+                                #{tag.name}
+                            </button>
                         )}
                     </HorizontalScroll>
                 </div>

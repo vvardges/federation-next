@@ -21,7 +21,9 @@ const PostCardSmall = ({ post }) => post ? (
                 </div>
             </div>
             <div className="col-lg-7">
-                <Image post={post} size="lg16"/>
+                <div className="pr-xl-1">
+                    <Image post={post} size="lg16"/>
+                </div>
             </div>
         </div>
     </div>

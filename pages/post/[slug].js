@@ -15,7 +15,6 @@ import { FacebookProvider, Comments } from "react-facebook";
 import Banner from "../../components/banner";
 import ReactHtmlParser from "react-html-parser";
 import NotFound from "../404";
-import Image from "../../components/image";
 
 const metaTags = [
     "meta_keywords",
@@ -67,16 +66,13 @@ export default function Slug({ response }) {
                             </div>
                             <h1 className="my-lg-3">{general.title}</h1>
 
-                            <div className="d-flex justify-content-between align-items-center">
+                            <div className="d-flex align-items-center pb-1">
+                                <p className="font-family-condensed letter-spacing-lg small mr-auto mb-0">{general.author.name}</p>
+                                <small className="font-family-condensed text-muted mr-2"><i className="icon-eye"/> {general.number_of_view}</small>
                                 <ShareIcons fullPath={general.fullUrl}/>
-                                <small className="font-family-condensed text-muted"><i className="icon-eye"/> {general.number_of_view}</small>
                             </div>
 
-                            <div className="border-top border-black border-md pt-1">
-                                <div className="d-flex flex-column flex-sm-row justify-content-sm-between">
-                                    <p className="font-family-condensed letter-spacing-lg small">{general.author.name}</p>
-                                    <Tags tags={tags}/>
-                                </div>
+                            <div className="border-top border-black border-md pt-2">
                                 <img src={general.img_lg175} className="w-100" alt="..."/>
                                 <small className="text-muted font-family-condensed">{general.source}</small>
                             </div>

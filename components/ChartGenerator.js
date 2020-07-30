@@ -22,7 +22,7 @@ function ChartGenerator({chartType, data}) {
     switch (chartType) {
         case "VerticalBar":
             return (
-                <XYPlot xType="ordinal" width={570} height={360}>
+                <XYPlot xType="ordinal" width={600} height={360}>
                     <XAxis style={axisStyle}/>
                     <YAxis style={axisStyle}/>
                     <VerticalBarSeries data={data} color="#4F91CF"/>
@@ -31,8 +31,12 @@ function ChartGenerator({chartType, data}) {
         case "HorizontalBar":
             return (
                 <div>
-                    <DiscreteColorLegend items={data.map((d,i) => {return {title: d.label, color: colors[i], strokeStyle: 'solid',strokeWidth: 20}})} className="d-flex justify-content-between my-3"/>
-                    <XYPlot width={660} height={360} stackBy="x" yType="ordinal" margin={{left: 100}}>
+                    <DiscreteColorLegend
+                        width={400}
+                        items={data.map((d,i) => {return {title: d.label, color: colors[i], strokeStyle: 'solid',strokeWidth: 20}})}
+                        className="d-flex flex-row flex-wrap justify-content-center my-3 mx-auto"
+                    />
+                    <XYPlot width={600} height={360} stackBy="x" yType="ordinal" margin={{left: 100}}>
                         <YAxis style={axisStyle} tickSize={1}/>
                         {data.map((d, i) =>
                             <HorizontalBarSeries key={i} data={d.values.map(v => {return {x:+v.x, y:v.y}})} color={colors[i]}/>
@@ -48,7 +52,7 @@ function ChartGenerator({chartType, data}) {
                     <div className="col-auto">
                         <RadialChart
                             colorType="literal"
-                            width={300}
+                            width={470}
                             height={300}
                             data={data.map((d, i) => {
                                 return {
@@ -65,7 +69,7 @@ function ChartGenerator({chartType, data}) {
             );
         case "Line":
             return (
-                <XYPlot width={570} height={500} xType="ordinal">
+                <XYPlot width={600} height={500} xType="ordinal">
                     <HorizontalGridLines />
                     <XAxis style={axisStyle}/>
                     <YAxis style={axisStyle}/>
