@@ -27,12 +27,12 @@ export default function Category({ response }) {
             currentCategory: data.general,
             subcategories: data.subcategories
         }}>
-            <div className="row flex-row-reverse ">
-                <div className="col-lg-3">
-                    <Banner banner={advertising[0]}/>
-                </div>
+            <div className="row">
                 <div className="col-lg-9">
                     <PostCardWithTags post={topFirstArticle} banner={advertising[0]}/>
+                </div>
+                <div className="col-lg-3">
+                    <Banner banner={advertising[0]}/>
                 </div>
             </div>
 

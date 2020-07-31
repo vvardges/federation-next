@@ -1,8 +1,8 @@
 import React from "react";
 
-const Tags = ({ tags }) => {
+const Tags = ({ tags, align = "left" }) => {
     return tags.length ? (
-        <div className="font-family-condensed letter-spacing-lg text-right">
+        <div className={`font-family-condensed letter-spacing-lg text-${align} row`}>
             {tags.map(tag =>
                 <span className="badge badge-secondary ml-2 mb-1" key={tag.tag.id}>#{tag.tag.name}</span>
             )}

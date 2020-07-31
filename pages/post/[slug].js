@@ -88,7 +88,7 @@ export default function Slug({ response }) {
                 <Content content={content}/>
                 <div className="d-flex flex-column flex-sm-row justify-content-sm-between pt-1 border-top mx-lg-4 mb-4">
                     <ShareIcons/>
-                    <Tags tags={tags}/>
+                    <Tags tags={tags} align="right"/>
                 </div>
                 <div className="row">
                     <div className="col-lg-8 col-xl-9 mb-4">

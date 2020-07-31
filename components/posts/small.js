@@ -5,7 +5,7 @@ const Small = ({ posts }) => (
     <div className="bg-secondary border-black border-left border-md my-3 pb-1">
         <div className="card-group flex-column flex-lg-row">
             {posts.map(post =>
-                <div className="card bg-secondary" key={post.id}>
+                <div className="card bg-secondary mb-0" key={post.id}>
                     <div className="card-header">
                         <small className="font-family-condensed letter-spacing-lg">{post.sub_heading.title}</small>
                     </div>

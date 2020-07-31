@@ -6,9 +6,9 @@ export default function CategoryHeader({ currentCategory, subcategories }) {
     return (
         <nav className="navbar navbar-dark navbar-expand-xl bg-dark">
             <div className="container">
-                <div className="row">
-                    <div className="col-auto">
-                        <h2 className="text-white font-weight-normal mb-0 mx-auto">{currentCategory.title}</h2>
+                <div className="row mx-auto m-xl-0">
+                    <div className="col-xl-auto col-12">
+                        <h2 className="text-white font-weight-normal mb-0 text-center text-xl-left">{currentCategory.title}</h2>
                     </div>
                     <HorizontalScroll>
                         <ul className="navbar-nav font-family-condensed font-weight-normal letter-spacing-sm h4 w-100">
