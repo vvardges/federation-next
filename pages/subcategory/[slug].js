@@ -24,7 +24,7 @@ export default function Category({ response }) {
     return (
         <Layout data={{
             page: "subcategory",
-            title: <h2 className="text-white font-weight-normal mb-0 d-inline-block">{data.general.title}</h2>,
+            title: <h2 className="text-white font-weight-normal mb-0 d-inline-block text-truncate">{data.general.title}</h2>,
             tags: tags,
         }}>
             {articlesToShow.data.length ?
@@ -42,7 +42,7 @@ export default function Category({ response }) {
                     </div>
                     <MoreBySubcategories
                         categories={moreArticlesBySubcategories}
-                        classNames="h4 font-family-condensed bg-secondary d-inline-block px-3 font-weight-normal"
+                        classNames="h4 font-family-condensed bg-secondary d-xl-inline-block px-3 font-weight-normal"
                     />
                 </> :
                 <h3 className="text-center">К сожалению, мы не смогли найти никаких результатов</h3>

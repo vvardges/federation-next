@@ -20,9 +20,9 @@ const List = ({ posts }) => {
                                 </div>
                                 <div className="col-lg-8">
                                     <Link href="/post/[slug]" as={`/post/${post.slug}`}>
-                                        <a><h4 className="mb-1">{post.title}</h4></a>
+                                        <a><h4 className="mb-1 card-title">{post.title}</h4></a>
                                     </Link>
-                                    <p>{post.main_key_thought}</p>
+                                    <p className="card-subtitle">{post.main_key_thought}</p>
                                     <div className="d-flex">
                                         <small className="font-family-condensed text-muted font-weight-bold">{post.author?.name}</small>
                                         <small className="font-family-condensed text-muted font-weight-bold ml-auto">{post.heading?.title}</small>

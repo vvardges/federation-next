@@ -269,6 +269,10 @@ input.text-white:focus, textarea.text-white:focus {
   &::placeholder {
     color: #B1B2B5 !important;
   }
+
+  @include media-breakpoint-down(sm) {
+    font-size: 18px !important;
+  }
 }
 
 button:focus {
@@ -380,6 +384,44 @@ button:focus {
   @include media-breakpoint-down(sm) {
     .card-subtitle {
       font-size: 12px;
+    }
+
+    .card-title {
+      font-size: 14px;
+    }
+  }
+}
+
+.navbar-subcategory {
+  @include media-breakpoint-down(sm) {
+    h2 {
+      font-size: 24px;
+    }
+
+    button {
+      font-size: 14px;
+    }
+  }
+}
+
+.list-group {
+  @include media-breakpoint-down(sm) {
+    .card-subtitle {
+      font-size: 15px;
+    }
+
+    .card-title {
+      font-size: 18px;
+    }
+  }
+}
+
+.more-by-subcategories{
+  @include media-breakpoint-down(sm) {
+    .title {
+      font-size: 30px;
+      background-color: transparent !important;
+      margin-bottom: 40px !important;
     }
 
     .card-title {

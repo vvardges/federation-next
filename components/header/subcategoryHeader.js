@@ -36,14 +36,14 @@ export default function SubcategoryHeader({ title, categories, tags, page }) {
 
     return (
         <>
-            <nav className="navbar navbar-dark bg-dark">
+            <nav className="navbar navbar-dark bg-dark navbar-subcategory">
                 <div className="container">
-                    <div className="row no-gutters mw-100">
+                    <div className="row no-gutters w-100">
                         <div className="col-auto d-flex align-items-center">
                             {title} <i className="icon-slash h3 mb-0 text-white ml-1"/>
-                            <button className="btn btn-link btn-lg text-white py-0" onClick={toggleModal}>
+                            <button className="btn btn-link btn-lg text-white py-0 align-items-center" onClick={toggleModal}>
                                 <i className="icon-plus-circle h5"/>
-                                {!selectedCategories.length && <span className="text-gray ml-2 h4 font-family-condensed align-middle font-weight-normal ml-1">Фильтрование по рубрике</span>}
+                                {!selectedCategories.length && <span className="text-gray ml-2 font-family-condensed text-nowrap">Фильтрование по рубрике</span>}
                             </button>
                             {isModalOpen && <FilterCategoriesModal initialCategories={categories} onFilter={onFilter} toggleModal={toggleModal}/>}
                         </div>
