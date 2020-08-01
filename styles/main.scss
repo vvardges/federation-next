@@ -262,6 +262,17 @@ input.text-white:focus, textarea.text-white:focus {
   }
 }
 
+.input-search-sm {
+  max-width: 250px;
+  @include media-breakpoint-up(sm) {
+    font-size: 36px !important;
+  }
+
+  @include media-breakpoint-down(sm) {
+    font-size: 18px !important;
+  }
+}
+
 .tags-search {
   font-size: 24px !important;
   height: 28px !important;

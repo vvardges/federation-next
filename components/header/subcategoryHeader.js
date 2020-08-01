@@ -39,7 +39,7 @@ export default function SubcategoryHeader({ title, categories, tags, page }) {
             <nav className="navbar navbar-dark bg-dark navbar-subcategory">
                 <div className="container">
                     <div className="row no-gutters w-100">
-                        <div className="col-auto d-flex align-items-center">
+                        <div className="col-auto d-flex flex-wrap align-items-center">
                             {title} <i className="icon-slash h3 mb-0 text-white ml-1"/>
                             <button className="btn btn-link btn-lg text-white py-0 align-items-center" onClick={toggleModal}>
                                 <i className="icon-plus-circle h5"/>
