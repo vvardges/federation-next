@@ -77,15 +77,18 @@ export default function Slug({ response }) {
                                 <small className="text-muted font-family-condensed">{general.source}</small>
                             </div>
                         </div>
-                        <div className="pl-xl-5 row">
-                            <p className="my-3 p-3 border-left border-md mx-md-2" style={{background: "#F4F6FA"}}>{ReactHtmlParser(general.main_key_thought)}</p>
-                        </div>
                     </div>
                     <div className="col-lg-4 col-xl-3">
                         <Banner banner={advertising[0]}/>
                     </div>
                 </div>
-                <Content content={content}/>
+                <Content content={[
+                    {
+                        type: "lead",
+                        value: general.main_key_thought
+                    },
+                    ...content
+                ]}/>
                 <div className="d-flex flex-column flex-sm-row justify-content-sm-between pt-1 border-top mx-lg-4 mb-4">
                     <ShareIcons/>
                     <Tags tags={tags} align="right"/>
