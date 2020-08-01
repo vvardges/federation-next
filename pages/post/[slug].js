@@ -90,7 +90,7 @@ export default function Slug({ response }) {
                     ...content
                 ]}/>
                 <div className="d-flex flex-column flex-sm-row justify-content-sm-between pt-1 border-top mx-lg-4 mb-4">
-                    <ShareIcons/>
+                    <ShareIcons fullPath={general.fullUrl} />
                     <Tags tags={tags} align="right"/>
                 </div>
                 <div className="row flex-row-reverse">
