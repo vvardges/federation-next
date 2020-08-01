@@ -17,6 +17,7 @@ $theme-colors: (
 );
 
 $spacers: (
+        5: (3rem),
         6: (10rem),
         7: (12rem)
 );
@@ -369,4 +370,20 @@ button:focus {
 
 .scroll-invisible::-webkit-scrollbar {
   display: none;
+}
+
+.read-more {
+  h3 {
+    font-size: 36px;
+  }
+
+  @include media-breakpoint-down(sm) {
+    .card-subtitle {
+      font-size: 12px;
+    }
+
+    .card-title {
+      font-size: 14px;
+    }
+  }
 }
