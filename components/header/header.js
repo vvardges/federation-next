@@ -94,7 +94,7 @@ export default function Header({ data }) {
                         </div>
                     </div> :
                     <div className="container">
-                        <SearchBar handleClose={toggleSearch}/>
+                        <SearchBar handleClose={toggleSearch} color={isOpen ? "white" : "dark"}/>
                     </div>
                 }
             </nav>
