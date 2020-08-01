@@ -323,6 +323,10 @@ button:focus {
     margin-top: 50px !important;
   }
 
+  .quote {
+    position: relative;
+  }
+
   .quote::before {
     position: absolute;
     color: #707173;

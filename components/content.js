@@ -21,7 +21,9 @@ function ContentGenerator({ data }) {
             );
         case "lead":
             return (
-                <p className="bg-secondary p-3 border-left border-md">{ReactHtmlParser(value)}</p>
+                <div className="row">
+                    <p className="bg-secondary p-3 border-left border-md mx-md-2">{ReactHtmlParser(value)}</p>
+                </div>
             );
         case "gallery":
             return (
@@ -31,24 +33,26 @@ function ContentGenerator({ data }) {
             const {columns, rows} = data.data;
             return (
                 <div className="border-top bg-secondary border-md font-family-roboto my-5">
-                    <table className="table table-borderless table-sm mb-0">
-                        <thead>
-                        <tr className="bg-white">
-                            {columns.map((column, index) =>
-                                <th key={index}>{column}</th>
-                            )}
-                        </tr>
-                        </thead>
-                        <tbody>
-                        {rows.map((row, index) =>
-                            <tr key={index}>
-                                {row.map((r, index) =>
-                                    <td key={index}>{r}</td>
+                    <div className="table-responsive">
+                        <table className="table table-borderless table-sm mb-0">
+                            <thead>
+                            <tr className="bg-white">
+                                {columns.map((column, index) =>
+                                    <th key={index}>{column}</th>
                                 )}
                             </tr>
-                        )}
-                        </tbody>
-                    </table>
+                            </thead>
+                            <tbody>
+                            {rows.map((row, index) =>
+                                <tr key={index}>
+                                    {row.map((r, index) =>
+                                        <td key={index}>{r}</td>
+                                    )}
+                                </tr>
+                            )}
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             );
         case "youtube":
@@ -60,8 +64,6 @@ function ContentGenerator({ data }) {
                     <iframe
                         src={src}
                         style={{maxWidth: "100%"}}
-                        width="630"
-                        height="400"
                         frameBorder="0"
                         allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
                         allowFullScreen
