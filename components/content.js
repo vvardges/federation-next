@@ -60,20 +60,14 @@ function ContentGenerator({ data }) {
             const {url} = data;
             const src = `${type === "youtube" ? "https://www.youtube.com/embed" : "https://player.vimeo.com/video"}${url.substring(url.lastIndexOf("/"))}`;
             return (
-                <div className="mx-auto text-center">
-                    <iframe
-                        src={src}
-                        style={{maxWidth: "100%"}}
-                        frameBorder="0"
-                        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                        allowFullScreen
-                    />
+                <div className="video">
+                    <iframe src={src} frameBorder="0"/>
                 </div>
             );
         case "chart":
             return (
                 <div className="d-flex justify-content-center">
-                    <div className="bg-secondary border-top border-md p-3 font-family-condensed">
+                    <div className="bg-secondary border-top border-md p-3 font-family-condensed overflow-auto">
                         <p className="letter-spacing-lg">{data.title}</p>
                         <ChartGenerator {...data}/>
                         <small className="text-muted font-family-condensed font-italic">{data.source}</small>

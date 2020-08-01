@@ -13,7 +13,7 @@ import React from "react";
 const axisStyle = {
     line: {stroke: '#B6B6B6'},
     ticks: {stroke: '#B6B6B6'},
-    text: {stroke: 'none', fill: '#757575'}
+    text: {stroke: 'none', fill: '#757575', fontSize:14}
 };
 
 const colors = ['#4F91CF', '#99C1E5', '#FFA24B', '#3DB45E', '#F56A4C', '#A6CF4F', '#D48FEC'];
@@ -33,7 +33,7 @@ function ChartGenerator({chartType, data}) {
                 <div>
                     <DiscreteColorLegend
                         width={400}
-                        items={data.map((d,i) => {return {title: d.label, color: colors[i], strokeStyle: 'solid',strokeWidth: 20}})}
+                        items={data.map((d,i) => {return {title: d.label, color: colors[i], strokeStyle: 'solid',strokeWidth: 20 }})}
                         className="d-flex flex-row flex-wrap justify-content-center my-3 mx-auto"
                     />
                     <XYPlot width={600} height={360} stackBy="x" yType="ordinal" margin={{left: 100}}>

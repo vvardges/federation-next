@@ -320,6 +320,25 @@ button:focus {
 
   }
 
+  .youtube, .vimeo {
+    max-width: 630px;
+
+    .video {
+      position: relative;
+      padding-bottom: 56.25%;
+      padding-top: 25px;
+      height: 0;
+
+      iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+      }
+    }
+  }
+
   .paragraph, .quote, .lead {
     font-size: 18px;
   }
@@ -427,5 +446,15 @@ button:focus {
     .card-title {
       font-size: 14px;
     }
+  }
+}
+
+.border-right-bottom {
+  @include media-breakpoint-up(sm) {
+    border-right: 1px solid;
+  }
+
+  @include media-breakpoint-down(sm) {
+    border-bottom: 1px solid;
   }
 }

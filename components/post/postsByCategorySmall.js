@@ -6,11 +6,11 @@ const PostsByCategorySmall = ({ categories }) => (
     <div>
         {categories.map(category =>
             <div className="border-left border-md mb-4" key={category.id}>
-                <p className="font-family-condensed letter-spacing-lg lead ml-3 pl-1">{category.title}</p>
+                <p className="font-family-condensed letter-spacing-lg lead px-1 px-xl-3">{category.title}</p>
                 <div className="card-group flex-column flex-md-row">
                     {category.articles.map((post, index) =>
-                        <div className={`card ${!index ? "border-right border-secondary" : ""}`} key={post.id}>
-                            <div className="row card-body py-0">
+                        <div className={`card ${!index ? "border-right-bottom border-secondary" : ""}`} key={post.id}>
+                            <div className="row card-body py-1 px-1 px-xl-3">
                                 <div className="col">
                                     <Link href="/post/[slug]" as={`/post/${post.slug}`}>
                                         <a><h5 className="card-title mb-0">{post.title}</h5></a>
