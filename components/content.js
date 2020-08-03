@@ -5,6 +5,8 @@ import Gallery from "./gallery";
 import Banner from "./banner";
 import ChartGenerator from "./ChartGenerator";
 
+import {ReactTinyLink} from "react-tiny-link";
+
 function ContentGenerator({ data }) {
     const {type, value, author} = data;
     switch (type) {
@@ -12,6 +14,19 @@ function ContentGenerator({ data }) {
             return (<h4 className="font-family-pt">{ReactHtmlParser(value)}</h4> );
         case "paragraph":
             return (<p>{ReactHtmlParser(value)}</p>);
+        case "link":
+            return (
+                <div className="d-flex justify-content-center">
+                    <ReactTinyLink
+                        className="mx-auto"
+                        cardSize="small"
+                        showGraphic={true}
+                        maxLine={2}
+                        minLine={1}
+                        url={data.url}
+                    />
+                </div>
+                );
         case "quote":
             return (
                 <div className="bg-secondary p-3 pl-5">

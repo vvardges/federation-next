@@ -352,6 +352,10 @@ button:focus {
 
   .paragraph, .quote, .lead {
     font-size: 18px;
+
+    a {
+      text-decoration: underline;
+    }
   }
 
   .heading {
@@ -370,10 +374,6 @@ button:focus {
 
     content: "“";
     font-size: 144px;
-  }
-
-  a {
-    text-decoration: underline;
   }
 
   .gallery {
