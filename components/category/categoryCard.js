@@ -3,11 +3,11 @@ import Link from "next/link";
 
 const CategoryCard = ({ category }) => (
     <div className="bg-secondary border-left border-md mb-4">
-        <p className="font-family-condensed letter-spacing-lg lead m-0 p-3"><span className="pl-1">{category.title}</span></p>
+        <p className="font-family-condensed letter-spacing-lg lead m-0 p-3">{category.title}</p>
         <div className="card-group">
             {category.articles.map((post, index) =>
                 <div className="card bg-secondary" key={index}>
-                    <div className="card-body py-0">
+                    <div className="card-body py-0 px-3">
                         <Link href="/post/[slug]" as={`/post/${post.slug}`}>
                             <a className="h5 card-title mb-0">{post.title}</a>
                         </Link>
