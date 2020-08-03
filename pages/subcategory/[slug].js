@@ -45,7 +45,10 @@ export default function Category({ response }) {
                         classNames="h4 font-family-condensed bg-secondary d-xl-inline-block px-3 font-weight-normal"
                     />
                 </> :
-                <h3 className="text-center">К сожалению, мы не смогли найти никаких результатов</h3>
+                <div className="text-center py-4">
+                    <img src="/img/oops.png" alt="" className="mb-4"/>
+                    <h3>К сожалению, мы не смогли найти никаких результатов</h3>
+                </div>
             }
         </Layout>
     );
