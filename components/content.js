@@ -5,7 +5,6 @@ import Gallery from "./gallery";
 import Banner from "./banner";
 import ChartGenerator from "./ChartGenerator";
 
-import {ReactTinyLink} from "react-tiny-link";
 
 function ContentGenerator({ data }) {
     const {type, value, author} = data;
@@ -17,16 +16,15 @@ function ContentGenerator({ data }) {
         case "link":
             return (
                 <div className="d-flex justify-content-center">
-                    <ReactTinyLink
-                        className="mx-auto"
-                        cardSize="small"
-                        showGraphic={true}
-                        maxLine={2}
-                        minLine={1}
-                        url={data.url}
-                    />
+                    {/*<ReactTinyLink*/}
+                    {/*    cardSize="small"*/}
+                    {/*    showGraphic={true}*/}
+                    {/*    maxLine={2}*/}
+                    {/*    minLine={1}*/}
+                    {/*    url="https://www.amazon.com/Steve-Madden-Mens-Jagwar-10-5/dp/B016X44MKA/ref=lp_18637582011_1_1?srs=18637582011&ie=UTF8&qid=1550721409&sr=8-1"*/}
+                    {/*/>*/}
                 </div>
-                );
+            );
         case "quote":
             return (
                 <div className="bg-secondary p-3 pl-5">
