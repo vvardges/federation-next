@@ -36,7 +36,6 @@ export default function Search() {
         setIsLoading(true);
         setSearchValue(router.query.q);
         getSearchData(router.query).then((data) => {
-            console.log(data);
              setData(data);
              setIsLoading(false);
         });
@@ -63,7 +62,7 @@ export default function Search() {
                         <div className="row">
                             <div className="col-lg-9">
                                 <List posts={data?.articlesToShow.data}/>
-                                <Pagination totalPages={data?.last_page}/>
+                                <Pagination totalPages={data?.articlesToShow.last_page}/>
                             </div>
                             <div className="col-lg-3">
                                 <Popular posts={data?.popularArticles}/>
