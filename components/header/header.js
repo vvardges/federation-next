@@ -55,8 +55,8 @@ export default function Header({ data }) {
                                 </Link>
                                 <button className="btn btn-link d-xl-none" onClick={toggleSearch}><i className="icon-search"/></button>
                             </div>
-                            <div className={`collapse navbar-collapse col ${isOpen ? 'show pl-3' : ''}`}>
-                                <div className="d-flex flex-column flex-xl-row small font-family-condensed w-100 h-100">
+                            <div className={`collapse navbar-collapse col overflow-auto ${isOpen ? 'show pl-3' : ''}`}>
+                                <div className="d-flex flex-column flex-xl-row small font-family-condensed w-100 h-100 overflow-auto">
                                     <ul className="navbar-nav justify-content-between w-100">
                                         {categories.slice(0, categories.length / 2).map(category =>
                                             <li className={`nav-item ${isOpen ? "h4" : ""}`} key={category.id} onClick={() => setIsOpen(false)}>
@@ -83,7 +83,7 @@ export default function Header({ data }) {
                                             <button className="btn btn-link" onClick={toggleSearch}><i className="icon-search"/></button>
                                         </li>
                                     </ul>
-                                    <ul className="navbar-nav d-xl-none position-absolute" style={{bottom: 100}}>
+                                    <ul className="navbar-nav d-xl-none">
                                         <li className="nav-item mb-2" onClick={() => setIsOpen(false)}>
                                             <Link href="/page/[slug]" as="/page/about">
                                                 <a className="text-white">О журнале</a>
