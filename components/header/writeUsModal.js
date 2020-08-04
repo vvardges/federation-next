@@ -47,9 +47,9 @@ const WriteUsModal = ({ toggleModal }) => {
             }
         >
             {submitted ?
-                <div className="text-muted text-center">
-                    <h3 className="mb-4">Спасибо!</h3>
-                    <p className="border-top border-secondary p-2 mb-5 d-inline-block">Редакция рассмотрит Ваше обращение в ближайшее время!</p>
+                <div className="text-gray text-center py-5">
+                    <h3 className="mb-4" style={{fontSize: 36}}>Спасибо!</h3>
+                    <h5 className="border-top border-gray p-2 mb-5 d-inline-block font-weight-normal">Редакция рассмотрит Ваше обращение в ближайшее время!</h5>
                 </div> :
                 <form>
                     <div className="form-group">

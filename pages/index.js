@@ -24,7 +24,7 @@ export default function Home({ response }) {
         }}>
             <PostCard post={topFirstArticle} />
 
-            <div className="row mt-4 flex-row-reverse">
+            <div className="row my-4 flex-row-reverse">
                 <div className="col-lg-3">
                     <Banner banner={advertising[1]}/>
                 </div>
