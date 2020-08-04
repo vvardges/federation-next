@@ -41,7 +41,7 @@ export default function HorizontalScroll ({ children, theme = "dark" }) {
             {isScrollable && scrollPosition > 0 &&
                 <div className="position-absolute h-100 d-flex align-items-center" style={{top:0, left:0}}>
                     <button className="btn btn-gradient-left pr-5 border-0" onClick={handleLeftBtnClick}>
-                        <i className="icon-chevron-right"/>
+                        <i className="icon-chevron-left"/>
                     </button>
                 </div>
             }

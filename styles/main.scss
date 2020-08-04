@@ -13,7 +13,8 @@ $theme-colors: (
        "dark": #292929,
     "primary": #4F91CF,
        "gray": #757575,
-       "blue": #B8CCE7
+       "blue": #B8CCE7,
+       "mira": #444444
 );
 
 $spacers: (
@@ -468,4 +469,9 @@ button:focus {
   @include media-breakpoint-down(sm) {
     border-bottom: 1px solid;
   }
+}
+
+.btn:focus, .btn:active {
+  outline: none;
+  box-shadow: none;
 }
