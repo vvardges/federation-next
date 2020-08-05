@@ -228,6 +228,9 @@ input.text-white:focus, textarea.text-white:focus {
 }
 
 .horizontal-scroll {
+  overflow-y: hidden;
+  overflow-x: auto;
+
   &-dark {
     .btn-gradient-left {
       color: $white;
