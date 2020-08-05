@@ -10,7 +10,7 @@ export default function Footer() {
     }, []);
 
     return (
-        <div className="border-top border-black bg-secondary text-center font-family-condensed py-1 mt-4">
+        <div className="border-top border-black bg-secondary text-center font-family-condensed py-1">
             <div className="container smaller">
                 <Link href="/">
                     <a>

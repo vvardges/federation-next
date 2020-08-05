@@ -11,7 +11,7 @@ export default class Layout extends React.Component {
 
         return (
             <>
-                <div className="bg-body" style={{background: data?.currentCategory?.background}}>
+                <div className="bg-body pb-4" style={{background: data?.currentCategory?.background}}>
                     {data?.banner && <div className="d-none d-xl-block"><Banner banner={data.banner}/></div>}
                     <Header data={data}/>
                     <div className="container py-4">
