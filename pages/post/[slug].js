@@ -50,6 +50,7 @@ export default function Slug({ response }) {
     return (
         <Layout>
             <Head>
+                <title>Federation</title>
                 {Object.keys(metaTags).filter(key => general[key]).map(key =>
                     <meta name={metaTags[key]} content={general[key]} />
                 )}
