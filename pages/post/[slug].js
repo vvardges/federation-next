@@ -16,20 +16,21 @@ import Banner from "../../components/banner";
 import ReactHtmlParser from "react-html-parser";
 import NotFound from "../404";
 
-const metaTags = [
-    "meta_keywords",
-    "meta_descriptions",
-    "meta_author",
-    "meta_copyright",
-    "og_title",
-    "og_description",
-    "og_type, og_url",
-    "twitter_site",
-    "twitter_creator",
-    "twitter_title",
-    "twitter_description",
-    "twitter_card",
-];
+const metaTags = {
+    meta_keywords: "keywords",
+    meta_descriptions: "description",
+    meta_author: "author",
+    meta_copyright: "copyright",
+    og_title: "og:title",
+    og_description: "og:description",
+    og_type: "og:type",
+    og_url: "og:url",
+    twitter_site: "twitter:site",
+    twitter_creator: "twitter:creator",
+    twitter_title: "twitter:title",
+    twitter_description: "twitter:description",
+    twitter_card: "twitter:description"
+};
 
 export async function getServerSideProps({ query }) {
     const response = await getPostData(query);
@@ -49,8 +50,8 @@ export default function Slug({ response }) {
     return (
         <Layout>
             <Head>
-                {metaTags.filter(metaTag => general[metaTag]).map(metaTag =>
-                    <meta name={metaTag} content={general[metaTag]} />
+                {Object.keys(metaTags).filter(key => general[key]).map(key =>
+                    <meta name={metaTags[key]} content={general[key]} />
                 )}
                 {general.other_metategs && ReactHtmlParser(general.other_metategs)}
             </Head>

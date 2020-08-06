@@ -14,8 +14,8 @@ export default function NotFound () {
                     <img src="/img/404.png" className="w-100" alt=""/>
                 </div>
             </div>
-            <div className="col bg-dark align-items-center d-flex">
-                <div className="text-right col-lg-6 mx-auto">
+            <div className="col bg-dark d-flex">
+                <div className="text-right col-lg-6 mx-auto mt-auto">
                     <Link href="/">
                         <a className="btn btn-link btn-lg text-white font-family-condensed letter-spacing-lg">На главную <i className="icon-arrow-right h6 ml-2"/></a>
                     </Link>
