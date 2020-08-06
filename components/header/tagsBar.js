@@ -43,7 +43,7 @@ const TagsBar = ({ tags, page }) => {
     return tags ? (
         <div className="py-2" style={{background: "#ECEFF5"}}>
             <div className="container overflow-auto font-family-condensed text-black-50">
-                <div className="btn-toolbar row">
+                <div className="btn-toolbar flex-nowrap row">
                     <div className="input-group input-group-sm col-auto">
                         <input
                             type="text"
