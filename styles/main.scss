@@ -335,6 +335,18 @@ button:focus {
 
   }
 
+  @include media-breakpoint-down(lg) {
+    .lead .border-md {
+      border-width: 7px !important;
+    }
+  }
+
+  .quote, .lead {
+    .bg-secondary {
+      background-color: #F4F6FA !important;
+    }
+  }
+
   .youtube, .vimeo {
     max-width: 630px;
 
