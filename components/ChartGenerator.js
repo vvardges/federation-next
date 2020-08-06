@@ -48,23 +48,19 @@ function ChartGenerator({chartType, data}) {
             );
         case "Radial":
             return (
-                <div className="d-flex">
-                    <div className="col-auto">
-                        <RadialChart
-                            colorType="literal"
-                            width={470}
-                            height={300}
-                            data={data.map((d, i) => {
-                                return {
-                                    angle: +d.angle,
-                                    color: colors[i]
-                                }
-                            })}
-                        />
-                    </div>
-                    <div className="col">
-                        <DiscreteColorLegend items={data.map((d,i) => {return {title: d.label, color: colors[i], strokeWidth: 20}})} />
-                    </div>
+                <div className="d-flex flex-nowrap">
+                    <RadialChart
+                        colorType="literal"
+                        width={400}
+                        height={300}
+                        data={data.map((d, i) => {
+                            return {
+                                angle: +d.angle,
+                                color: colors[i]
+                            }
+                        })}
+                    />
+                    <DiscreteColorLegend width={200} items={data.map((d,i) => {return {title: d.label, color: colors[i], strokeWidth: 20}})} />
                 </div>
             );
         case "Line":

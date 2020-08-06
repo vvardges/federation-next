@@ -23,7 +23,7 @@ export default function Pagination ({ totalPages }) {
 
     return totalPages > 1 ? (
         <nav className="mb-4 text-center">
-            <ul className="pagination font-family-condensed">
+            <ul className="pagination font-family-condensed overflow-auto">
                 {totalPages > 1 && <li className={`page-item mr-2 ${currentPage === 1 ? "disabled" : "cursor-pointer"}`} onClick={() => handleClick(Math.max(currentPage - 1, 1))}>
                     <a className="page-link rounded-circle">
                         <i className="icon-arrow-left"/>
