@@ -42,7 +42,7 @@ const TagsBar = ({ tags, page }) => {
 
     return tags ? (
         <div className="py-2" style={{background: "#ECEFF5"}}>
-            <div className="container font-family-condensed text-black-50">
+            <div className="container overflow-auto font-family-condensed text-black-50">
                 <div className="btn-toolbar row">
                     <div className="input-group input-group-sm col-auto">
                         <input
@@ -53,7 +53,7 @@ const TagsBar = ({ tags, page }) => {
                             onChange={(e) => setSearchValue(e.target.value)}
                         />
                     </div>
-                    <HorizontalScroll theme="light">
+                    <HorizontalScroll theme="light" collapsible={false}>
                         {tags.filter(tag => tag.name.toLowerCase().includes(searchValue.toLowerCase())).map(tag =>
                             <button
                                 type="button"
