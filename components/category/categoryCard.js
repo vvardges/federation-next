@@ -12,7 +12,7 @@ const CategoryCard = ({ category }) => (
                             <a className="h5 card-title mb-0">{post.title}</a>
                         </Link>
                     </div>
-                    <div className="card-footer d-flex no-gutters">
+                    <div className="card-footer d-flex no-gutters px-3">
                         <div className="col-auto">
                             <small className="text-muted font-family-condensed">{post.published_diff_for_humans}</small>
                         </div>
