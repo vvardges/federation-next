@@ -3,6 +3,7 @@ import Link from "next/link";
 
 const Image = ({ post, size }) => {
     const [hasError, setHasError] = useState(false);
+
     return (
         <Link href="/post/[slug]" as={`/post/${post.slug}`}>
             <a className="d-inline-block">

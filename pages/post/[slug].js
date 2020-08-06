@@ -15,6 +15,7 @@ import { FacebookProvider, Comments } from "react-facebook";
 import Banner from "../../components/banner";
 import ReactHtmlParser from "react-html-parser";
 import NotFound from "../404";
+import Image from "../../components/image";
 
 const metaTags = {
     meta_keywords: "keywords",
@@ -75,7 +76,7 @@ export default function Slug({ response }) {
                             </div>
 
                             <div className="border-top border-black border-md pt-2">
-                                <img src={general.img_lg175} className="w-100" alt="..."/>
+                                <Image size="lg175" post={general}/>
                                 <small className="text-muted font-family-condensed">{general.source}</small>
                             </div>
                         </div>

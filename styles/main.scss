@@ -234,11 +234,17 @@ input.text-white:focus, textarea.text-white:focus {
   &-dark {
     .btn-gradient-left {
       color: $white;
+      font-size: 24px;
+      display: flex;
+      align-items: center;
       background: linear-gradient(to left, rgba(255,0,0,0), #292929 60%);
     }
 
     .btn-gradient-right {
       color: $white;
+      font-size: 24px;
+      display: flex;
+      align-items: center;
       background: linear-gradient(to right, rgba(255,0,0,0), #292929 60%);
     }
   }
