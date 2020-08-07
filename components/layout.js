@@ -16,7 +16,7 @@ export default class Layout extends React.Component {
                     <title>Federation</title>
                 </Head>
                 <div className="bg-body pb-4" style={{background: data?.currentCategory?.background}}>
-                    {data?.banner && <div className="d-none d-xl-block"><Banner banner={data.banner}/></div>}
+                    {data?.banner && <div className="d-none d-xl-block mt-4"><Banner banner={data.banner}/></div>}
                     <Header data={data}/>
                     <div className="container py-4">
                         {children}

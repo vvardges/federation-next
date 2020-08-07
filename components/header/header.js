@@ -16,7 +16,10 @@ export default function Header({ data }) {
     }, []);
 
     const [isOpen, setIsOpen] = useState(false);
-    const toggle = () => setIsOpen(!isOpen);
+    const toggle = () => {
+        isOpen ? document.body.classList.remove("overflow-hidden") : document.body.classList.add("overflow-hidden");
+        setIsOpen(!isOpen);
+    };
 
     const [isSearchOpen, setSearch] = useState(false);
     const toggleSearch = () => setSearch(!isSearchOpen);
