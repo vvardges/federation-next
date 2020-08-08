@@ -9,6 +9,8 @@ import Banner from "../../components/banner";
 
 import {getCategoryData} from "../../lib/categories";
 import NotFound from "../404";
+import Head from "next/head";
+import MetaTags from "../../components/metaTags";
 
 export async function getServerSideProps({ params }) {
     const response = await getCategoryData(params.slug);
@@ -19,7 +21,7 @@ export default function Category({ response }) {
     const {status, data} = response;
     if (status !== 200) return <NotFound/>;
 
-    const {topFirstArticle, articlesBySubcategories, articlesByCurrentCategory, moreArticlesBySubcategories, advertising} = data;
+    const {topFirstArticle, articlesBySubcategories, articlesByCurrentCategory, moreArticlesBySubcategories, advertising, general} = data;
 
     return (
         <Layout data={{
@@ -27,6 +29,11 @@ export default function Category({ response }) {
             currentCategory: data.general,
             subcategories: data.subcategories
         }}>
+            <Head>
+                <title>{general.title} - Federation</title>
+                <MetaTags general={general}/>
+            </Head>
+
             <div className="row">
                 <div className="col-lg-9">
                     <PostCardWithTags post={topFirstArticle} banner={advertising[0]}/>

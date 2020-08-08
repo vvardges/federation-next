@@ -13,25 +13,9 @@ import ShareIcons from "../../components/shareIcons";
 
 import { FacebookProvider, Comments } from "react-facebook";
 import Banner from "../../components/banner";
-import ReactHtmlParser from "react-html-parser";
 import NotFound from "../404";
 import Image from "../../components/image";
-
-const metaTags = {
-    meta_keywords: "keywords",
-    meta_descriptions: "description",
-    meta_author: "author",
-    meta_copyright: "copyright",
-    og_title: "og:title",
-    og_description: "og:description",
-    og_type: "og:type",
-    og_url: "og:url",
-    twitter_site: "twitter:site",
-    twitter_creator: "twitter:creator",
-    twitter_title: "twitter:title",
-    twitter_description: "twitter:description",
-    twitter_card: "twitter:description"
-};
+import MetaTags from "../../components/metaTags";
 
 export async function getServerSideProps({ query }) {
     const response = await getPostData(query);
@@ -51,11 +35,8 @@ export default function Slug({ response }) {
     return (
         <Layout>
             <Head>
-                <title>Federation</title>
-                {Object.keys(metaTags).filter(key => general[key]).map(key =>
-                    <meta name={metaTags[key]} content={general[key]} />
-                )}
-                {general.other_metategs && ReactHtmlParser(general.other_metategs)}
+                <title>{general.title}</title>
+                <MetaTags general={general}/>
             </Head>
             <div>
                 <div className="row">

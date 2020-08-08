@@ -1,5 +1,6 @@
 import React from "react";
 import Layout from '../../components/layout';
+import Head from "next/head";
 
 import { getSubcategoryData } from "../../lib/categories";
 import Popular from "../../components/posts/popular";
@@ -8,6 +9,7 @@ import MoreBySubcategories from "../../components/posts/moreBySubcategories";
 import List from "../../components/posts/list";
 import Banner from "../../components/banner";
 import NotFound from "../404";
+import MetaTags from "../../components/metaTags";
 
 export async function getServerSideProps({ query }) {
     const response = await getSubcategoryData(query);
@@ -18,7 +20,7 @@ export default function Category({ response }) {
     const {status, data} = response;
     if (status !== 200) return <NotFound/>;
 
-    const {articlesToShow, popularArticles, moreArticlesBySubcategories, tags, advertising} = data;
+    const {articlesToShow, popularArticles, moreArticlesBySubcategories, tags, advertising, general} = data;
     const {last_page} = articlesToShow;
 
     return (
@@ -27,6 +29,10 @@ export default function Category({ response }) {
             title: <h2 className="text-white font-weight-normal mb-0 d-inline-block text-truncate">{data.general.title}</h2>,
             tags: tags,
         }}>
+            <Head>
+                <title>{general.title} - Federation</title>
+                <MetaTags general={general}/>
+            </Head>
             {articlesToShow.data.length ?
                 <>
                     <div className="row">

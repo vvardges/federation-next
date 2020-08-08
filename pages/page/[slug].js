@@ -1,5 +1,6 @@
 import React from "react";
 import Layout from '../../components/layout';
+import Head from "next/head";
 
 import Popular from "../../components/posts/popular";
 import Content from "../../components/content";
@@ -19,7 +20,10 @@ export default function About({ response }) {
 
     const { popularArticles, content, general } = data;
     return (
-        <Layout about>
+        <Layout>
+            <Head>
+                <title>{general.title}</title>
+            </Head>
             <div className="pl-xl-5">
                 <h1 className="my-md-5">{general.title}</h1>
                 <div className="row">

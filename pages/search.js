@@ -6,6 +6,7 @@ import {useRouter} from "next/router";
 import Popular from "../components/posts/popular";
 import Pagination from "../components/pagination";
 import List from "../components/posts/list";
+import Head from "next/head";
 
 export default function Search() {
     const [data, setData] = useState(null);
@@ -55,6 +56,9 @@ export default function Search() {
             ),
             tags: data?.tags
         }}>
+            <Head>
+                <title>Результат поиска по фразе - {searchValue}</title>
+            </Head>
             {isLoading && <h3 className="text-center">Загрузка...</h3>}
             {!isLoading &&
                 <div>

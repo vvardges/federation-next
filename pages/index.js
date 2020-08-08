@@ -9,6 +9,7 @@ import More from "../components/posts/more";
 import Banner from "../components/banner";
 
 import {getPageData} from "../lib/categories";
+import Head from "next/head";
 
 export async function getServerSideProps() {
     const response = await getPageData('main');
@@ -16,12 +17,16 @@ export async function getServerSideProps() {
 }
 
 export default function Home({ response }) {
-    const {topFirstArticle, topSecondArticle, articlesByCategories, popularArticles, readMoreArticles, advertising} = response.data;
+    const {topFirstArticle, topSecondArticle, articlesByCategories, popularArticles, readMoreArticles, advertising, general} = response.data;
     return (
         <Layout data={{
             page: "home",
             banner: advertising[0]
         }}>
+            <Head>
+                <title>{general.title}</title>
+            </Head>
+
             <PostCard post={topFirstArticle} />
 
             <div className="row my-4 flex-row-reverse">
