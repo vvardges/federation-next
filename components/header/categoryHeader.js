@@ -8,7 +8,7 @@ export default function CategoryHeader({ currentCategory, subcategories }) {
             <div className="container">
                 <div className="row mx-auto m-xl-0">
                     <div className="col-xl-auto col-12">
-                        <h2 className="text-white font-weight-normal mb-0 text-center text-xl-left">{currentCategory.title}</h2>
+                        <h1 className="h2 text-white font-weight-normal mb-0 text-center text-xl-left">{currentCategory.title}</h1>
                     </div>
                     <HorizontalScroll>
                         <ul className="navbar-nav font-family-condensed font-weight-normal letter-spacing-sm h4 w-100">

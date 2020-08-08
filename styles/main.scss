@@ -287,11 +287,14 @@ input.text-white:focus, textarea.text-white:focus {
   font-size: 24px !important;
   height: 28px !important;
   border-color: #b1b2b5 !important;
+  width: 190px;
+
   &::placeholder {
     color: #B1B2B5 !important;
   }
 
   @include media-breakpoint-down(sm) {
+    width: 145px;
     font-size: 18px !important;
   }
 }

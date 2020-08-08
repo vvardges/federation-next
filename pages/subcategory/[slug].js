@@ -26,7 +26,7 @@ export default function Category({ response }) {
     return (
         <Layout data={{
             page: "subcategory",
-            title: <h2 className="text-white font-weight-normal mb-0 d-inline-block text-truncate">{data.general.title}</h2>,
+            title: <h1 className="h2 text-white font-weight-normal mb-0 d-inline-block text-truncate">{data.general.title}</h1>,
             tags: tags,
         }}>
             <Head>

@@ -32,11 +32,11 @@ function ChartGenerator({chartType, data}) {
             return (
                 <div>
                     <DiscreteColorLegend
-                        width={400}
+                        width={600}
                         items={data.map((d,i) => {return {title: d.label, color: colors[i], strokeStyle: 'solid',strokeWidth: 20 }})}
                         className="d-flex flex-row flex-wrap justify-content-center my-3 mx-auto"
                     />
-                    <XYPlot width={600} height={360} stackBy="x" yType="ordinal" margin={{left: 100}}>
+                    <XYPlot width={820} height={360} stackBy="x" yType="ordinal" margin={{left: 100}}>
                         <YAxis style={axisStyle} tickSize={1}/>
                         {data.map((d, i) =>
                             <HorizontalBarSeries key={i} data={d.values.map(v => {return {x:+v.x, y:v.y}})} color={colors[i]}/>
