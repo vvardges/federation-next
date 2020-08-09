@@ -34,10 +34,10 @@ export default function Pagination ({ totalPages }) {
                 {pages.map((page, index) => {
                     return (index > 0 && page !== pages[index-1] + 1) ? (
                         <>
-                            <li key={page + "dots"} className={`page-item mx-1`}>
+                            <li className={`page-item mx-1`} key={page + "dots"}>
                                 ...
                             </li>
-                            <li className={`page-item mx-1 ${currentPage === page ? "active" : "cursor-pointer"}`} onClick={() => handleClick(page)}>
+                            <li key={page} className={`page-item mx-1 ${currentPage === page ? "active" : "cursor-pointer"}`} onClick={() => handleClick(page)}>
                                 <a className="page-link rounded-circle">{page}</a>
                             </li>
                         </>
