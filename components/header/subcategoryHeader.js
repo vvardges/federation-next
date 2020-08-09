@@ -38,7 +38,7 @@ export default function SubcategoryHeader({ title, categories, tags, page }) {
         <div>
             <nav className="navbar navbar-dark bg-dark navbar-subcategory">
                 <div className="container">
-                    <div className="row no-gutters w-100">
+                    <div className="row no-gutters w-100 d-flex flex-nowrap overflow-auto">
                         <div className="col-auto d-flex flex-wrap align-items-center">
                             {title} <i className="icon-slash h3 mb-0 text-white ml-1"/>
                             <button className="btn btn-link btn-lg text-white py-0 align-items-center" onClick={toggleModal}>
@@ -47,7 +47,7 @@ export default function SubcategoryHeader({ title, categories, tags, page }) {
                             </button>
                             {isModalOpen && <FilterCategoriesModal initialCategories={categories} onFilter={onFilter} toggleModal={toggleModal}/>}
                         </div>
-                        <HorizontalScroll collapsible={true}>
+                        <HorizontalScroll collapsible={false}>
                             {selectedCategories.map(category =>
                                 <button className="btn btn-link btn-lg text-muted font-family-condensed py-0 text-nowrap" key={category.id} onClick={() => removeCat(category.id)}>
                                     {category.title} <i className="icon-times-circle h5"/>
