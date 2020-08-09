@@ -35,7 +35,7 @@ export default function SubcategoryHeader({ title, categories, tags, page }) {
     const selectedCategories = categories.filter(category => category.isSelected);
 
     return (
-        <>
+        <div>
             <nav className="navbar navbar-dark bg-dark navbar-subcategory">
                 <div className="container">
                     <div className="row no-gutters w-100">
@@ -58,6 +58,6 @@ export default function SubcategoryHeader({ title, categories, tags, page }) {
                 </div>
             </nav>
             <TagsBar tags={tags} page={page}/>
-        </>
+        </div>
     );
 }

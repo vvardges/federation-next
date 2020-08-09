@@ -21,7 +21,7 @@ function ContentGenerator({ data }) {
             return (<p>{ReactHtmlParser(value)}</p>);
         case "link":
             return (
-                <div className="d-flex justify-content-center">
+                <div className="d-inline-block mx-auto">
                     <LinkPreview url={data.url}/>
                 </div>
             );
