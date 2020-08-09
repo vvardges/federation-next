@@ -3,7 +3,7 @@ import Link from "next/link";
 import Tags from "../tags";
 import Image from "../image";
 
-const PostCardWithTags = ({ post }) => (
+const PostCardWithTags = ({ post }) => post ? (
     <div className="mb-3">
         <div className="row">
             <div className="col-lg-7 d-flex align-items-center">
@@ -28,6 +28,6 @@ const PostCardWithTags = ({ post }) => (
             </div>
         </div>
     </div>
-);
+) : null;
 
 export default PostCardWithTags;

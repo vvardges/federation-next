@@ -14,7 +14,8 @@ const MoreBySubcategories = ({ categories, classNames }) => (
                             <div className="row">
                                 <div className="col-4 col-sm-12">
                                     <div className="mb-2">
-                                        <Image post={post} size="md16"/>
+                                        <Image post={post} size="md16" className="d-none d-lg-block"/>
+                                        <Image post={post} size="md11" className="d-lg-none"/>
                                     </div>
                                 </div>
                                 <div className="col">

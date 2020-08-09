@@ -13,7 +13,7 @@ const Column = ({ posts, banner }) => {
                 {posts.map((post, index) =>
                     <div className="col mb-xl-2 mb-5" key={index}>
                         <div className="card h-100">
-                            <Image post={post} size="md11"/>
+                            <Image post={post} size="md11" className="w-100"/>
                             <div className="card-body px-0 py-1">
                                 <Tags tags={post.tag_article}/>
                                 <Link href="/post/[slug]" as={`/post/${post.slug}`}>
