@@ -80,7 +80,7 @@ function ContentGenerator({ data }) {
         case "chart":
             return (
                 <div className="d-flex justify-content-center">
-                    <div className="bg-secondary border-top border-md p-3 font-family-condensed overflow-auto">
+                    <div className="bg-secondary border-top border-md font-family-condensed overflow-auto" style={{padding: 15}}>
                         <p className="letter-spacing-lg">{data.title}</p>
                         <ChartGenerator {...data}/>
                         <small className="text-muted font-family-condensed font-italic">{data.source}</small>

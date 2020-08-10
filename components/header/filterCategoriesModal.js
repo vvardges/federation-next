@@ -24,7 +24,7 @@ function FilterCategoriesModal({ initialCategories, onFilter, toggleModal }) {
     return (
         <Modal
             toggle={toggleModal}
-            title={"ДОБАВИТЬ РУБРИКУ"}
+            title={"РУБРИКИ"}
             footer={<button type="button" className="btn btn-link btn-lg text-white letter-spacing-lg font-family-condensed" onClick={submitSelectedCats}>
                 Фильтровать <i className="icon-arrow-right h6 ml-2"/>
             </button>}>

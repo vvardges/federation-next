@@ -40,12 +40,12 @@ export default function({ toggle, title, children, footer }) {
             <div className="modal fade show d-block">
                 <div className="modal-dialog" ref={ref}>
                     <div className="modal-content">
-                        <div className="modal-header text-center bg-black">
+                        <div className="modal-header bg-black">
                             <button type="button" className="close cursor-pointer" onClick={() => toggle(false)}>
                                 <i className="icon-close d-none d-lg-block"/>
                                 <i className="icon-arrow-left d-lg-none"/>
                             </button>
-                            <small className="modal-title font-family-roboto letter-spacing-xl text-white-50 mx-auto">{title}</small>
+                            <small className="modal-title font-family-roboto letter-spacing-xl text-white-50 mx-auto smaller">{title}</small>
                         </div>
                         <div className="modal-body">
                             {children}
