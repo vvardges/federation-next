@@ -9,8 +9,10 @@ import List from "../components/posts/list";
 import Head from "next/head";
 
 export default function Search() {
-    const [data, setData] = useState(null);
-    const [isLoading, setIsLoading] = useState(false);
+    const [searchRequest, setSearchRequest] = useState({
+        data: null,
+        isLoading: false
+    });
 
     const router = useRouter();
 
@@ -30,54 +32,54 @@ export default function Search() {
         }
     };
 
-    const [searchValue, setSearchValue] = useState("");
-
-
     useEffect(() => {
-        setIsLoading(true);
-        setSearchValue(router.query.q);
-        getSearchData(router.query).then((data) => {
-             setData(data);
-             setIsLoading(false);
-        });
+        if (router.query.q) {
+            setSearchRequest({
+                isLoading: true
+            });
+
+            getSearchData(router.query).then((data) => {
+                setSearchRequest({
+                    isLoading: false,
+                    data: data
+                });
+            });
+        }
     }, [router.query]);
 
+    const {data, isLoading} = searchRequest;
     return (
         <Layout data={{
             page: "search",
             title: (
                 <input
                     type="text"
-                    value={searchValue}
+                    defaultValue={router.query.q}
                     className="form-control form-control-lg border-0 text-white font-family-condensed text-truncate input-search-sm"
-                    onChange={(evt) => setSearchValue(evt.target.value)}
                     onKeyDown={handleKeyDown}
                 />
             ),
             tags: data?.tags
         }}>
             <Head>
-                <title>Результат поиска по фразе - {searchValue}</title>
+                <title>Результат поиска по фразе - {router.query.q}</title>
             </Head>
-            {isLoading && <h3 className="text-center">Загрузка...</h3>}
-            {!isLoading &&
-                <div>
-                    {data?.articlesToShow.data.length ?
-                        <div className="row">
-                            <div className="col-lg-9">
-                                <List posts={data?.articlesToShow.data}/>
-                                <Pagination totalPages={data?.articlesToShow.last_page}/>
-                            </div>
-                            <div className="col-lg-3">
-                                <Popular posts={data?.popularArticles}/>
-                            </div>
-                        </div> :
-                        <div className="text-center py-4">
-                            <img src="/img/oops.png" alt="" className="mb-4"/>
-                            <h3>К сожалению, мы не смогли найти никаких результатов для "{router.query.q}"</h3>
+            {isLoading ?
+                <h3 className="text-center">Загрузка...</h3> :
+                data?.articlesToShow.data.length > 0 ?
+                    <div className="row">
+                        <div className="col-lg-9">
+                            <List posts={data?.articlesToShow.data}/>
+                            <Pagination totalPages={data?.articlesToShow.last_page}/>
                         </div>
-                    }
-                </div>
+                        <div className="col-lg-3">
+                            <Popular posts={data?.popularArticles}/>
+                        </div>
+                    </div> :
+                    <div className="text-center py-4">
+                        <img src="/img/oops.png" alt="" className="mb-4"/>
+                        <h3>К сожалению, мы не смогли найти никаких результатов для "{router.query.q}"</h3>
+                    </div>
             }
         </Layout>
     );
