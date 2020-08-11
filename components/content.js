@@ -4,13 +4,7 @@ import ReactHtmlParser from 'react-html-parser';
 import Gallery from "./gallery";
 import Banner from "./banner";
 import ChartGenerator from "./ChartGenerator";
-
-import dynamic from "next/dynamic";
-const LinkPreview = dynamic(
-    () => import('./LinkPreview'),
-    { ssr: false }
-);
-
+import LinkPreview from "./LinkPreview";
 
 function ContentGenerator({ data }) {
     const {type, value, author} = data;
@@ -21,9 +15,7 @@ function ContentGenerator({ data }) {
             return (<p>{ReactHtmlParser(value)}</p>);
         case "link":
             return (
-                <div className="d-inline-block mx-auto">
-                    <LinkPreview url={data.url}/>
-                </div>
+                <LinkPreview url={data.url}/>
             );
         case "quote":
             return (

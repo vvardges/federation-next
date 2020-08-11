@@ -9,12 +9,13 @@ import List from "../components/posts/list";
 import Head from "next/head";
 
 export default function Search() {
+    const router = useRouter();
+
     const [searchRequest, setSearchRequest] = useState({
         data: null,
-        isLoading: false
+        isLoading: false,
+        searchValue: ""
     });
-
-    const router = useRouter();
 
     const  updateQuery = (param, value) => {
         router.push({
@@ -35,26 +36,29 @@ export default function Search() {
     useEffect(() => {
         if (router.query.q) {
             setSearchRequest({
-                isLoading: true
+                isLoading: true,
+                searchValue: router.query.q
             });
 
             getSearchData(router.query).then((data) => {
                 setSearchRequest({
                     isLoading: false,
-                    data: data
+                    data: data,
+                    searchValue: router.query.q
                 });
             });
         }
     }, [router.query]);
 
-    const {data, isLoading} = searchRequest;
+    const {data, isLoading, searchValue} = searchRequest;
     return (
         <Layout data={{
             page: "search",
             title: (
                 <input
                     type="text"
-                    defaultValue={router.query.q}
+                    defaultValue={searchValue}
+                    key={searchValue}
                     className="form-control form-control-lg border-0 text-white font-family-condensed text-truncate input-search-sm"
                     onKeyDown={handleKeyDown}
                 />

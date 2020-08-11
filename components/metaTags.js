@@ -21,7 +21,7 @@ export default function MetaTags ({ general }) {
     return (
         <>
             {Object.keys(metaTags).filter(key => general[key]).map(key =>
-                <meta {...metaTags[key]} content={general[key]} />
+                <meta {...metaTags[key]} content={general[key]} key={key}/>
             )}
             {general.other_metategs && ReactHtmlParser(general.other_metategs)}
         </>
