@@ -4,13 +4,13 @@ import {getLinkPreview} from 'link-preview-js';
 
 export default function LinkPreview ({ url }) {
     const [data, setData] = useState(null);
-    const [isLoading, setIsloading] = useState(false);
+    const [isLoading, setIsLoading] = useState(false);
 
     useEffect(() => {
-        setIsloading(true);
+        setIsLoading(true);
 
         getLinkPreview(url).then((data) => {
-            setIsloading(false);
+            setIsLoading(false);
             setData(data);
         });
     }, []);

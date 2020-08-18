@@ -7,7 +7,9 @@ const PostCardWithTags = ({ post }) => post ? (
     <div className="mb-3">
         <div className="row">
             <div className="col-lg-7 d-flex align-items-center">
-                <Image post={post} size="lg16"/>
+                <div style={{maxWidth: 520}}>
+                    <Image post={post} size="lg16"/>
+                </div>
             </div>
             <div className="col-lg-5">
                 <div className="card h-100">

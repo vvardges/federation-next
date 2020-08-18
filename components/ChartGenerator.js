@@ -17,12 +17,13 @@ const axisStyle = {
 };
 
 const colors = ['#4F91CF', '#99C1E5', '#FFA24B', '#3DB45E', '#F56A4C', '#A6CF4F', '#D48FEC'];
+const padding = 9*2;
 
 function ChartGenerator({chartType, data}) {
     switch (chartType) {
         case "VerticalBar":
             return (
-                <XYPlot xType="ordinal" width={600} height={360}>
+                <XYPlot xType="ordinal" width={600-padding} height={360}>
                     <XAxis style={axisStyle}/>
                     <YAxis style={axisStyle}/>
                     <VerticalBarSeries data={data} color="#4F91CF"/>
@@ -51,7 +52,7 @@ function ChartGenerator({chartType, data}) {
                 <div className="d-flex flex-nowrap">
                     <RadialChart
                         colorType="literal"
-                        width={400}
+                        width={400 - padding}
                         height={300}
                         data={data.map((d, i) => {
                             return {
@@ -65,7 +66,7 @@ function ChartGenerator({chartType, data}) {
             );
         case "Line":
             return (
-                <XYPlot width={600} height={500} xType="ordinal">
+                <XYPlot width={600 - padding} height={500} xType="ordinal">
                     <HorizontalGridLines />
                     <XAxis style={axisStyle}/>
                     <YAxis style={axisStyle}/>

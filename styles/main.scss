@@ -441,6 +441,10 @@ button:focus {
   display: none;
 }
 
+.scroll-invisible {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
 .scroll-invisible::-webkit-scrollbar {
   display: none;
 }
