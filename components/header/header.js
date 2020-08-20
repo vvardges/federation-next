@@ -81,8 +81,8 @@ export default function Header({ data }) {
                                         <button className="btn btn-link d-xl-none" onClick={toggleSearch}><i className="icon-search"/></button>
                                     </>}
                                 </div>
-                                <div className={`collapse navbar-collapse col overflow-auto ${isOpen ? 'show px-3' : ''}`}>
-                                    <div className="d-flex flex-column flex-xl-row small font-family-condensed w-100 h-100 overflow-auto pb-4 pb-xl-0">
+                                <div className={`collapse navbar-collapse col overflow-auto ${isOpen ? 'show px-3 pb-4' : ''}`}>
+                                    <div className="d-flex flex-column flex-xl-row small font-family-condensed w-100 h-100 overflow-auto pb-xl-0">
                                         <ul className="navbar-nav justify-content-between w-100">
                                             {categories.slice(0, categories.length / 2).map(category =>
                                                 <li className={`nav-item ${isOpen ? "h4 font-weight-normal" : ""}`} key={category.id} onClick={close}>
