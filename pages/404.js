@@ -6,9 +6,9 @@ export default function NotFound () {
     return (
         <div className="d-flex flex-column min-vh-100 bg-dark">
             <Header/>
-            <div className="pt-4 col-auto">
+            <div className="pt-3 col-auto">
                 <div className="text-gray col-lg-6 mx-auto position-relative">
-                    <h1>Упссс!</h1>
+                    <h1 className="my-5">Упссс!</h1>
                     <hr className="border-gray"/>
                     <p className="lead letter-spacing-sm mb-5">Мы не можем найти страницу, которую ты ищешь</p>
                     <img src="/img/404.png" className="w-100" alt=""/>
