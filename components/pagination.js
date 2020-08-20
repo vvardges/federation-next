@@ -5,13 +5,12 @@ export default function Pagination ({ totalPages }) {
     const router = useRouter();
     const currentPage = +router.query.page;
 
-    let pages = [];
-    for (let i = 1; i <= totalPages; i++) {
-        pages.push(i);
-    }
-    pages.splice(1, currentPage - 2);
-    pages.splice(currentPage + 1, totalPages - currentPage - 2);
-    if (pages[pages.length - 1] !== totalPages) pages.push(totalPages);
+    let pages = new Set();
+    pages.add(1);
+    pages.add(Math.max(currentPage - 1, 1));
+    pages.add(currentPage);
+    pages.add(Math.min(currentPage + 1, totalPages));
+    pages.add(totalPages);
 
     const handleClick = (page) => {
         const query = {...router.query, page};
@@ -31,8 +30,8 @@ export default function Pagination ({ totalPages }) {
                         <i className="icon-arrow-left"/>
                     </a>
                 </li>}
-                {pages.map((page, index) => {
-                    return (index > 0 && page !== pages[index-1] + 1) ? (
+                {[...pages].map((page, index) => {
+                    return (!pages.has(page - 1) && page > 1) ? (
                         <>
                             <li className={`page-item mx-1`} key={page + "dots"}>
                                 ...
