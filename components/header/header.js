@@ -85,7 +85,7 @@ export default function Header({ data }) {
                                     <div className="d-flex flex-column flex-xl-row small font-family-condensed w-100 h-100 overflow-auto pb-xl-0">
                                         <ul className="navbar-nav justify-content-between w-100">
                                             {categories.slice(0, categories.length / 2).map(category =>
-                                                <li className={`nav-item ${isOpen ? "h4 font-weight-normal" : ""}`} key={category.id} onClick={close}>
+                                                <li className={`nav-item ${isOpen ? "h3 font-weight-normal font-family-condensed" : ""}`} key={category.id} onClick={close}>
                                                     <Link href="/category/[slug]" as={`/category/${category.slug}`}>
                                                         <a className={`nav-link text-${category.super_header ? "primary" : isOpen ? "white" : "dark"}`}>{category.title}</a>
                                                     </Link>
@@ -99,7 +99,7 @@ export default function Header({ data }) {
                                         </Link>
                                         <ul className="navbar-nav justify-content-between w-100">
                                             {categories.slice(categories.length / 2).map(category =>
-                                                <li className={`nav-item ${isOpen ? "h4 font-weight-normal" : ""}`} key={category.id} onClick={close}>
+                                                <li className={`nav-item ${isOpen ? "h3 font-weight-normal font-family-condensed" : ""}`} key={category.id} onClick={close}>
                                                     <Link href="/category/[slug]" as={`/category/${category.slug}`}>
                                                         <a className={`nav-link text-${category.super_header ? "primary" : isOpen ? "white" : "dark"}`}>{category.title}</a>
                                                     </Link>
@@ -111,14 +111,14 @@ export default function Header({ data }) {
                                         </ul>
                                         <ul className="navbar-nav d-xl-none mt-auto">
                                             <li className="nav-item mb-4">
-                                                <div className="input-group input-group-sm border-bottom border-gray">
+                                                <div className="input-group input-group-sm border-bottom border-gray pb-1">
                                                     <input
                                                         type="text"
                                                         className={`form-control border-0 font-family-condensed input-search text-gray pl-0`}
                                                         placeholder="Поиск"
                                                         onKeyDown={handleKeyDown}
                                                     />
-                                                    <div className="input-group-append text-white">
+                                                    <div className="input-group-append text-white px-1">
                                                         <i className="icon-search align-self-center"/>
                                                     </div>
                                                 </div>
