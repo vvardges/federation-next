@@ -6,7 +6,7 @@ export default function CategoryHeader({ currentCategory, subcategories }) {
     return (
         <nav className="navbar navbar-dark navbar-expand-xl bg-dark">
             <div className="container">
-                <div className="row mx-auto m-xl-0">
+                <div className="row mx-auto m-xl-0 w-100">
                     <div className="col-xl-auto col-12">
                         <h1 className="h2 text-white font-weight-normal mb-0 text-center text-xl-left">{currentCategory.title}</h1>
                     </div>
