@@ -17,7 +17,10 @@ export async function getServerSideProps() {
 }
 
 export default function Home({ response }) {
-    const {topFirstArticle, topSecondArticle, articlesByCategories, popularArticles, readMoreArticles, advertising, general} = response.data;
+    const {topFirstArticle, topSecondArticle, articlesByCategories, popularArticles, readMoreArticles, advertising, general, errors} = response.data;
+
+    if (!!errors) return <h1>{errors}</h1>;
+
     return (
         <Layout data={{
             page: "home",
