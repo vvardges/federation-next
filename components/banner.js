@@ -2,6 +2,8 @@ import React, {useEffect} from "react";
 import ReactHtmlParser from 'react-html-parser';
 
 const Banner = ({ banner }) => {
+    if (!banner) return null;
+
     const scriptText = banner.script.replace("<script>","").replace("</script>","");
 
     useEffect(() => {
