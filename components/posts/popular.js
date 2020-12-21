@@ -2,7 +2,7 @@ import React from "react";
 import Link from "next/link";
 
 const Popular = ({ posts }) => (
-    <div className="mb-2">
+    <div className="mb-2 w-100">
         <h5 className="font-family-condensed letter-spacing-0">Популярное</h5>
         <ul className="list-group">
             {posts.map(post =>
